@@ -23,7 +23,7 @@
   .login-form {
     width: 25rem;
     height: 18.75rem;
-    position: fixed;
+    position: absolute;
     top: 50%;
     margin-top: -9.375rem;
     left: 50%;

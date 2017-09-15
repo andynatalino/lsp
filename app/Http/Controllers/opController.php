@@ -8,6 +8,7 @@ use App\Berita;
 use App\Jadwal;
 use App\Slider;
 use App\Kategori;
+use App\Pembayaran;
 use Illuminate\Http\Request;
 
 class opController extends Controller
@@ -91,17 +92,16 @@ class opController extends Controller
 
   public function slider_all(){
     $slider = Slider::all();
-    return view('operator.slider.all', ['slider' => $slider]);
+    return view('operator2.slider.all', ['slider' => $slider]);
   }
 
   public function buat_slider(){
-    return view('operator.slider.buat');
+    return view('operator2.slider.buat');
   }
 
   public function save_slider(Request $request){
     $op = new Slider;
-    $op->id_user = Auth::user()->id;
-    $op->nama_slider = $request->nama_slider;
+    $op->nama_slider = $request->nama;
     $op->gambar = '';
     if($request->hasFile('gambar')){
       $gambar = date('YmdHis').uniqid().".". $request->gambar->getClientOriginalExtension();
@@ -111,6 +111,31 @@ class opController extends Controller
     }
     $op->save();
 
+    return redirect(url('operator/slider'));
+  }
+
+  public function slider_edit($id){
+    $slider = Slider::find($id);
+    return view('operator2.slider.edit', ['slider' => $slider]);
+  }
+
+  public function slider_update(Request $request, $id){
+    $slider = Slider::find($id);
+    $slider->nama_slider = $request->nama;
+    $slider->gambar = '';
+    if($request->hasFile('gambar')){
+      $gambar = date('YmdHis').uniqid().".". $request->gambar->getClientOriginalExtension();
+      // die($gambar);
+      Image::make($request->gambar)->resize(600, 400)->save(public_path("/assets/slider/". $gambar));
+      $slider->gambar = $gambar;
+    }
+    $slider->save();
+    return redirect(url('operator/slider'));
+  }
+
+  public function slider_delete($id){
+    $slider = Slider::find($id);
+    $slider->delete();
     return redirect(url('operator/slider'));
   }
 
@@ -129,7 +154,7 @@ class opController extends Controller
     $kategori = new Kategori;
     $kategori->nama_sp = $request->nama;
     $kategori->isi = $request->isi;
-    $kategori->slug = str_slug($request->nama);
+    $kategori->slug = str_slug($request->nama, 'asd');
     $kategori->image = '';
     if($request->hasFile('image')){
       $image = date('YmdHis').uniqid().".". $request->image->getClientOriginalExtension();
@@ -240,6 +265,41 @@ class opController extends Controller
     $jadwal = Jadwal::find($id);
     $jadwal->delete();
     return redirect(url('operator/jadwal'));
+  }
+
+  public function pembayaran_all(){
+    $tipe = Pembayaran::all();
+    return view('operator2.pembayaran.all', ['tipe' => $tipe]);
+  }
+
+  public function pembayaran_buat(){
+    return view('operator2.pembayaran.buat');
+  }
+
+  public function pembayaran_save(Request $request){
+    $tipe = new Pembayaran;
+    $tipe->tipe = $request->tipe;
+    $tipe->save();
+
+    return redirect(url('operator/pembayaran'));
+  }
+
+  public function pembayaran_edit($id){
+    $tipe = Pembayaran::find($id);
+    return view('operator2.pembayaran.edit', ['tipe' => $tipe]);
+  }
+
+  public function pembayaran_update(Request $request, $id){
+    $tipe = Pembayaran::find($id);
+    $tipe->tipe = $request->tipe;
+    $tipe->save();
+    return redirect('operator/pembayaran');
+  }
+
+  public function pembayaran_delete($id){
+    $tipe = Pembayaran::find($id);
+    $tipe->delete();
+    return redirect(url('operator/pembayaran'));
   }
 
 }

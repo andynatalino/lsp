@@ -19,9 +19,9 @@ Lembaga Sertifikasi Profesi
           <span class="title">{{ $key->judul }}</span>
         </div>
         <div class="content" style="padding: 10px 10px 10px 10px;">
-        {!! str_limit($key->isi, 500) !!}
-     <br>
-     <br>
+          {!! str_limit($key->isi, 500) !!}
+          <br>
+          <br>
           <span class="place-right">Lanjutkan Membaca</span><br>
         </div>
       </div><br>
@@ -43,6 +43,7 @@ Lembaga Sertifikasi Profesi
         </div>
       </div>
     </div>
+    <img  src="">
   </div>
   {{ $berita->links() }}
 </div>

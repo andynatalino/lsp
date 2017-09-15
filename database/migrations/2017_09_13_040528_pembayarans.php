@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Sliders extends Migration
+class pembayarans extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class Sliders extends Migration
      */
     public function up()
     {
-      Schema::create('sliders', function (Blueprint $table) {
-          $table->increments('id');          
-          $table->string('nama_slider');
-          $table->string('gambar');
+      Schema::create('pembayarans', function (Blueprint $table) {
+          $table->increments('id');
+          $table->string('tipe');
           $table->timestamps();
       });
     }
@@ -28,6 +27,6 @@ class Sliders extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sliders');
+        Schema::dropIfExists('pembayarans');
     }
 }

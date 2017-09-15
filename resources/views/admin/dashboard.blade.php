@@ -1,57 +1,121 @@
 @extends('layouts.app-admin')
-@section('title')
-Dashboard &raquo Admin
-@endsection
+
+@section('pageTitle', 'Dashboard')
 
 @section('content')
+ <div class='row'>
+        <div class='col-md-6'>
+            <!-- Box -->
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Randomly Generated Tasks</h3>
+                    <div class="box-tools pull-right">
+                        <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
+                        <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    @foreach($tasks as $task)
+                        <h5>
+                            {{ $task['name'] }}
+                            <small class="label label-{{$task['color']}} pull-right">{{$task['progress']}}%</small>
+                        </h5>
+                        <div class="progress progress-xxs">
+                            <div class="progress-bar progress-bar-{{$task['color']}}" style="width: {{$task['progress']}}%"></div>
+                        </div>
+                    @endforeach
 
-<div class="page-content">
-  <div class="flex-grid no-responsive-future" style="height: 100%;">
-    <div class="row" style="height: 100%">
-      <div class="cell size-x200" id="cell-sidebar" style="background-color: #0072c6; height: 100%">
-        <ul class="sidebar navy" style="background-color: #0072c6;">
-          <li class="active"><a href="{{ url('admin') }}">
-            <span class="mif-apps icon"></span>
-            <span class="title">dashboard</span>
-            <span class="counter">123</span>
-          </a></li>
-          <li><a href="{{ url('admin/user') }}">
-            <span class="mif-users icon"></span>
-            <span class="title">Users</span>
-            <span class="counter">0</span>
-          </a></li>
-          <li><a href="#">
-            <span class="mif-drive-eta icon"></span>
-            <span class="title">Virtual machines</span>
-            <span class="counter">2</span>
-          </a></li>
-          <li><a href="#">
-            <span class="mif-cloud icon"></span>
-            <span class="title">Cloud services</span>
-            <span class="counter">0</span>
-          </a></li>
-          <li><a href="#">
-            <span class="mif-database icon"></span>
-            <span class="title">SQL Databases</span>
-            <span class="counter">0</span>
-          </a></li>
-          <li><a href="#">
-            <span class="mif-cogs icon"></span>
-            <span class="title">Automation</span>
-            <span class="counter">0</span>
-          </a></li>
-          <li><a href="#">
-            <span class="mif-apps icon"></span>
-            <span class="title">all items</span>
-            <span class="counter">0</span>
-          </a></li>
-        </ul>
-      </div>
+                </div><!-- /.box-body -->
+                <div class="box-footer">
+                    <form action='#'>
+                        <input type='text' placeholder='New task' class='form-control input-sm' />
+                    </form>
+                </div><!-- /.box-footer-->
+            </div><!-- /.box -->
+        </div><!-- /.col -->
+        <div class='col-md-6'>
+            <!-- Box -->
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Second Box</h3>
+                    <div class="box-tools pull-right">
+                        <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
+                        <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    A separate section to add any kind of widget. Feel free
+                    to explore all of AdminLTE widgets by visiting the demo page
+                    on <a href="https://almsaeedstudio.com">Almsaeed Studio</a>.
+                </div><!-- /.box-body -->
+            </div><!-- /.box -->
+        </div><!-- /.col -->
 
-      <div class="cell auto-size padding20 bg-white" id="cell-content">
-        <h1 class="text-light">Dashboard</h1>
-        <hr>
-        <div id="donut-example" style="height: 350px;"></div>
+    </div><!-- /.row -->
+     <div class="row">
+        <div class="col-xs-12">
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">Responsive Hover Table</h3>
+
+              <div class="box-tools">
+                <div class="input-group input-group-sm" style="width: 150px;">
+                  <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
+
+                  <div class="input-group-btn">
+                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body table-responsive no-padding">
+              <table class="table table-hover">
+                <tr>
+                  <th>ID</th>
+                  <th>User</th>
+                  <th>Date</th>
+                  <th>Status</th>
+                  <th>Reason</th>
+                </tr>
+                <tr>
+                  <td>183</td>
+                  <td>John Doe</td>
+                  <td>11-7-2014</td>
+                  <td><span class="label label-success">Approved</span></td>
+                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                </tr>
+                <tr>
+                  <td>219</td>
+                  <td>Alexander Pierce</td>
+                  <td>11-7-2014</td>
+                  <td><span class="label label-warning">Pending</span></td>
+                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                </tr>
+                <tr>
+                  <td>657</td>
+                  <td>Bob Doe</td>
+                  <td>11-7-2014</td>
+                  <td><span class="label label-primary">Approved</span></td>
+                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                </tr>
+                <tr>
+                  <td>175</td>
+                  <td>Mike Doe</td>
+                  <td>11-7-2014</td>
+                  <td><span class="label label-danger">Denied</span></td>
+                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                </tr>
+              </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
       </div>
+    </section>
+    <!-- /.content -->
+  </div>
+
 
       @endsection

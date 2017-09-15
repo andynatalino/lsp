@@ -3,6 +3,7 @@
     <a class="app-bar-element branding" href="{{ url('/') }}"> <img src="{{ url('assets/logo.png') }}" style="height: 38px; display: inline-block; margin-right: 10px;">LSP</a>
     <ul class="app-bar-menu">
       <li><a href="{{ url('sertifikasi') }}">Sertifikasi</a></li>
+      <li><a href="{{ url('berita') }}">Berita</a></li>
       <li><a href="{{ url('profil') }}">Profil</a></li>
       <li><a href="">Kontak</a></li>
         <li><a href="">Galeri</a></li>

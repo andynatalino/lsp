@@ -10,6 +10,11 @@ Route::group(['prefix' => 'sertifikasi'], function(){
   Route::get('{slug1}/{slug2}', 'SertifikasiController@show_jadwal');
 });
 
+Route::group(['prefix' => 'berita'], function(){
+  Route::get('/', 'IndexController@berita_all');
+  Route::get('/{slug}', 'IndexController@berita_show');
+});
+
 Route::get('/profil', function(){ return view('profil'); });
 
 Route::group(['prefix' => 'admin'], function(){
@@ -36,6 +41,9 @@ Route::group(['prefix' => 'operator'], function(){
       Route::get('/', 'opController@slider_all');
       Route::get('/buat', 'opController@buat_slider');
       Route::post('/', 'opController@save_slider');
+      Route::get('/{id}/edit', 'opController@slider_edit');
+      Route::post('/{id}', 'opController@slider_update');
+      Route::delete('/{id}', 'opController@slider_delete');
     });
     Route::group(['prefix' => 'kategori'], function(){
       Route::get('/', 'opController@kategori_all');
@@ -53,6 +61,22 @@ Route::group(['prefix' => 'operator'], function(){
       Route::get('/{id}/edit', 'opController@jadwal_edit');
       Route::post('/{id}', 'opController@jadwal_update');
       Route::delete('/{id}', 'opController@jadwal_delete');
+    });
+    Route::group(['prefix' => 'pembayaran'], function(){
+      Route::get('/', 'opController@pembayaran_all');
+      Route::get('/buat', 'opController@pembayaran_buat');
+      Route::post('/', 'opController@pembayaran_save');
+      Route::get('/{id}/edit', 'opController@pembayaran_edit');
+      Route::post('/{id}', 'opController@pembayaran_update');
+      Route::delete('/{id}', 'opController@pembayaran_delete');
+    });
+    Route::group(['prefix' => 'konfirmasi'], function(){
+      Route::get('/', 'opController@konfirmasi_all');
+      Route::get('/buat', 'opController@konfirmasi_buat');
+      Route::post('/', 'opController@konfirmasi_save');
+      Route::get('/{id}/edit', 'opController@konfirmasi_edit');
+      Route::post('/{id}', 'opController@konfirmasi_update');
+      Route::delete('/{id}', 'opController@konfirmasi_delete');
     });
   });
 });

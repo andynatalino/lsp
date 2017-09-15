@@ -36,10 +36,10 @@
   <div class="wrapper">
 
     <!-- Header -->
-    @include('layouts.header-admin')
+    @include('layouts.op.header-op')
 
     <!-- Sidebar -->
-    @include('layouts.sidebar-admin')
+    @include('layouts.op.sidebar-op')
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -64,7 +64,7 @@
     </div><!-- /.content-wrapper -->
 
     <!-- Footer -->
-    @include('layouts.footer-admin')
+    @include('layouts.op.footer-op')
 
   </div><!-- ./wrapper -->
 

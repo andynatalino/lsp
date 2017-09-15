@@ -27,9 +27,8 @@
              <li><a href="#"><i class="fa fa-id-card"></i>Sertifikasi</a></li>
              <li><a href="#"><i class="fa fa-handshake-o"></i>Transaksi</a></li>
              <li><a href="#"><i class="fa fa-check-circle"></i>Konfirmasi</a></li>
-             <li><a href="#"><i class="fa fa-university"></i>Wilayah</a></li>
-             <li><a href="#"><i class="fa fa-credit-card"></i>Tipe Pembayaran</a></li>
-             <li><a href="#"><i class="fa fa-television"></i>Slider</a></li>
+             <li><a href="{{ url('operator/pembayaran') }}"><i class="fa fa-credit-card"></i>Tipe Pembayaran</a></li>
+             <li><a href="{{ url('operator/slider') }}"><i class="fa fa-television"></i>Slider</a></li>
             <li><a href="#"><i class="fa fa-file-pdf-o"></i>Laporan</a></li>
             <li class="treeview">
                 <a href="#"><span>Multilevel</span> <i class="fa fa-angle-left pull-right"></i></a>

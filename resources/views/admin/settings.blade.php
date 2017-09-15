@@ -1,55 +1,76 @@
 @extends('layouts.app-admin')
-@section('title')
-  Profil Perusahaan
-@endsection
+
+@section('pageTitle', 'Settings')
 
 @section('content')
-<div class="page-content">
-  <div class="flex-grid no-responsive-future" style="height: 100%;">
-    <div class="row" style="height: 100%">
-      <div class="cell size-x200" id="cell-sidebar" style="background-color: #0072c6; height: 100%">
-        <ul class="sidebar navy" style="background-color: #0072c6;">
-          <li><a href="{{ url('admin') }}">
-            <span class="mif-apps icon"></span>
-            <span class="title">dashboard</span>
-            <span class="counter">123</span>
-          </a></li>
-          <li><a href="{{ url('admin/user') }}">
-            <span class="mif-users icon"></span>
-            <span class="title">Users</span>
-            <span class="counter">0</span>
-          </a></li>
-          <li class="active"><a href="{{ url('admin/settings') }}">
-            <span class="mif-drive-eta icon"></span>
-            <span class="title">Virtual machines</span>
-            <span class="counter">2</span>
-          </a></li>
-          <li><a href="#">
-            <span class="mif-cloud icon"></span>
-            <span class="title">Cloud services</span>
-            <span class="counter">0</span>
-          </a></li>
-          <li><a href="#">
-            <span class="mif-database icon"></span>
-            <span class="title">SQL Databases</span>
-            <span class="counter">0</span>
-          </a></li>
-          <li><a href="#">
-            <span class="mif-cogs icon"></span>
-            <span class="title">Automation</span>
-            <span class="counter">0</span>
-          </a></li>
-          <li><a href="#">
-            <span class="mif-apps icon"></span>
-            <span class="title">all items</span>
-            <span class="counter">0</span>
-          </a></li>
-        </ul>
+<div class="box box-default">
+  <div class="box-body">
+    <div class="row">
+      <div class="col-md-6">
+        <form method="POST" action="{{ url('operator/slider') }}" enctype="multipart/form-data" role="form">
+          {{ csrf_field() }}
+          <div class="form-group">
+            <label>Nama Website</label>
+            <input type="text" required class="form-control" name="nama" placeholder="Nama slider">
+          </div>
+          <div class="form-group">
+            <label>Kontak Email</label>
+            <input type="text" required class="form-control" name="nama" placeholder="Nama slider">
+          </div>
+          <div class="form-group">
+            <label>Title</label>
+            <input type="text" required class="form-control" name="nama" placeholder="Nama slider">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputFile">Logo</label>
+            <input name="gambar" type="file">
+            <p class="help-block">Usahakan Gambar berkualitas HD</p>
+          </div>
       </div>
-
-      <div class="cell auto-size padding20 bg-white" id="cell-content">
-        <h1 class="text-light">Settings</h1>
-        <hr>
-      <h3>Page</h3>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Web Color</label>
+          <select class="form-control" style="width: 100%;">
+            <option selected="selected">Blue</option>
+            <option>Alaska</option>
+            <option>California</option>
+            <option>Delaware</option>
+            <option>Tennessee</option>
+            <option>Texas</option>
+            <option>Washington</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Admin Web Color</label>
+          <select class="form-control" style="width: 100%;">
+            <option selected="selected">Red</option>
+            <option>Alaska</option>
+            <option>California</option>
+            <option>Delaware</option>
+            <option>Tennessee</option>
+            <option>Texas</option>
+            <option>Washington</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Operator Web Color</label>
+          <select class="form-control" style="width: 100%;">
+            <option selected="selected">Blue</option>
+            <option>Alaska</option>
+            <option>California</option>
+            <option>Delaware</option>
+            <option>Tennessee</option>
+            <option>Texas</option>
+            <option>Washington</option>            
+          </select>
+        </div>
       </div>
+    </div>
+    <div class="box-footer">
+      <button type="submit" class="btn btn-primary">Save Settings</button>
+      <button type="submit" class="btn btn-warning">Reset Settings</button>
+    </div>
+  </form>
+  </div>
+</div>
 @endsection
