@@ -1,90 +1,54 @@
-@extends('layouts.app-operator')
-@section('title')
-Dashboard &raquo Operator
-@endsection
+@extends('layouts.op.app-operator')
+
+@section('pageTitle', 'Slider')
 
 @section('content')
 
-<div class="page-content">
-  <div class="flex-grid no-responsive-future" style="height: 100%;">
-    <div class="row" style="height: 100%">
-      <div class="cell size-x200" id="cell-sidebar" style="background-color: #0072c6; height: 100%">
-        <ul class="sidebar navy" style="background-color: #0072c6;">
-          <li><a href="{{ url('operator') }}">
-            <span class="mif-apps icon"></span>
-            <span class="title">dashboard</span>
-            <span class="counter">123</span>
-          </a></li>
-          <li><a href="{{ url('operator/users') }}">
-            <span class="mif-users icon"></span>
-            <span class="title">Users</span>
-            <span class="counter">0</span>
-          </a></li>
-          <li><a href="{{ url('operator/berita') }}">
-            <span class="mif-books icon"></span>
-            <span class="title">Berita</span>
-            <span class="counter">2</span>
-          </a></li>
-          <li><a href="{{ url('operator/sertifikasi') }}">
-            <span class="mif-profile icon"></span>
-            <span class="title">Sertifikasi</span>
-            <span class="counter">0</span>
-          </a></li>
-          <li><a href="{{ url('operator/transaksi') }}">
-            <span class="mif-money icon"></span>
-            <span class="title">TRANSAKSI</span>
-            <span class="counter">0</span>
-          </a></li>
-          <li><a href="{{ url('operator/konfirmasi') }}">
-            <span class="mif-cogs icon"></span>
-            <span class="title">KONFIRMASI</span>
-            <span class="counter">0</span>
-          </a></li>
-          <li><a href="{{ url('operator/jadwal') }}">
-            <span class="mif-calendar icon"></span>
-            <span class="title">JADWAL</span>
-            <span class="counter">0</span>
-          </a></li>
-          <li class="active"><a href="{{ url('operator/slider') }}">
-            <span class="mif-display icon"></span>
-            <span class="title">SLIDER</span>
-            <span class="counter">0</span>
-          </a></li>
-        </ul>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="box">
+      <div class="box-header">
+        <a href="{{ url('operator/slider/buat')}}"><button type="button" class="btn btn-primary btn-sm">Tambah Slider</button></a>
+        <div class="box-tools">
+          <div class="input-group input-group-sm" style="width: 150px;">
+            <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
+            <div class="input-group-btn">
+              <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+            </div>
+          </div>
+        </div>
       </div>
-
-      <div class="cell auto-size padding20 bg-white" id="cell-content">
-        <h1 class="text-light">Slider<a href="{{url('operator/slider/buat')}}"><span class="place-right"><button class="button primary button">Tambah Slider</button></span></a></h1>
-        <hr class="thin bg-grayLighter">
-        <table width="100%" class="table striped hovered cell-hovered border bordered">
-          <?php
-          $i = 1;
-          ?>
-          <tbody>
-            <tr>
-              <td>No</td>
-              <td>Nama Slider</td>
-              <td>Gambar</td>
-              <td>Opsi</td>
-            </tr>
-            @foreach($slider as $key)
-            <tr>
-              <td>{{ $i++ }}</td>
-              <td>{{ $key->nama_slider }}</td>
-              <td> <center>
-                <img style="width:100px; height:100px;" src="{{ url('assets/slider/'.$key->gambar) }}">
-              </center>
-            </td>
+      <!-- /.box-header -->
+      <div class="box-body table-responsive no-padding">
+        <?php $i = 1; ?>
+        <table class="table table-hover">
+          <tr>
+            <th>No</th>
+            <th>Nama</th>
+            <th>Gambar</th>
+            <th>Action</th>
+          </tr>
+          @foreach($slider as $key)
+          <tr>
+            <td>{{ $i++ }}</td>
+            <td>{{ $key->nama_slider }}</td>
+            <td> <a href="{{ url('assets/slider/'.$key->gambar) }}" target="_blank"><img style="width:50px; height:50px;" src="{{ url('assets/slider/'.$key->gambar) }}"></a></td>
             <td>
-               <center>
-                 <button class="button success small-button">Edit</button> <button class="button danger small-button">Hapus</button>
-                </center>
+              <form action="{{ url('operator/slider/'.$key->id) }}" method="post">
+                <a href="{{ url('operator/slider/'.$key->id.'/edit')}}"><button type="button" class="btn btn-info"><i class="fa fa-th-list"></i></button></a>
+                <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                <input type="hidden" name="_method" value="DELETE">
+                {{ csrf_field() }}
+              </form>
             </td>
           </tr>
           @endforeach
-
-        </tbody>
-      </table>
+        </table>
+      </div>
+      <!-- /.box-body -->
     </div>
+    <!-- /.box -->
+  </div>
+</div>
 
-    @endsection
+@endsection

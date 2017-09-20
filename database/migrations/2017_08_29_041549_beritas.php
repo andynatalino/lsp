@@ -15,7 +15,7 @@ class Beritas extends Migration
     {
       Schema::create('beritas', function (Blueprint $table) {
           $table->increments('id');
-          $table->integer('id_user');
+          $table->integer('id_user')->unsigned();
           $table->string('judul');
           $table->string('slug');
           $table->longtext('isi');

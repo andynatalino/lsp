@@ -2,7 +2,7 @@
 <header class="main-header">
 
     <!-- Logo -->
-    <a href="index2.html" class="logo"><b>LSP </b>Sakasakti</a>
+    <a href="{{ url('/operator')}}" class="logo"><b>LSP </b>Sakasakti</a>
 
     <!-- Header Navbar -->
     <nav class="navbar navbar-static-top" role="navigation">

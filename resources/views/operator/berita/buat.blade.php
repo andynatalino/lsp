@@ -1,102 +1,44 @@
-@extends('layouts.app-operator')
-@section('title')
-Buat Berita &raquo Operator
-@endsection
+@extends('layouts.op.app-operator')
+
+@section('pageTitle', 'Buat Berita')
 
 @section('content')
-<div class="page-content">
-  <div class="flex-grid no-responsive-future" style="height: 100%;">
-    <div class="row" style="height: 100%">
-      <div class="cell size-x200" id="cell-sidebar" style="background-color: #0072c6; height: 100%">
-        <ul class="sidebar navy" style="background-color: #0072c6;">
-          <li><a href="{{ url('operator') }}">
-            <span class="mif-apps icon"></span>
-            <span class="title">dashboard</span>
-            <span class="counter">123</span>
-          </a></li>
-          <li><a href="{{ url('operator/users') }}">
-            <span class="mif-users icon"></span>
-            <span class="title">Users</span>
-            <span class="counter">0</span>
-          </a></li>
-          <li class="active"><a href="{{ url('operator/berita') }}">
-            <span class="mif-books icon"></span>
-            <span class="title">Berita</span>
-            <span class="counter">2</span>
-          </a></li>
-          <li><a href="{{ url('operator/sertifikasi') }}">
-            <span class="mif-profile icon"></span>
-            <span class="title">Sertifikasi</span>
-            <span class="counter">0</span>
-          </a></li>
-          <li><a href="{{ url('operator/transaksi') }}">
-            <span class="mif-money icon"></span>
-            <span class="title">TRANSAKSI</span>
-            <span class="counter">0</span>
-          </a></li>
-          <li><a href="{{ url('operator/konfirmasi') }}">
-            <span class="mif-cogs icon"></span>
-            <span class="title">KONFIRMASI</span>
-            <span class="counter">0</span>
-          </a></li>
-          <li><a href="{{ url('operator/jadwal') }}">
-            <span class="mif-calendar icon"></span>
-            <span class="title">JADWAL</span>
-            <span class="counter">0</span>
-          </a></li>
-          <li><a href="{{ url('operator/slider') }}">
-            <span class="mif-display icon"></span>
-            <span class="title">SLIDER</span>
-            <span class="counter">0</span>
-          </a></li>
-        </ul>
-      </div>
-
-      <div class="cell auto-size padding20 bg-white" id="cell-content">
-        <h1 class="text-light">Buat Berita</h1>
-        <hr class="thin bg-grayLighter">
-        <!-- <button class="button primary" onclick="pushMessage('info')"><span class="mif-plus"></span> Create...</button>
-        <button class="button success" onclick="pushMessage('success')"><span class="mif-play"></span> Start</button>
-        <button class="button warning" onclick="pushMessage('warning')"><span class="mif-loop2"></span> Restart</button>
-        <button class="button alert" onclick="pushMessage('alert')">Stop all machines</button>
-        <hr class="thin bg-grayLighter"> -->
-
-        <form action="{{url('operator/berita')}}" method="post">
-          <table>
-            <tbody>
-              <tr>
-                <td>Judul Berita :</td>
-              </tr>
-              <tr>
-                <td width="30px">
-                  <div class="input-control text full-size">
-                    <input type="text" name="judul" required>
-                    {{csrf_field()}}
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>Isi Berita :</td>
-              </tr>
-              <tr>
-                <td width="30px">
-                  <div class="input-control textarea">
-                    <textarea name="isi" style="width: 1000px;"></textarea>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <button class="button primary button">Buat Berita</button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </form>
-
-
-      </div>
+<div class="row">
+  <!-- left column -->
+  <div class="col-md-12">
+    <!-- general form elements -->
+    <div class="box box-primary">
+      <div class="box-header with-border"></div>
+      <!-- /.box-header -->
+      <!-- form start -->
+      <form method="POST" action="{{ url('operator/berita') }}" enctype="multipart/form-data" role="form">
+        {{ csrf_field() }}
+        <div class="box-body">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Judul Berita</label>
+            <input type="text" required class="form-control" name="judul" placeholder="Nama Berita" id="exampleInputEmail1">
+          </div>
+          <div class="form-group">
+            <label>Isi Berita</label>
+            <textarea required placeholder="Isi Berita" id="content" name="isi" class="form-control"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputFile">Image</label>
+            <input name="image" type="file" id="exampleInputFile">
+            <p class="help-block">Usahakan Gambar berkualitas HD</p>
+          </div>
+          <!-- /.box-body -->
+        </div>
+        <div class="box-footer">
+          <button type="submit" class="btn btn-primary">Buat Berita</button>
+        </div>
+      </form>
     </div>
   </div>
 </div>
+<script src="{{ url('js/ckeditor/ckeditor.js') }}"></script>
+<script type="text/javascript">
+  CKEDITOR_BASEPATH = "{{ url('/js/ckeditor/') }}";
+  CKEDITOR.replace('content', {toolbar : 'standard',width : '99%',height : '300px'});
+</script>
 @endsection

@@ -15,7 +15,10 @@ class pembayarans extends Migration
     {
       Schema::create('pembayarans', function (Blueprint $table) {
           $table->increments('id');
-          $table->string('tipe');
+          $table->string('nama_bank')->nullable();
+          $table->string('no_rek')->nullable();
+          $table->string('atas_nama')->nullable();
+          $table->string('lainnya')->nullable();
           $table->timestamps();
       });
     }

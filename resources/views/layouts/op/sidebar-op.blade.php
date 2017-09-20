@@ -19,24 +19,24 @@
         <ul class="sidebar-menu">
             <li class="header">Menu</li>
             <!-- Optionally, you can add icons to the links -->
-             <li class="active"><a href="{{ url('operator') }}"><i class="fa fa-circle-o"></i>Dashboard</a></li>
-             <li><a href="#"><i class="fa fa-address-book"></i>Users</a></li>
-             <li><a href="{{ url('operator/berita') }}"><i class="fa fa-newspaper-o"></i>Berita</a></li>
-             <li><a href="{{ url('operator/jadwal') }}"><i class="fa fa-calendar"></i>Jadwal</a></li>
-             <li><a href="{{ url('operator/kategori') }}"><i class="fa fa-wpforms"></i>Kategori</a></li>
-             <li><a href="#"><i class="fa fa-id-card"></i>Sertifikasi</a></li>
-             <li><a href="#"><i class="fa fa-handshake-o"></i>Transaksi</a></li>
-             <li><a href="#"><i class="fa fa-check-circle"></i>Konfirmasi</a></li>
-             <li><a href="{{ url('operator/pembayaran') }}"><i class="fa fa-credit-card"></i>Tipe Pembayaran</a></li>
-             <li><a href="{{ url('operator/slider') }}"><i class="fa fa-television"></i>Slider</a></li>
-            <li><a href="#"><i class="fa fa-file-pdf-o"></i>Laporan</a></li>
+            <li class="active"><a href="{{ url('operator') }}"><i class="fa fa-circle-o"></i>Dashboard</a></li>
+            <li><a href="#"><i class="fa fa-address-book"></i>Users</a></li>
+            <li><a href="{{ url('operator/berita') }}"><i class="fa fa-newspaper-o"></i>Berita</a></li>
+            <li><a href="{{ url('operator/jadwal') }}"><i class="fa fa-calendar"></i>Jadwal</a></li>
+            <li><a href="{{ url('operator/kategori') }}"><i class="fa fa-wpforms"></i>Kategori</a></li>
+            <li><a href="#"><i class="fa fa-id-card"></i>Sertifikasi</a></li>
+            <li><a href="{{ url('operator/konfirmasi') }}"><i class="fa fa-check-circle"></i>Konfirmasi</a></li>
+            <li><a href="#"><i class="fa fa-handshake-o"></i>Transaksi</a></li>
             <li class="treeview">
-                <a href="#"><span>Multilevel</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <a href="{{ url('operator/pembayaran') }}"><i class="fa fa-credit-card"></i><span>Tipe pembayaran</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
-                    <li><a href="#">Link in level 2</a></li>
-                    <li><a href="#">Link in level 2</a></li>
+                    <li><a href="{{ url('operator/pembayaran/bank') }}">Bank</a></li>
+                    <li><a href="{{ url('operator/pembayaran/lainnya') }}">Lainnya</a></li>
                 </ul>
             </li>
+            <li><a href="{{ url('operator/slider') }}"><i class="fa fa-television"></i>Slider</a></li>
+            <li><a href="#"><i class="fa fa-file-pdf-o"></i>Laporan</a></li>
+
         </ul><!-- /.sidebar-menu -->
     </section>
     <!-- /.sidebar -->

@@ -15,11 +15,19 @@ class JadwalsTableSeeder extends Seeder
   {
     $faker = Faker::create();
     foreach (range(1,100) as $index) {
-      DB::table('kategoris')->insert([
-        'nama_sp' => $faker->name,
-        'isi' => $faker->email,
-        'slug' => $faker->email,
-        'image' => $faker->email,
+      DB::table('jadwals')->insert([
+        'id_kategori' => 1  ,
+        'nama_lsp' => $faker->name,
+        'tanggal_mulai' => $faker->name,
+        'tanggal_selesai' => $faker->name,
+        'waktu' => $faker->email,
+        'lokasi' => $faker->email,
+        'kuota' => $faker->email,
+        'biaya' => $faker->name,
+        'isi' => $faker->name,
+        'status' => $faker->name,
+        'slug' => $faker->name,
+        'image' => $faker->name,
       ]);
     }
   }

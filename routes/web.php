@@ -3,19 +3,30 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', 'IndexController@index');
+Route::post('/pelatihan', 'SertifikasiController@submit');
+Route::get('/pelatihan', 'SertifikasiController@redirect');
+
+Route::group(['prefix' => 'pembayaran'], function(){
+  Route::get('/', 'SertifikasiController@pembayaran');  
+  Route::delete('/{id}', 'SertifikasiController@pembayaran_delete');
+  Route::post('/daftar', 'SertifikasiController@daftar');
+});
+Route::get('/tentang', function(){ return view('profil'); });
+
+Route::group(['prefix' => 'profil'], function(){
+  Route::get('/', 'UserController@index');
+});
 
 Route::group(['prefix' => 'sertifikasi'], function(){
   Route::get('/', 'SertifikasiController@kategori');
   Route::get('/{slug}', 'SertifikasiController@jadwal');
-  Route::get('{slug1}/{slug2}', 'SertifikasiController@show_jadwal');
+  Route::get('{slug1}/{slug2}', 'SertifikasiController@show_jadwal');  
 });
 
 Route::group(['prefix' => 'berita'], function(){
   Route::get('/', 'IndexController@berita_all');
   Route::get('/{slug}', 'IndexController@berita_show');
 });
-
-Route::get('/profil', function(){ return view('profil'); });
 
 Route::group(['prefix' => 'admin'], function(){
   Route::group(['middleware' => 'admin'], function(){
@@ -77,6 +88,17 @@ Route::group(['prefix' => 'operator'], function(){
       Route::get('/{id}/edit', 'opController@konfirmasi_edit');
       Route::post('/{id}', 'opController@konfirmasi_update');
       Route::delete('/{id}', 'opController@konfirmasi_delete');
+    });
+    Route::group(['prefix' => 'transaksi'], function(){
+      Route::get('/', 'opController@transaksi_all');
+      Route::get('/buat', 'opController@transaksi_buat');
+      Route::post('/', 'opController@transaksi_save');
+      Route::get('/{id}/edit', 'opController@transaksi_edit');
+      Route::post('/{id}', 'opController@transaksi_update');
+      Route::delete('/{id}', 'opController@transaksi_delete');
+    });
+    Route::group(['prefix' => 'laporan'], function(){
+      Route::get('/', 'opController@laporan');
     });
   });
 });

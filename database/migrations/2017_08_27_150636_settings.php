@@ -15,7 +15,13 @@ class Settings extends Migration
     {
       Schema::create('settings', function (Blueprint $table) {
           $table->increments('id');
-          $table->string('judul');
+          $table->string('nama_web');
+          $table->string('title');
+          $table->string('email');          
+          $table->string('color-web');
+          $table->string('color-admin');
+          $table->string('color-operator');
+          $table->string('logo');
           $table->timestamps();
       });
     }
