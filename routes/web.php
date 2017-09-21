@@ -11,7 +11,9 @@ Route::group(['prefix' => 'pembayaran'], function(){
   Route::post('/', 'SertifikasiController@pembayaran_checkout');  
   // Route::post('/checkout', 'SertifikasiController@pembayaran_checkout');  
   Route::post('/checkout', 'SertifikasiController@pembayaran_checkout_save');
-  Route::get('/checkout/paymentinformation', 'SertifikasiController@pembayaran_checkout_save'); 
+  // Route::get('/checkout/informasipembayaran/', 'SertifikasiController@pembayaran_informasi'); 
+  Route::post('/checkout/informasipembayaran/', 'SertifikasiController@pembayaran_informasi_save'); 
+  Route::get('/checkout/konfirmasi/{id}', 'SertifikasiController@pembayaran_konfirmasi');  
   Route::delete('/{id}', 'SertifikasiController@pembayaran_delete');
   Route::post('/daftar', 'SertifikasiController@daftar');
 });

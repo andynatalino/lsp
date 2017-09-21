@@ -299,6 +299,7 @@ class opController extends Controller
 
   public function konfirmasi_all(){
     $transaksi = Transaksi::all();
+    // dd($transaksi);
     $user = User::all();
     return view('operator.konfirmasi.all', ['transaksi' => $transaksi, 'user' => $user]);
   }

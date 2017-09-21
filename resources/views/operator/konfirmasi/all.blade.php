@@ -37,7 +37,7 @@
             <td>{{ $key2->name }}</td>
             @endforeach
             <td>LSP Komputer</td>
-            <td>Transfer</td>
+            <td>{{ $key->pembayaran->nama_bank  }}</td>
             <td> <a href="{{ url('assets/kategori/'.$key->image) }}" target="_blank"><img style="width:50px; height:50px;" src="{{ url('assets/kategori/'.$key->image) }}"></a></td>
             <td>
               <form action="{{ url('operator/kategori/'.$key->id) }}" method="post">

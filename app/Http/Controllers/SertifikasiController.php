@@ -49,6 +49,7 @@ class SertifikasiController extends Controller
  public function pembayaran(){
   if (Auth::check()) {
    $transaksi = Transaksi::where(['id_user' => Auth::user()->id])->get();
+   // dd($transaksi);
    return view('users.pembayaran.home', ['transaksi' => $transaksi]);
  }else{
   return redirect(url('login'));
@@ -76,7 +77,37 @@ public function pembayaran_checkout_save(Request $request){
   $ud->jabatan = $request->jabatan;
   $ud->email_perusahaan = $request->email_perusahaan;
   $ud->save();
-  return redirect(url('pembayaran'));
+
+  $transaksi = Transaksi::find($request->id_transaksi);
+   // $userdata = Userdata::where(['id_transaksi' => $transaksi->id])->firstOrFail();
+  $bank = Pembayaran::all();
+  return view('users.pembayaran.informasi', ['transaksi' => $transaksi, 'bank' => $bank]);
+}
+
+
+
+public function pembayaran_informasi_save(Request $request){
+  $bank = $request->bank;
+  $id = $request->id;
+  $transaksi = Transaksi::find($id);
+  $transaksi->id_user = Auth::user()->id;
+  $transaksi->id_pembayaran = $bank;
+  $transaksi->save();
+  $bank = Pembayaran::where(['id' => $transaksi->id_pembayaran])->first();
+  return view('users.pembayaran.konfirmasi', ['transaksi' => $transaksi, 'bank' => $bank]);
+}
+
+public function pembayaran_konfirmasi($id){
+ if (Auth::check()) {
+   // $id = $request->id_transaksi;
+  $transaksi = Transaksi::find($id);
+  dd($transaksi);
+   // $userdata = Userdata::where(['id_transaksi' => $transaksi->id])->firstOrFail();
+  // $bank = Pembayaran::where(['id' => $] )
+  return view('users.pembayaran.konfirmasi', ['transaksi' => $transaksi, 'bank' => $bank]);
+}else{
+  return redirect(url('login'));
+}
 }
 
 public function pembayaran_delete($id){

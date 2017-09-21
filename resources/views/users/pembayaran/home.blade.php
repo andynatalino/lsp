@@ -8,7 +8,10 @@ Lembaga Sertifikasi Profesi
 @if(sizeof($transaksi)==0)    
 <span class="mif-warning mif-ani-horizontal mif-ani-slow fg-red"> Data Kosong!</span>
 @endif
+
 @foreach($transaksi as $key)
+@if($key->status == 1)
+
 <h5> ID User : {{ $key->id_user }} </h5>
 <h5> ID Jadwal : {{ $key->jadwal->nama_lsp }} </h5>
 
@@ -24,8 +27,15 @@ Lembaga Sertifikasi Profesi
   {{ csrf_field() }}
 </form>
 <hr>  
+@endif
 @endforeach
+
 <h6>N.b Pilih salah satu pelatihan dan klik lanjut ke pembayaran</h6>
+
+
+
+
+
 
 
 @endsection
