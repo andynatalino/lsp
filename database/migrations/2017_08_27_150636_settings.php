@@ -14,15 +14,15 @@ class Settings extends Migration
     public function up()
     {
       Schema::create('settings', function (Blueprint $table) {
-          $table->increments('id');
-          $table->string('nama_web');
-          $table->string('title');
-          $table->string('email');          
-          $table->string('color-web');
-          $table->string('color-admin');
-          $table->string('color-operator');
-          $table->string('logo');
-          $table->timestamps();
+        $table->increments('id');
+        $table->string('nama_web');
+        $table->string('title');
+        $table->string('email');          
+        $table->string('color-web');
+        $table->string('color-admin');
+        $table->string('color-operator');
+        $table->string('logo');
+        $table->timestamps();
       });
     }
 
@@ -33,6 +33,6 @@ class Settings extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('settings');
+      Schema::dropIfExists('settings');
     }
-}
+  }

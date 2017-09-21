@@ -14,23 +14,23 @@ class jadwals extends Migration
     public function up()
     {
       Schema::create('jadwals', function (Blueprint $table) {
-          $table->increments('id');
-          $table->integer('id_kategori')->unsigned();
-          $table->string('nama_lsp');
-          $table->string('tanggal_mulai');
-          $table->string('tanggal_selesai');
-          $table->string('waktu');
-          $table->string('lokasi');
-          $table->string('kuota');
-          $table->string('biaya');
-          $table->longtext('isi');
-          $table->string('status');
-          $table->string('slug');
-          $table->string('image');
-          $table->timestamps();
+        $table->increments('id');
+        $table->integer('id_kategori')->unsigned();
+        $table->string('nama_lsp');
+        $table->string('tanggal_mulai');
+        $table->string('tanggal_selesai');
+        $table->string('waktu');
+        $table->string('lokasi');
+        $table->string('kuota');
+        $table->string('biaya');
+        $table->longtext('isi');
+        $table->string('status');
+        $table->string('slug');
+        $table->string('image');
+        $table->timestamps();
 
-          // $table->foreign('id_category')->references('id')
-          //         ->on('category_sp')->onDelete('cascade');
+        $table->foreign('id_kategori')->references('id')
+        ->on('kategoris')->onDelete('cascade');
       });
     }
 
@@ -41,6 +41,6 @@ class jadwals extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('jadwals');
+      Schema::dropIfExists('jadwals');
     }
-}
+  }

@@ -14,12 +14,12 @@ class kategoris extends Migration
     public function up()
     {
       Schema::create('kategoris', function (Blueprint $table) {
-          $table->increments('id');
-          $table->string('nama_sp');
-          $table->text('isi');
-          $table->string('slug');
-          $table->string('image');
-          $table->timestamps();
+        $table->increments('id');
+        $table->string('nama_sp');
+        $table->text('isi');
+        $table->string('slug');
+        $table->string('image');
+        $table->timestamps();
       });
     }
 
@@ -30,6 +30,6 @@ class kategoris extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kategoris');
+      Schema::dropIfExists('kategoris');
     }
-}
+  }

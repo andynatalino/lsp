@@ -14,10 +14,10 @@ class Sliders extends Migration
     public function up()
     {
       Schema::create('sliders', function (Blueprint $table) {
-          $table->increments('id');          
-          $table->string('nama_slider');
-          $table->string('gambar');
-          $table->timestamps();
+        $table->increments('id');          
+        $table->string('nama_slider');
+        $table->string('gambar');
+        $table->timestamps();
       });
     }
 
@@ -28,6 +28,6 @@ class Sliders extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sliders');
+      Schema::dropIfExists('sliders');
     }
-}
+  }

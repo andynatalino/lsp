@@ -24,6 +24,9 @@ class CreateUserdatasTable extends Migration
             $table->string('jabatan');
             $table->string('email_perusahaan');
             $table->timestamps();
+
+            $table->foreign('id_transaksi')->references('id')
+            ->on('transaksis')->onDelete('cascade');
         });
     }
 

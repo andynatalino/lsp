@@ -20,6 +20,9 @@ class Beritas extends Migration
           $table->string('slug');
           $table->longtext('isi');
           $table->timestamps();
+
+          $table->foreign('id_user')->references('id')
+          ->on('users')->onDelete('cascade');
       });
     }
 
