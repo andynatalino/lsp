@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Auth;
 use App\Jadwal;
+use App\Userdata;
 use App\Kategori;
 use App\Transaksi;
 use App\Pembayaran;
@@ -45,23 +46,46 @@ class SertifikasiController extends Controller
    return redirect(url('pembayaran'));
  }
 
-  public function pembayaran(){
+ public function pembayaran(){
   if (Auth::check()) {
-   $transaksi = Transaksi::where(['id_user' => Auth::user()->id])->firstOrFail();
-     if (!$transaksi){ abort(404); }
+   $transaksi = Transaksi::where(['id_user' => Auth::user()->id])->get();
    return view('users.pembayaran.home', ['transaksi' => $transaksi]);
-  }else{
-    return redirect(url('login'));
-    }
-  }
+ }else{
+  return redirect(url('login'));
+}
+}
 
-  public function pembayaran_delete($id){
-    $pembayaran = Transaksi::find($id);    
-    $pembayaran->delete();
-    return redirect(url('pembayaran'));
-  }
+public function pembayaran_checkout(Request $request){
+  if (Auth::check()) {
+   $transaksi = Transaksi::where(['id' => $request->id])->firstOrFail();
+   if (!$transaksi){ abort(404); }
+   return view('users.pembayaran.checkout', ['transaksi' => $transaksi]);
+ }else{
+  return redirect(url('login'));
+}
+}
 
-  public function daftar(){
-    return redirect(url('pembayaran'));
-  } 
+public function pembayaran_checkout_save(Request $request){
+  $ud = new Userdata;
+  $ud->id_transaksi = $request->id_transaksi;
+  $ud->pendidikan_terakhir = $request->pendidikan_terakhir;
+  $ud->nama = $request->nama;
+  $ud->jurusan = $request->jurusan;
+  $ud->nama_perusahaan = $request->nama_perusahaan;
+  $ud->alamat_perusahaan = $request->alamat_perusahaan;
+  $ud->jabatan = $request->jabatan;
+  $ud->email_perusahaan = $request->email_perusahaan;
+  $ud->save();
+  return redirect(url('pembayaran'));
+}
+
+public function pembayaran_delete($id){
+  $pembayaran = Transaksi::find($id);    
+  $pembayaran->delete();
+  return redirect(url('pembayaran'));
+}
+
+public function daftar(){
+  return redirect(url('pembayaran'));
+} 
 }

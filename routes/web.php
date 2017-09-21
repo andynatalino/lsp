@@ -8,6 +8,10 @@ Route::get('/pelatihan', 'SertifikasiController@redirect');
 
 Route::group(['prefix' => 'pembayaran'], function(){
   Route::get('/', 'SertifikasiController@pembayaran');  
+  Route::post('/', 'SertifikasiController@pembayaran_checkout');  
+  // Route::post('/checkout', 'SertifikasiController@pembayaran_checkout');  
+  Route::post('/checkout', 'SertifikasiController@pembayaran_checkout_save');
+  Route::get('/checkout/paymentinformation', 'SertifikasiController@pembayaran_checkout_save'); 
   Route::delete('/{id}', 'SertifikasiController@pembayaran_delete');
   Route::post('/daftar', 'SertifikasiController@daftar');
 });
