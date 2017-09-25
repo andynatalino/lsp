@@ -11,7 +11,7 @@
 
 <?php 
 $transaksi = App\Transaksi::where(['id_jadwal' => $jadwal->id])->first();
-$con = App\Transaksi::where(['id_jadwal' => $jadwal->id, 'status' => 2])->get()->count();  
+$con = App\Transaksi::where(['id_jadwal' => $jadwal->id, 'status' => 3])->get()->count();  
 $kuota = $jadwal->kuota;
 ?>
 
@@ -29,23 +29,23 @@ $kuota = $jadwal->kuota;
   {!! csrf_field() !!}
   <input type="hidden" name="id_jadwal" value="{{ $jadwal->id }}">
   @if($con < $kuota)
-    <span class="mif-ani-flash fg-green">Tersedia!</span><br>
-    <button class="button loading-pulse">Pilih Pelatihan Sekarang!</button>
+  <span class="mif-ani-flash fg-green">Tersedia!</span><br>
+  <button class="button loading-pulse">Pilih Pelatihan Sekarang!</button>
 </form>
 @else
 </form>
-    <span class="mif-ani-horizontal fg-red">Mohon maaf Jadwal sudah penuh!</span><br>
-    <a href="{{ url('sertifikasi')}}"><button class="button loading-cube">Cari pelatihan yang lain yuk!</button></a>
-  @endif
+<span class="mif-ani-horizontal fg-red">Mohon maaf Jadwal sudah penuh!</span><br>
+<a href="{{ url('sertifikasi')}}"><button class="button loading-cube">Cari pelatihan yang lain yuk!</button></a>
+@endif
 @else
-  @if($con < $kuota)
+@if($con < $kuota)
 belom regis
-    <span class="mif-ani-flash fg-green">Tersedia!</span><br>
-    <a href="{{ url('login')}}"><button class="button loading-pulse">Pilih Pelatihan Sekarang!</button>
-@else
-    <span class="mif-ani-horizontal fg-red">Mohon maaf Jadwal sudah penuh!</span><br>
-    <a href="{{ url('sertifikasi')}}"><button class="button loading-cube">Cari pelatihan yang lain yuk!</button></a>
+<span class="mif-ani-flash fg-green">Tersedia!</span><br>
+<a href="{{ url('login')}}"><button class="button loading-pulse">Pilih Pelatihan Sekarang!</button>
+  @else
+  <span class="mif-ani-horizontal fg-red">Mohon maaf Jadwal sudah penuh!</span><br>
+  <a href="{{ url('sertifikasi')}}"><button class="button loading-cube">Cari pelatihan yang lain yuk!</button></a>
   @endif
-@endif     
+  @endif     
 
-@endsection
+  @endsection

@@ -298,10 +298,21 @@ class opController extends Controller
   }
 
   public function konfirmasi_all(){
-    $transaksi = Transaksi::all();
-    // dd($transaksi);
-    $user = User::all();
-    return view('operator.konfirmasi.all', ['transaksi' => $transaksi, 'user' => $user]);
+    $transaksi = Transaksi::orderBy('created_at', 'desc')->where('status', '=', 4)->get();
+    return view('operator.konfirmasi.all', ['transaksi' => $transaksi]);
+  }
+
+  public function konfirmasi_update($id){
+    $transaksi = Transaksi::find($id);
+    $transaksi->status = 5;
+    $transaksi->save();
+    return redirect('operator/konfirmasi');
+  }
+
+  public function konfirmasi_delete($id){
+    $transaksi = Transaksi::find($id);
+    $transaksi->delete();
+    return redirect('operator/konfirmasi');
   }
 
 }

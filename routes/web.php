@@ -8,10 +8,10 @@ Route::get('/pelatihan', 'SertifikasiController@redirect');
 
 Route::group(['prefix' => 'pembayaran'], function(){
   Route::get('/', 'SertifikasiController@pembayaran');  
-  Route::post('/', 'SertifikasiController@pembayaran_checkout');  
-  // Route::post('/checkout', 'SertifikasiController@pembayaran_checkout');  
-  Route::post('/checkout', 'SertifikasiController@pembayaran_checkout_save');
-  // Route::get('/checkout/informasipembayaran/', 'SertifikasiController@pembayaran_informasi'); 
+  Route::post('/', 'SertifikasiController@pembayaran_next');  
+  // Route::get('/checkout/{id}', 'SertifikasiController@pembayaran_checkout');  
+  Route::post('/checkout/', 'SertifikasiController@pembayaran_checkout_save');
+  Route::get('/checkout/informasipembayaran/', 'SertifikasiController@pembayaran_informasi'); 
   Route::post('/checkout/informasipembayaran/', 'SertifikasiController@pembayaran_informasi_save'); 
   Route::get('/checkout/konfirmasi/{id}', 'SertifikasiController@pembayaran_konfirmasi');  
   Route::delete('/{id}', 'SertifikasiController@pembayaran_delete');
@@ -20,7 +20,9 @@ Route::group(['prefix' => 'pembayaran'], function(){
 Route::get('/tentang', function(){ return view('profil'); });
 
 Route::group(['prefix' => 'profil'], function(){
-  Route::get('/', 'UserController@index');
+  Route::get('/', 'ProfileController@index');
+  Route::get('/konfirmasi', 'ProfileController@konfirmasi');
+  Route::post('/konfirmasi', 'ProfileController@konfirmasi_save');
 });
 
 Route::group(['prefix' => 'sertifikasi'], function(){
@@ -89,9 +91,6 @@ Route::group(['prefix' => 'operator'], function(){
     });
     Route::group(['prefix' => 'konfirmasi'], function(){
       Route::get('/', 'opController@konfirmasi_all');
-      Route::get('/buat', 'opController@konfirmasi_buat');
-      Route::post('/', 'opController@konfirmasi_save');
-      Route::get('/{id}/edit', 'opController@konfirmasi_edit');
       Route::post('/{id}', 'opController@konfirmasi_update');
       Route::delete('/{id}', 'opController@konfirmasi_delete');
     });

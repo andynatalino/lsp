@@ -4,9 +4,9 @@ Lembaga Sertifikasi Profesi
 @endsection
 
 @section('content')
-  <ul class="breadcrumbs">
-   <li><a href="{{ url('/') }}"><span class="icon mif-home"></span></a></li>
-   <li><a href="#">Sertifikasi</a></li>       
+<ul class="breadcrumbs">
+ <li><a href="{{ url('/') }}"><span class="icon mif-home"></span></a></li>
+ <li><a href="#">Sertifikasi</a></li>       
 </ul>
 <div class="grid">
   <div class="row cells3">
@@ -36,10 +36,10 @@ Lembaga Sertifikasi Profesi
       <div class="cell">
         {{ $kategori->links() }}
       </div>
-  </div>
+    </div>
   </div>
 </div>
-    @if(sizeof($kategori)==0)    
-    <span class="mif-warning mif-ani-horizontal mif-ani-slow fg-red"> Data Kosong!</span>
-    @endif
+@if(sizeof($kategori)==0)    
+<span class="mif-warning mif-ani-horizontal mif-ani-slow fg-red"> Data Kosong!</span>
+@endif
 @endsection

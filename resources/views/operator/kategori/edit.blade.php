@@ -11,7 +11,7 @@
       <div class="box-header with-border"></div>
       <!-- /.box-header -->
       <!-- form start -->
-      <form method="POST"action="{{ url('operator/kategori/'.$kategori->id) }}" enctype="multipart/form-data" role="form">
+      <form method="POST" action="{{ url('operator/kategori/'.$kategori->id) }}" enctype="multipart/form-data" role="form">
         {{ csrf_field() }}
         <div class="box-body">
           <div class="form-group">

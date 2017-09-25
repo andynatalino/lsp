@@ -46,7 +46,7 @@
             <th>@if($key->status == 1)<span class="label label-success"> Open @elseif($key->status == 2) <span class="label label-danger"> Expired @endif</th>
             <td>
               <form action="{{ url('operator/jadwal/'.$key->id) }}" method="post">
-               <a href="{{ url('operator/jadwal/'.$key->id.'/edit')}}"><button type="button"><i class="fa fa-th-list"></i></button></a>
+               <a href="{{ url('operator/jadwal/'.$key->id.'/edit')}}"><button class="btn btn-primary"><i class="fa fa-th-list"></i></button></a>
                 <button  class="btn btn-danger"><i class="fa fa-trash"></i></button>
                 <input type="hidden" name="_method" value="DELETE">
                 {{ csrf_field() }}

@@ -8,4 +8,6 @@ Lembaga Sertifikasi Profesi
 <h2>No Rekening : {{ $bank->no_rek }}</h2>
 <h2>Atas Nama : {{ $bank->atas_nama }}</h2>
 
+<a href="{{ url('profil/konfirmasi') }}"><button class="button">Konfirmasi Pembayaran</button></a>
+
 @endsection

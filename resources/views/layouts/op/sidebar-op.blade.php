@@ -30,8 +30,8 @@
             <li class="treeview">
                 <a href="{{ url('operator/pembayaran') }}"><i class="fa fa-credit-card"></i><span>Tipe pembayaran</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
-                    <li><a href="{{ url('operator/pembayaran/bank') }}">Bank</a></li>
-                    <li><a href="{{ url('operator/pembayaran/lainnya') }}">Lainnya</a></li>
+                    <li><a href="{{ url('operator/pembayaran/') }}">Bank</a></li>
+                    <li><a href="{{ url('operator/pembayaran/tunai') }}">Tunai</a></li>
                 </ul>
             </li>
             <li><a href="{{ url('operator/slider') }}"><i class="fa fa-television"></i>Slider</a></li>

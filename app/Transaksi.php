@@ -13,4 +13,8 @@ class Transaksi extends Model
 	public function pembayaran(){
 		return $this->belongsTo('App\Pembayaran', 'id_pembayaran');
 	}
+
+	public function user(){
+		return $this->belongsTo('App\User', 'id_user');
+	}
 }

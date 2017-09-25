@@ -14,7 +14,7 @@ class JadwalsTableSeeder extends Seeder
   public function run()
   {
     $faker = Faker::create();
-    foreach (range(1,10000) as $index) {
+    foreach (range(1,100) as $index) {
       DB::table('jadwals')->insert([
         'id_kategori' => 1  ,
         'nama_lsp' => $faker->name,

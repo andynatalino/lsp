@@ -56,7 +56,7 @@ class SertifikasiController extends Controller
 }
 }
 
-public function pembayaran_checkout(Request $request){
+public function pembayaran_next(Request $request){
   if (Auth::check()) {
    $transaksi = Transaksi::where(['id' => $request->id])->firstOrFail();
    if (!$transaksi){ abort(404); }
@@ -84,14 +84,13 @@ public function pembayaran_checkout_save(Request $request){
   return view('users.pembayaran.informasi', ['transaksi' => $transaksi, 'bank' => $bank]);
 }
 
-
-
 public function pembayaran_informasi_save(Request $request){
   $bank = $request->bank;
   $id = $request->id;
   $transaksi = Transaksi::find($id);
   $transaksi->id_user = Auth::user()->id;
   $transaksi->id_pembayaran = $bank;
+  $transaksi->status = 3;
   $transaksi->save();
   $bank = Pembayaran::where(['id' => $transaksi->id_pembayaran])->first();
   return view('users.pembayaran.konfirmasi', ['transaksi' => $transaksi, 'bank' => $bank]);
@@ -101,7 +100,7 @@ public function pembayaran_konfirmasi($id){
  if (Auth::check()) {
    // $id = $request->id_transaksi;
   $transaksi = Transaksi::find($id);
-  dd($transaksi);
+  // dd($transaksi);
    // $userdata = Userdata::where(['id_transaksi' => $transaksi->id])->firstOrFail();
   // $bank = Pembayaran::where(['id' => $] )
   return view('users.pembayaran.konfirmasi', ['transaksi' => $transaksi, 'bank' => $bank]);

@@ -32,10 +32,10 @@ class adminController extends Controller
       ],
       [
         'name' => 'Develop an Awesome Algorithm',
-        'progress' => '10',
+        'progress' => '100',
         'color' => 'success'
       ]
-    ];    
+    ]; 
     return view('admin.dashboard')->with($data);
   }
   public function users_all()
