@@ -26,6 +26,7 @@
             <th>User</th>
             <th>Jadwal</th>
             <th>Tipe Pembayaran</th>
+            <th>Tanggal Konfirmasi</th>
             <th>Photo Bukti</th>
             <th>Action</th>
           </tr>
@@ -36,6 +37,7 @@
             <td>{{ $key->user->name }}</td>
             <td>LSP Komputer</td>
             <td>{{ $key->pembayaran->nama_bank }}</td>
+            <td>{{ date('D, F jS Y \a\t h:i a', strtotime($key->tanggal_konfirmasi)) }}</td>
             <td> 
               <img src="{{ url('assets/bukti/'.$key->photo_bukti) }}" style="width: 50px; height: 50px;"></td>
               <td>

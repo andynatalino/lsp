@@ -11,7 +11,7 @@
 
 <?php 
 $transaksi = App\Transaksi::where(['id_jadwal' => $jadwal->id])->first();
-$con = App\Transaksi::where(['id_jadwal' => $jadwal->id, 'status' => 3])->get()->count();  
+$con = App\Transaksi::where(['id_jadwal' => $jadwal->id, 'status' => 5])->get()->count();  
 $kuota = $jadwal->kuota;
 ?>
 

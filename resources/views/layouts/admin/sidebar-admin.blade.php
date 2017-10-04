@@ -24,6 +24,7 @@
             <li><a href="{{ url('admin/settings') }}"><i class="fa fa-newspaper-o"></i>Settings</a></li>
             <li><a href="{{ url('admin/settings') }}"><i class="fa fa-newspaper-o"></i>Galeri</a></li>
             <li><a href="{{ url('admin/settings') }}"><i class="fa fa-newspaper-o"></i>Kontak</a></li>
+            <li><a href="#"><i class="fa fa-file-pdf-o"></i>Laporan</a></li>
             <li class="treeview">
                 <a href="#"><span>Multilevel</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">

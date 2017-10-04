@@ -18,7 +18,6 @@
           </div>
         </div>
       </div>
-      <!-- /.box-header -->
       <div class="box-body table-responsive no-padding">
         <?php $i = 1; ?>
         <table class="table table-hover">
@@ -45,10 +44,7 @@
           @endforeach
         </table>
       </div>
-      <!-- /.box-body -->
     </div>
-    <!-- /.box -->
   </div>
 </div>
-
 @endsection

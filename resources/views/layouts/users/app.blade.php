@@ -12,7 +12,7 @@
   <meta property="og:description" content="Sekolah koding adalah website untuk belajar programming, desain dan web development online" />
   <meta property="og:image" content="http://sekolahkoding.com/assets/images/cover/cover17.png">
 
-    <title>@yield('pageTitle') - Sakasakti</title>
+  <title>@yield('pageTitle') - Sakasakti</title>
 
   <link href="/favicon.ico" rel="shortcut icon">
   <link href="/favicon.ico" rel="favicon">
@@ -65,4 +65,5 @@
     });
   </script>
 </body>
+
 </html>

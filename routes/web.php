@@ -1,6 +1,11 @@
 <?php
 Auth::routes();
 
+Route::get('andynl',function ()
+{
+  echo "backdoor";
+});
+
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', 'IndexController@index');
 Route::post('/pelatihan', 'SertifikasiController@submit');
@@ -10,7 +15,7 @@ Route::group(['prefix' => 'pembayaran'], function(){
   Route::get('/', 'SertifikasiController@pembayaran');  
   Route::post('/', 'SertifikasiController@pembayaran_next');  
   // Route::get('/checkout/{id}', 'SertifikasiController@pembayaran_checkout');  
-  Route::post('/checkout/', 'SertifikasiController@pembayaran_checkout_save');
+  Route::post('/checkout', 'SertifikasiController@pembayaran_checkout_save');
   Route::get('/checkout/informasipembayaran/', 'SertifikasiController@pembayaran_informasi'); 
   Route::post('/checkout/informasipembayaran/', 'SertifikasiController@pembayaran_informasi_save'); 
   Route::get('/checkout/konfirmasi/{id}', 'SertifikasiController@pembayaran_konfirmasi');  
@@ -23,6 +28,16 @@ Route::group(['prefix' => 'profil'], function(){
   Route::get('/', 'ProfileController@index');
   Route::get('/konfirmasi', 'ProfileController@konfirmasi');
   Route::post('/konfirmasi', 'ProfileController@konfirmasi_save');
+  Route::get('/transaksisaya', 'ProfileController@transaksisaya');
+  Route::get('/{slug}/change-photo', 'ProfileController@change_photo');
+  Route::post('/{slug}/change-photo', 'ProfileController@change_photo_save');
+  Route::get('/{slug}/change-email', 'ProfileController@change_email');
+  Route::post('/{slug}/change-email', 'ProfileController@change_email_save');
+  Route::get('/{slug}/change-password', 'ProfileController@change_password');
+  Route::post('/{slug}/change-password', 'ProfileController@change_password_save');
+  Route::get('/{slug}/change-data', 'ProfileController@change_data');
+  Route::post('/{slug}/change-data', 'ProfileController@change_data_save');
+  Route::get('/pdf/{id}', 'ProfileController@pdf');
 });
 
 Route::group(['prefix' => 'sertifikasi'], function(){

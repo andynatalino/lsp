@@ -1,111 +1,149 @@
 @extends('layouts.users.app')
-@section('title')
-Lembaga Sertifikasi Profesi
-@endsection
+@section('pageTitle', 'Profil')
 
 @section('content')
 <div class="grid">
-	<div class="row cells12">
-<ul class="v-menu">
-    <li class="menu-title">First Title</li>
-    <li><a href="#"><span class="mif-home icon"></span> Home</a></li>
-    <li class="divider"></li>
-    <li class="menu-title">Second Title</li>
-    <li><a href="#"><span class="mif-user icon"></span> Profile</a></li>
-    <li><a href="#"><span class="mif-calendar icon"></span> Calendar</a></li>
-    <li><a href="#"><span class="mif-image icon"></span> Photo</a></li>
-    <li class="divider"></li>
-    <li class="menu-title">Third Title</li>
-    <li>
-        <a href="#" class="dropdown-toggle"><span class="mif-my-location icon"></span> Location</a>
-        <ul class="d-menu" data-role="dropdown">
-            <li class="menu-title">Title for dropdown</li>
-            <li><a href="#">Коллеги</a></li>
-            <li><a href="#">Интересно</a></li>
-            <li>
-                <div class="item-block text-center">
-                    <button class="square-button"><img class="icon" src="images/round.png"></button>
-                    <button class="square-button"><img class="icon" src="images/location.png"></button>
-                    <button class="square-button"><img class="icon" src="images/group.png"></button>
-                </div>
-            </li>
-            <li>
-                <a href="#" class="dropdown-toggle">Еще...</a>
-                <ul  class="d-menu" data-role="dropdown">
-                    <li><a href="#">Коллеги</a></li>
-                    <li><a href="#">Интересно</a></li>
-                    <li>
-                        <div class="item-block text-center bg-grayLighter">
-                            <button class="round-button"><img class="icon" src="images/round.png"></button>
-                            <button class="round-button"><img class="icon" src="images/location.png"></button>
-                            <button class="round-button"><img class="icon" src="images/group.png"></button>
-                            <button class="round-button"><img class="icon" src="images/power.png"></button>
-                        </div>
-                    </li>
-                    <li class="divider"></li>
-                </ul>
-            </li>
-        </ul>
-    </li>
-    <li><a href="#"><span class="mif-bubbles icon"></span> Community</a></li>
-</ul>
-
+	<div class="row cells12">		
 		<div class="cell colspan4">
-
-				<div class="panel">
-				<div class="heading">
-					<span class="icon">
-						<span class="mif-info mif-ani-heartbeat"></span>
-					</span>
-					<div class="title">About  
-
-						me 
-
-					</div>
+			<div class="panel danger">
+				<div class="heading">				
+					<div class="title">Foto</div>
 				</div>
 				<div class="content">
-					<h2>andro meda</h2>
-					He  was born at Surabaya, 0 years ago and
-					join with IT Club since 06 Mar 2017.
-					andro also known as andromeda.                          andro is Married now ^_^ 
-					<hr>
-					<span class="button" onclick="update()">Update Profile</span>
+					<div class="image-container bordered image-format-hd">
+						<div class="frame">							
+							<img src="{{ url('assets/photo/'.$user->photo)}}"
+							onerror="this.src='{{ url('assets/images/default-user.png')}}';">
+						</div>
+					</div>
 				</div>
 
 			</div>
-
 			<hr>
-
-			<div class="image-container bordered image-format-hd">
-				<div class="frame">
-					<img src="http://it-club.smkn10jakarta.sch.id/images/foto/2017091712364159be09e9c8c28.jpg">
+			<div class="listview set-border padding10" data-role="listview">
+				<div class="list active" onclick="location.href = '{{ url('profil/'.$user->username.'/change-photo')}}';">
+					<img src="{{ url('assets/images/my-profil.png')}}" class="list-icon">
+					<span class="list-title">My Profil</span>
+				</div>
+				<div class="list" onclick="location.href = '{{ url('profil/'.$user->username.'/change-photo')}}';">
+					<img src="{{ url('assets/images/2017092714005059cbaf12b54b3.png')}}" class="list-icon">
+					<span class="list-title">Ubah Foto</span>
+				</div>
+				<div class="list" onclick="location.href = '{{ url('profil/'.$user->username.'/change-email')}}';">
+					<img src="{{ url('assets/images/2017092714005059cbaf12b54b4.png')}}" class="list-icon">
+					<span class="list-title">Ubah Email</span>
+				</div>
+				<div class="list" onclick="location.href = '{{ url('profil/'.$user->username.'/change-password')}}';">
+					<img src="{{ url('assets/images/2017092714005059cbaf12b54b5.png')}}" class="list-icon">
+					<span class="list-title">Ubah Password</span>
+				</div>
+				<div class="list" onclick="location.href = '{{ url('profil/'.$user->username.'/change-data')}}';">
+					<img src="{{ url('assets/images/2017092714005059cbaf12b54b6.png')}}" class="list-icon">
+					<span class="list-title">Ubah Data</span>
 				</div>
 			</div>
 		</div>
 		<div class="cell colspan8">
 			<div class="row cells8">
-				<div class="panel">
+				<div class="panel danger">
 					<div class="heading">
-						<span class="icon">
-							<span class="mif-bubble mif-ani-pass"></span>
-						</span>
-						<span class="title">Info Kontak</span>
+						<span class="title">Profil</span>
 					</div>
-					<div class="content">
-						<div class="input-control textarea full-size">
-							<textarea    id="info" name="info"></textarea>
-						</div>
-						<a onclick="update_status()" class="button place-right">Update</a>
-						<div>&nbsp;</div>
-						<div>&nbsp;</div>
-					</div>
+					<table class="table striped">
+						<tr>								
+							<td width="30%">No. Identitas (KTP/SIM)</td>
+							<td>: {{ $user->number }}</td>
+						</tr>
+						<tr>								
+							<td>Username</td>
+							<td>: {{ $user->username }}</td>
+						</tr>
+						<tr>								
+							<td>Nama Lengkap</td>
+							<td>: {{ $user->name }}</td>
+						</tr>
+						<tr>								
+							<td>Tempat / Tanggal Lahir</td>
+							<td>: {{ $user->place }} / {{ $user->date }}</td>
+						</tr>
+						<tr>								
+							<td>Jenis Kelamin</td>
+							<td>: {{ $user->gender }}</td>
+						</tr>	
+						<tr>								
+							<td>Agama</td>
+							<td>: {{ $user->religion }}</td>
+						</tr>						
+						<tr>								
+							<td>Email</td>
+							<td>: {{ $user->email }}</td>
+						</tr>
+						<tr>
+							<td>Alamat</td>
+							<td>: {{ $user->address }}</td>
+						</tr>						
+						<tr>
+							<td>No. Telp (HP)</td>
+							<td>: {{ $user->telp }}</td>
+						</tr>
+						<tr>
+							<td>Instansi</td>
+							<td>: {{ $user->instansi }}</td>
+						</tr>
+					</table>
 				</div>
 			</div>
-			<span class="place-right"></span>
+			<div class="row cells8">
+				<div class="panel danger">
+					<div class="heading">
+						<span class="title">Transaksi Saya</span>
+					</div>
+					<table class="table striped hovered border bordered">
+						<?php $i = 1; ?>
+						<tr>								
+							<td>No</td>
+							<td>Lembaga</td>
+							<td>Tanggal Konfirmasi</td>
+							<td>Status</td>
+							<td>Opsi</td>
+						</tr>
+						@foreach($transaksi as $key)				
+						<tr>			
+							@if($key->status == 5)	
+							<td>{{ $i++ }}</td>
+							<td>{{ $key->jadwal->nama_lsp}}</td>
+							<td> {{ date('j F Y', strtotime($key->tanggal_konfirmasi)) }}</td>
+							<td><img style="width: 15px; height:15px;" src="{{ url('assets/images/lunas.png')}}"> Lunas</td>
+							<td>
+								<button type="submit" class="button"><span class="mif-file-pdf"></span> Cetak Bukti</button>
+							</td>
+							@elseif($key->status == 4)
+
+							<td>{{ $i++ }}</td>
+							<td>{{ $key->jadwal->nama_lsp}}</td>
+							<td>{{ date('j F Y', strtotime($key->tanggal_konfirmasi)) }}</td>
+							<td>Pending</td>
+							<td>
+								Menunggu Verifikasi
+							</td>
+							@endif
+
+						</tr>
+						@endforeach						
+					</table>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
 
-</div>
-</div>
-</div>@endsection
+@if(session('sukses'))
+<script type="text/javascript">
+	$(function(){
+		setTimeout(function(){
+			$.Notify({type: 'success', icon: "<span class='mif-checkmark mif-ani-bounce mif-ani-slow'></span>", keepOpen: true, caption: 'Berhasil', content: "{{ session('sukses')}}"});
+		}, 0);
+	});
+</script>
+@endif
+@endsection

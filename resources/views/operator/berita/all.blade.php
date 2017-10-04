@@ -23,7 +23,6 @@
         <?php $i = 1; ?>
         <table class="table table-hover">
           <tr>
-            <th>No</th>
             <th>Judul</th>
             <th>Dibuat</th>
             <th>Diperbarui</th>
@@ -32,27 +31,53 @@
           </tr>
           @foreach($berita as $key)
           <tr>
-            <td>{{ $i++ }}</td>
             <td>{{ substr($key->judul, 0, 30) }}</td>
             <td>...</td>
             <td>...</td>
             <td> <a href="{{ url('assets/berita/'.$key->image) }}" target="_blank"><img style="width:50px; height:50px;" src="{{ url('assets/berita/'.$key->image) }}"></a></td>
             <td>
-              <form action="{{ url('operator/berita/'.$key->id) }}" method="post">
-                <a href="{{ url('operator/berita/'.$key->id.'/edit')}}"><button type="button" class="btn btn-info"><i class="fa fa-th-list"></i></button></a>
-                <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
-                <input type="hidden" name="_method" value="DELETE">
-                {{ csrf_field() }}
-              </form>
-            </td>
-          </tr>
-          @endforeach
-        </table>
-      </div>
-      <!-- /.box-body -->
-    </div>
-    <!-- /.box -->
-  </div>
+              <form action="{{ url('operator/berita/')}}" method="post">
+               <a href="{{ url('operator/berita/'.$key->id.'/edit')}}" class="btn btn-primary"><i class="fa fa-th-list"></i> Edit</a>
+               <button id="btn-delete" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+               <input type="hidden" name="_method" value="DELETE">
+               {{ csrf_field() }}
+             </form>
+           </td>
+         </tr>
+         @endforeach
+       </table>
+     </div>
+     <!-- /.box-body -->
+   </div>
+   <!-- /.box -->
+ </div>
 </div>
 
+{{ $berita->links() }}
+
+@section('js')
+<script type="text/javascript">
+ $('#btn-delete').on('click',function(e){
+  e.preventDefault();
+  var form = $(this).parents('form');
+  swal({
+    title: "Apa anda yakin?",
+    text: "Anda akan menghapus data?",
+    type: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#DD6B55",
+    confirmButtonText: "Ya, Hapus!",
+    closeOnConfirm: false
+  }, function(isConfirm){
+    if (isConfirm) {
+      form.submit();
+      swal("Berhasil!", "Berhasil dihapus!", "success");
+      setTimeout(function () {
+       window.location.href = "{{ url('operator/konfirmasi')}}";
+     }, 1500);
+    }
+  });
+});
+</script>
+@endsection
 @endsection

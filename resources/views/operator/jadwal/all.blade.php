@@ -40,29 +40,29 @@
             <td>{{ App\Kategori::where('id',$key->id_kategori)->first()['nama_sp'] }}</td>
             <td>{{ $key->tanggal_mulai }}</td>
             <td>{{ $key->tanggal_selesai }}</td>
-             <td>{{ $key->waktu }}</td>
+            <td>{{ $key->waktu }}</td>
             <td>{{ $key->lokasi }}</td>
             <td>{{ $key->kuota }}</td>
-            <th>@if($key->status == 1)<span class="label label-success"> Open @elseif($key->status == 2) <span class="label label-danger"> Expired @endif</th>
-            <td>
-              <form action="{{ url('operator/jadwal/'.$key->id) }}" method="post">
-               <a href="{{ url('operator/jadwal/'.$key->id.'/edit')}}"><button class="btn btn-primary"><i class="fa fa-th-list"></i></button></a>
-                <button  class="btn btn-danger"><i class="fa fa-trash"></i></button>
-                <input type="hidden" name="_method" value="DELETE">
-                {{ csrf_field() }}
-              </form>
-            </td>
-          </tr>
-          @endforeach
-        </table>
+            <td>@if($key->status == 1)<span class="label label-success"> Open @elseif($key->status == 2) <span class="label label-danger"> Expired @endif</td>
+              <td>
+                <form action="{{ url('operator/jadwal/'.$key->id)}}" method="post">
+                  <a href="{{ url('operator/jadwal/'.$key->id.'/edit')}}" class="btn btn-primary"><i class="fa fa-th-list"></i> Edit</a>
+                  <button type="submit" id="btn-delete" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                  <input type="hidden" name="_method" value="DELETE">
+                  {{ csrf_field() }}
+                </form>
+              </td>
+            </tr>
+            @endforeach
+          </table>
+        </div>
+        <!-- /.box-body -->
       </div>
-      <!-- /.box-body -->
+      <!-- /.box -->
     </div>
-    <!-- /.box -->
   </div>
-</div>
-<!-- data-toggle="modal" data-target="#myModal" -->
-<div class="modal fade" id="myModal" role="dialog">
+  <!-- data-toggle="modal" data-target="#myModal" -->
+  <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
 
       <!-- Modal content-->
@@ -72,15 +72,15 @@
           <h4 class="modal-title">Show Jadwal</h4>
         </div>
         <div class="modal-body">
-        <h4>  Nama LSP : <input type="text" name="" class="form-control" value=""> </h4><br>
-        <h4>  Kategori : LSP Komputer </h4><br>
-        <h4>  Tanggal Mulai : 24-21-2132 </h4><br>
-        <h4>  Tanggal Selesai : 43-12-1233 </h4><br>
-        <h4>  Lokasi   : Jln. Sensus II B No. 11a RT 02 RW O4 Bidaracina Jakarta timur</h4> <br>
-        <h4>  Kuota : 3 / 30 Orang </h4><br>
-        <h4>  Biaya  : Rp. 300.000 ,- </h4><br>
-        <h4>  Status :Pendaftaran dibuka </h4><br>
-        <h4>  Nama : asdas </h4><br>
+          <h4>  Nama LSP : <input type="text" name="" class="form-control" value=""> </h4><br>
+          <h4>  Kategori : LSP Komputer </h4><br>
+          <h4>  Tanggal Mulai : 24-21-2132 </h4><br>
+          <h4>  Tanggal Selesai : 43-12-1233 </h4><br>
+          <h4>  Lokasi   : Jln. Sensus II B No. 11a RT 02 RW O4 Bidaracina Jakarta timur</h4> <br>
+          <h4>  Kuota : 3 / 30 Orang </h4><br>
+          <h4>  Biaya  : Rp. 300.000 ,- </h4><br>
+          <h4>  Status :Pendaftaran dibuka </h4><br>
+          <h4>  Nama : asdas </h4><br>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
@@ -90,26 +90,52 @@
     </div>
   </div>
 
-<script type="text/javascript">
-function validation(){
-  swal({
-    title: "Terima atau Tidak",
-    text: "Apakah data user sudah benar?",
-    type: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#DD6B55",
-    confirmButtonText: "Terima, Konfrimasi",
-    cancelButtonText: "Tidak, Belum benar",
-    closeOnConfirm: false,
-    closeOnCancel: false
-  },
-  function(isConfirm){
-    if (isConfirm) {
-      swal("Berhasil!", "Anda berhasil mengkonfirmasi data user!", "success");
-    } else {
-      swal("Batal", "Mohon koreksi data dengan benar!", "error");
+  <script type="text/javascript">
+    function validation(){
+      swal({
+        title: "Terima atau Tidak",
+        text: "Apakah data user sudah benar?",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText: "Terima, Konfrimasi",
+        cancelButtonText: "Tidak, Belum benar",
+        closeOnConfirm: false,
+        closeOnCancel: false
+      },
+      function(isConfirm){
+        if (isConfirm) {
+          swal("Berhasil!", "Anda berhasil mengkonfirmasi data user!", "success");
+        } else {
+          swal("Batal", "Mohon koreksi data dengan benar!", "error");
+        }
+      });
     }
+  </script>
+
+  @section('js')
+  <script type="text/javascript">
+   $('#btn-delete').on('click',function(e){
+    e.preventDefault();
+    var form = $(this).parents('form');
+    swal({
+      title: "Apa anda yakin?",
+      text: "Anda akan menghapus data?",
+      type: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#DD6B55",
+      confirmButtonText: "Ya, Hapus!",
+      closeOnConfirm: false
+    }, function(isConfirm){
+      if (isConfirm) {
+        form.submit();
+        swal("Berhasil!", "Berhasil dihapus!", "success");
+        setTimeout(function () {
+         window.location.href = "{{ url('operator/konfirmasi')}}";
+       }, 1500);
+      }
+    });
   });
-}
 </script>
+@endsection
 @endsection

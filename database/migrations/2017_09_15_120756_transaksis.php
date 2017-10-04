@@ -26,13 +26,13 @@ class Transaksis extends Migration
         $table->timestamps();
 
         $table->foreign('id_user')->references('id')
-        ->on('users')->onDelete('cascade');
+        ->on('users')->onDelete('set null');
         $table->foreign('id_jadwal')->references('id')
-        ->on('jadwals')->onDelete('cascade');
+        ->on('jadwals')->onDelete('set null');
         $table->foreign('id_pembayaran')->references('id')
-        ->on('pembayarans')->onDelete('cascade');
-      });
-    }
+        ->on('pembayarans')->onDelete('set null');
+    });
+  }
 
     /**
      * Reverse the migrations.
@@ -42,5 +42,5 @@ class Transaksis extends Migration
     public function down()
     {
       Schema::dropIfExists('transaksis');
-    }
   }
+}

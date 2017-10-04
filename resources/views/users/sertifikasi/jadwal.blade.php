@@ -32,7 +32,7 @@ Lembaga Sertifikasi Profesi
          <td>{{ $key->tanggal_mulai }} - {{ $key->tanggal_selesai }}</td>
          <td>{{ $key->waktu }}</td>
          <td>{{ str_limit($key->lokasi, 20) }}</td>
-         <td>{{ App\Transaksi::where(['id_jadwal' => $key->id, 'status' => 4])->get()->count() }} / {{ $key->kuota }} Orang</td>
+         <td>{{ App\Transaksi::where(['id_jadwal' => $key->id, 'status' => 5])->get()->count() }} / {{ $key->kuota }} Orang</td>
          <td>Rp. {{ $key->biaya }},-</td >
      </tr>
      @endforeach

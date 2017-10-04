@@ -2,25 +2,25 @@
     <div class="pagination">
         {{-- Previous Page Link --}}
         @if ($paginator->onFirstPage())
-            <span class="item disabled"><span>&laquo;</span></span>
+            <li class="item disabled page-item disabled"><span class="page-link">&laquo;</span></li>
         @else
-            <span class="item"><a href="{{ $paginator->previousPageUrl() }}" rel="prev">&laquo;</a></span>
+            <li class="page-item item"><a class="page-link" href="{{ $paginator->previousPageUrl() }}" rel="prev">&laquo;</a></li>
         @endif
 
         {{-- Pagination Elements --}}
         @foreach ($elements as $element)
             {{-- "Three Dots" Separator --}}
             @if (is_string($element))
-                <span class="item disabled"><span>{{ $element }}</span></span>
+                <li class="item page-item disabled"><span class="page-link">{{ $element }}</span></li>
             @endif
 
             {{-- Array Of Links --}}
             @if (is_array($element))
                 @foreach ($element as $page => $url)
                     @if ($page == $paginator->currentPage())
-                        <span class="item active"><span>{{ $page }}</span></span>
+                        <li class="item page-item active"><span class="page-link">{{ $page }}</span></li>
                     @else
-                        <span class="item"><a href="{{ $url }}">{{ $page }}</a></span>
+                        <li class="item page-item"><a class="page-link" href="{{ $url }}">{{ $page }}</a></li>
                     @endif
                 @endforeach
             @endif
@@ -28,9 +28,9 @@
 
         {{-- Next Page Link --}}
         @if ($paginator->hasMorePages())
-            <span class="item"><a href="{{ $paginator->nextPageUrl() }}" rel="next">&raquo;</a></span>
+            <li class="item page-item"><a class="page-link" href="{{ $paginator->nextPageUrl() }}" rel="next">&raquo;</a></li>
         @else
-            <span class="item disabled"><span>&raquo;</span></span>
+            <li class="item page-item disabled"><span class="page-link">&raquo;</span></li>
         @endif
     </div>
 @endif

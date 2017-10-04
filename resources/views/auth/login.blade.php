@@ -33,8 +33,8 @@
     <br />
     <br />
     <div class="form-actions">
-      <button type="submit" class="button primary">Login</button>
-      <a href="/register">  <button type="button" class="button primary">Register</button></a>
+      <button type="submit" class="button danger">Login</button>
+      <a href="/register">  <button type="button" class="button danger">Register</button></a>
     </div>
   </form>
 </div>

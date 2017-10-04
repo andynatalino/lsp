@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Auth;
 use Image;
 use App\User;
+use DateTime;
 use App\Berita;
 use App\Jadwal;
 use App\Slider;
@@ -51,7 +52,7 @@ class opController extends Controller
   }
 
   public function berita(){
-    $berita = Berita::all();
+    $berita = Berita::paginate(5);
     return view('operator.berita.all', ['berita' => $berita]);
   }
 
@@ -105,7 +106,7 @@ class opController extends Controller
     $op->gambar = '';
     if($request->hasFile('gambar')){
       $gambar = date('YmdHis').uniqid().".". $request->gambar->getClientOriginalExtension();
-      Image::make($request->gambar)->resize(600, 400)->save(public_path("/assets/slider/". $gambar));
+      Image::make($request->gambar)->save(public_path("/assets/slider/". $gambar));
       $op->gambar = $gambar;
     }
     $op->save();
@@ -274,7 +275,6 @@ class opController extends Controller
     $tipe->nama_bank = $request->nama_bank;
     $tipe->no_rek = $request->no_rek;
     $tipe->atas_nama = $request->atas_nama;
-    $tipe->lainnya = $request->lainnya;
     $tipe->save();
     return redirect(url('operator/pembayaran'));
   }
@@ -286,7 +286,9 @@ class opController extends Controller
 
   public function pembayaran_update(Request $request, $id){
     $tipe = Pembayaran::find($id);
-    $tipe->tipe = $request->tipe;
+    $tipe->nama_bank = $request->nama_bank;
+    $tipe->no_rek = $request->no_rek;
+    $tipe->atas_nama = $request->atas_nama;
     $tipe->save();
     return redirect('operator/pembayaran');
   }
@@ -303,8 +305,10 @@ class opController extends Controller
   }
 
   public function konfirmasi_update($id){
+    $now = new DateTime();
     $transaksi = Transaksi::find($id);
     $transaksi->status = 5;
+    $transaksi->tanggal_transaksi = $now;
     $transaksi->save();
     return redirect('operator/konfirmasi');
   }
@@ -313,6 +317,11 @@ class opController extends Controller
     $transaksi = Transaksi::find($id);
     $transaksi->delete();
     return redirect('operator/konfirmasi');
+  }
+
+  public function transaksi_all(){
+    $transaksi = Transaksi::orderBy('created_at', 'desc')->where('status', '=', 5)->get();
+    return view('operator.transaksi.all', ['transaksi' => $transaksi]);
   }
 
 }

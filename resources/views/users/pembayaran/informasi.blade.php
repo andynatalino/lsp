@@ -1,7 +1,5 @@
 @extends('layouts.users.app')
-@section('title')
-Lembaga Sertifikasi Profesi
-@endsection
+@section('pageTitle', 'Checkout - Informasi')
 
 @section('content')
 <div class="grid">
@@ -31,7 +29,6 @@ Lembaga Sertifikasi Profesi
           </div>
           <div class="content padding10">
            Ketentuan Pembayaran Tunai Setelah Anda memilih Pembayaran Tunai maka Anda akan mendapatkan bukti pemesanan, Anda bisa membawanya ke Kantor kami.
-
          </div>
        </div>
      </div>
@@ -43,11 +40,11 @@ Lembaga Sertifikasi Profesi
         <span class="title">Rincian Sertifikasi</span>
       </div>
       <div class="content" style="padding: 10px 10px 10px 10px;">
-        <center><h2>{{ $transaksi->jadwal->nama_lsp }}</h2><br></center>
-           <center><h2>{{ $transaksi->jadwal->id_transaksi }}</h2><br></center>
-        <h5>12 Desember 2017 s/d 13 Desember 2017</h5><br>
-        <h5>20:00 s/d 23:00 WIB</h5>
-        <h5>Rp. 500.000,-</h5>       
+       <center><h2>{{ $transaksi->jadwal->nama_lsp }}</h2><br></center>
+          <h5>
+            {{ date('j F Y', strtotime($transaksi->jadwal->tanggal_mulai)) }} / {{ date('j F Y', strtotime($transaksi->jadwal->tanggal_selesai)) }}</h5><br>
+            <h5>{{ $transaksi->jadwal->waktu }}</h5>
+            <h5>Rp. {{ $transaksi->jadwal->biaya }},-</h5> 
       </form>
     </div>
   </div>

@@ -7,22 +7,21 @@
   <div class="col-md-12">
     <div class="box box-primary">
       <div class="box-header with-border"></div>
-      <form method="POST"action="{{ url('operator/pembayaran') }}" enctype="multipart/form-data" role="form">
+      <form method="POST" action="{{ url('operator/pembayaran') }}" enctype="multipart/form-data" role="form">
         {{ csrf_field() }}
         <div class="box-body">      
           <div class="form-group">
-            <label>Nama Bank (contoh: BANK BCA)*</label>
+            <label>Nama Bank (contoh: BANK BCA)</label>
             <input type="text" class="form-control" name="nama_bank">
           </div>
           <div class="form-group">
-            <label>No Rekening *</label>
+            <label>No Rekening</label>
             <input type="text" class="form-control" name="no_rek">
           </div>                
           <div class="form-group">
-            <label>Atas Nama *</label>
+            <label>Atas Nama</label>
             <input type="text" class="form-control" name="atas_nama">
-          </div>
-          <h6>* Jika bukan bank jangan diisi kolom tersebut, isi saja kolom lainnya</h6>
+          </div>        
         </div>
         <div class="box-footer">
           <button type="submit" class="btn btn-primary">Buat Bank</button>

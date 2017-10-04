@@ -34,12 +34,27 @@ class SertifikasiController extends Controller
   }
 
   public function submit(Request $request){
-    $t = new Transaksi;
-    $t->id_user = Auth::user()->id;
-    $t->id_jadwal = $request->id_jadwal;
-    $t->save();
+  //   if (Auth::user()->role === 3) {
+  //    return redirect(url('operator'));
+  //  }elseif(Auth::user()->role === 2) {
+  //   return redirect(url('admin'));
+  // }elseif(Auth::user()->role === 1) {
+    // $transaksi = sizeof(Transaksi::where(['id_user' => Auth::user()->id])->first());
+    // $transaksi =  Transaksi::where('id_user', '=', 7)->first();
+    // die($transaksi);
+    // if($id_jadwal == Auth::user()->id){    
+    //   die('dlso');
+    //   return redirect(url('pembayaran'));
+    // }else{
 
-    return redirect(url('pembayaran'));
+      $t = new Transaksi;
+      $t->id_user = Auth::user()->id;
+      $t->id_jadwal = $request->id_jadwal;
+      $t->save();
+
+      return redirect(url('pembayaran'));
+    // }
+  // }
   }
 
   public function redirect(){
