@@ -15,8 +15,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
-    ];
+     'number', 'username', 'name', 'email', 'password', 'gender', 'place', 'date', 'religion', 'citizenship', 'address', 'telp', 'instansi',
+ ];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -28,12 +28,12 @@ class User extends Authenticatable
     ];
 
     public function isAdmin(){
-     if($this->role == 2) return true;
-     return false;
+       if($this->role == 2) return true;
+       return false;
    }
 
    public function isOp(){
     if($this->role == 3) return true;
     return false;
-  }
+}
 }

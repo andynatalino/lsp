@@ -10,6 +10,7 @@ use App\Transaksi;
 use App\Pembayaran;
 use Illuminate\Http\Request;
 
+
 class SertifikasiController extends Controller
 {
   public function kategori(){
@@ -47,16 +48,15 @@ class SertifikasiController extends Controller
     //   return redirect(url('pembayaran'));
     // }else{
 
-      $t = new Transaksi;
-      $t->id_user = Auth::user()->id;
-      $t->id_jadwal = $request->id_jadwal;
-      $t->save();
+    $t = new Transaksi;
+    $t->id_user = Auth::user()->id;
+    $t->id_jadwal = $request->id_jadwal;
+    $t->save();
 
-      return redirect(url('pembayaran'));
+    return redirect(url('pembayaran'));
     // }
   // }
   }
-
   public function redirect(){
    return redirect(url('pembayaran'));
  }

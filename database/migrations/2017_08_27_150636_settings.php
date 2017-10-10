@@ -18,13 +18,14 @@ class Settings extends Migration
         $table->string('nama_web');
         $table->string('title');
         $table->string('email');          
-        $table->string('color-web');
-        $table->string('color-admin');
-        $table->string('color-operator');
+        $table->string('color_web');
+        $table->string('color_admin');
+        $table->string('color_operator');
+        $table->string('facebook');
         $table->string('logo');
         $table->timestamps();
-      });
-    }
+    });
+  }
 
     /**
      * Reverse the migrations.
@@ -34,5 +35,5 @@ class Settings extends Migration
     public function down()
     {
       Schema::dropIfExists('settings');
-    }
   }
+}

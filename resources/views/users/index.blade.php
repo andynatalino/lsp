@@ -15,8 +15,8 @@
         <span class="mif-warning mif-ani-horizontal mif-ani-slow fg-red"> Data Slider Kosong!</span>
         @endif
       </div> -->
-       <img style="width: 100%; height: 500px;" src="{{ url('https://icdn3.digitaltrends.com/image/lenovo-yoga-720-13-inch-22-1500x1000.jpg?ver=1') }}">
-      <hr>
+      <img style="width: 100%; height: 500px;" src="{{ url('https://icdn3.digitaltrends.com/image/lenovo-yoga-720-13-inch-22-1500x1000.jpg?ver=1') }}">
+      <hr class="thin">
       @foreach($berita as $key)
       <div class="panel danger">
         <div class="heading">
@@ -64,7 +64,7 @@
       </div>
       <div class="content" style="padding: 10px 10px 10px 10px;">
         Login atau Register
-        <hr>
+        <hr class="thin">
         <span class="place-right"><a href="{{ url('login') }}" class="button">Login</a> or <a href="{{ url('register') }}" class="button">Register</a></span>
         <div style="margin-top:30px;">&nbsp;</div>
       </div>
@@ -76,7 +76,8 @@
         <span class="title"><span class="mif-facebook"></span> Facebook</span>
       </div>
       <div class="content" style="margin:0 !important;padding:0 !important;"><center>
-        <div data-width="306" class="fb-like-box" data-href="https://www.facebook.com/Sakasakti-127599884081017" data-colorscheme="light" data-show-faces="true" data-header="false" data-stream="true" data-show-border="false"></div>
+        <div data-width="306" class="fb-like-box" 
+        data-href="https://www.facebook.com/kesegarandinihari/" data-colorscheme="light" data-show-faces="true" data-header="false" data-stream="true" data-show-border="false"></div>
         <div id="fb-root"></div>
         <script>(function(d, s, id) {
           var js, fjs = d.getElementsByTagName(s)[0];

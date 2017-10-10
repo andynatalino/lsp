@@ -37,7 +37,7 @@ Route::group(['prefix' => 'profil'], function(){
   Route::post('/{slug}/change-password', 'ProfileController@change_password_save');
   Route::get('/{slug}/change-data', 'ProfileController@change_data');
   Route::post('/{slug}/change-data', 'ProfileController@change_data_save');
-  Route::get('/pdf/{id}', 'ProfileController@pdf');
+  Route::get('{id}/pdf', 'ProfileController@pdf');
 });
 
 Route::group(['prefix' => 'sertifikasi'], function(){
@@ -56,7 +56,8 @@ Route::group(['prefix' => 'admin'], function(){
     Route::get('/', 'adminController@dashboard');
     Route::get('/user', 'adminController@users_all');
     Route::get('/user/{id}', 'adminController@show');
-    Route::get('/settings', function(){ return view('admin/settings'); });
+    Route::get('/settings', 'adminController@settings');
+    Route::post('/settings', 'adminController@save_settings');
   });
 });
 

@@ -28,7 +28,7 @@
           <td>Rp. {{ $key->jadwal->biaya }},-</td>
           <td>{{ date('j F Y', strtotime($key->tanggal_konfirmasi)) }}</td>
           <td>
-            <button type="submit" class="button"><span class="mif-file-pdf"></span> Cetak Bukti</button>
+         <a href="{{ url('profil/'.$key->id.'/pdf')}}"><button type="submit" class="button"><span class="mif-file-pdf"></span> Cetak Bukti</button></a>
           </td>
           @elseif($key->status == 4)
           <td>{{ $key->jadwal->nama_lsp }}</td>

@@ -45,7 +45,7 @@
 			@endif
 			@endforeach		
 		</table>
-		<hr>  
+		<hr class="thin">	
 		<h6>N.b Pilih salah satu pelatihan dan klik bayar untuk melakukan pembayaran</h6>
 		<a href="{{ url('sertifikasi')}}"><button class="button">Kembali ke halaman Sertifikasi</button></a>
 	</div>

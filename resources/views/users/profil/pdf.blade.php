@@ -19,14 +19,14 @@
 		</thead>
 		<tr>
 			<th>
-				@foreach($transaksi as $key)
-				{{ $key->id }}<br>
-				{{ $key->id_user }}<br>
-				{{ $key->id_pembayaran }}<br>
-				{{ $key->konfirmasi }}<br>
-				{{ $key->tanggal_transaksi }}<br>
-				{{ $key->status }}<br>
-				@endforeach
+
+				{{ $transaksi->id }}<br>
+				{{ $transaksi->id_user }}<br>
+				{{ $transaksi->id_pembayaran }}<br>
+				{{ $transaksi->konfirmasi }}<br>
+				{{ $transaksi->tanggal_transaksi }}<br>
+				{{ $transaksi->status }}<br>
+
 			</th>
 		</tr>	
 	</table>

@@ -1,6 +1,12 @@
-<div class="app-bar fixed red" data-role="appbar">
+<?php
+  
+  $s = App\Setting::first();  
+  
+?>
+<div class="app-bar fixed {{ $s->color_web }}" data-role="appbar">
   <div class="container">
-    <a class="app-bar-element branding" href="{{ url('/') }}"> <img src="{{ url('assets/logo.png') }}" style="height: 38px; display: inline-block; margin-right: 10px;">LSP</a>
+    <a class="app-bar-element branding" href="{{ url('/') }}"> 
+      <img src="{{ url('assets/images/'.$s->logo) }}" style="height: 38px; display: inline-block; margin-right: 10px;">{{ $s->nama_web }}</a>
     <ul class="app-bar-menu">
       <li><a href="{{ url('sertifikasi') }}">Sertifikasi</a></li>
       <li><a href="{{ url('berita') }}">Berita</a></li>

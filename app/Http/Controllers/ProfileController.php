@@ -153,11 +153,16 @@ class ProfileController extends Controller
 	public function pdf($id){		
 		if (!Auth::check()) {
 			return redirect(url('login'));
-		}
-		
-		$transaksi = Transaksi::where(['id' => $id])->get();
-		if (!$transaksi){ abort(404); }
+		}	
+		$id_user = Transaksi::find($id)->id_user;
+		if($id_user == Auth::user()->id){
+			$transaksi = Transaksi::where(['id' => $id])->first();
 		// return response()->json($transaksi,200,[],JSON_PRETTY_PRINT);
-		return view('users.profil.pdf', ['transaksi' => $transaksi]);	
+			// die($transaksi);
+			return view('users.profil.pdf', ['transaksi' => $transaksi]);	
+		}else{
+			return redirect(url('/'));
+		}
 	}
+
 }

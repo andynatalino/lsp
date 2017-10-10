@@ -19,7 +19,7 @@
 				</div>
 
 			</div>
-			<hr>
+			<hr class="thin">
 			<div class="listview set-border padding10" data-role="listview">
 				<div class="list active" onclick="location.href = '{{ url('profil/'.$user->username.'/change-photo')}}';">
 					<img src="{{ url('assets/images/my-profil.png')}}" class="list-icon">
