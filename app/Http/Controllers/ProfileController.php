@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Auth;
 use Hash;
-use Image;
 use DateTime;
 use App\User;
 use App\Setting;
@@ -42,7 +41,7 @@ class ProfileController extends Controller
 		$transaksi->photo_bukti = '';
 		if($request->hasFile('photo_bukti')){
 			$image = date('YmdHis').uniqid().".". $request->photo_bukti->getClientOriginalExtension();
-			Image::make($request->photo_bukti)->save(public_path("/assets/bukti/". $image));
+			$request->photo_bukti->move(public_path()."/assets/bukti",$image);
 			$transaksi->photo_bukti = $image;
 		}
 		$transaksi->save();
