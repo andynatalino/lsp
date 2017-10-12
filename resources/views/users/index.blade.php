@@ -2,7 +2,6 @@
 @section('pageTitle', 'Home')
 
 @section('content')
-
 <a href="{{ url('/sertifikasi/lsp-mouse'.-time()) }}">asdas</a>
 <div class="grid">
   <div class="row cells12">
@@ -77,7 +76,7 @@
       </div>
       <div class="content" style="margin:0 !important;padding:0 !important;"><center>
         <div data-width="306" class="fb-like-box" 
-        data-href="https://www.facebook.com/indomie/" data-colorscheme="light" data-show-faces="true" data-header="false" data-stream="true" data-show-border="false"></div>
+        data-href="{{ $ss->facebook }}" data-colorscheme="light" data-show-faces="true" data-header="false" data-stream="true" data-show-border="false"></div>
         <div id="fb-root"></div>
         <script>(function(d, s, id) {
           var js, fjs = d.getElementsByTagName(s)[0];
