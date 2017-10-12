@@ -26,7 +26,6 @@ class jadwals extends Migration
         $table->longtext('isi');
         $table->string('status');
         $table->string('slug');
-        $table->string('image');
         $table->timestamps();
 
         $table->foreign('id_kategori')->references('id')

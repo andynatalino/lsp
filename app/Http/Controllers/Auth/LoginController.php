@@ -59,18 +59,18 @@ class LoginController extends Controller
         if ($this->attemptLogin($request)) {
           if (Auth::user()->role == 2) {
             return redirect('/admin');
-          }
-          if (Auth::user()->role == 3) {
-            return redirect('/operator');
-          }
-            return $this->sendLoginResponse($request);
         }
+        if (Auth::user()->role == 3) {
+            return redirect('/operator');
+        }
+        return $this->sendLoginResponse($request);
+    }
 
         // If the login attempt was unsuccessful we will increment the number of attempts
         // to login and redirect the user back to the login form. Of course, when this
         // user surpasses their maximum number of attempts they will get locked out.
-        $this->incrementLoginAttempts($request);
+    $this->incrementLoginAttempts($request);
 
-        return $this->sendFailedLoginResponse($request);
-    }
+    return $this->sendFailedLoginResponse($request);
+}
 }

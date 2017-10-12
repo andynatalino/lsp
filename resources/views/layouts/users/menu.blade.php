@@ -1,7 +1,5 @@
 <?php
-  
   $s = App\Setting::first();  
-  
 ?>
 <div class="app-bar fixed {{ $s->color_web }}" data-role="appbar">
   <div class="container">

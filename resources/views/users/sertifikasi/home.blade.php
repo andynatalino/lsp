@@ -13,7 +13,7 @@ Lembaga Sertifikasi Profesi
     <?php $i=1;?>
     @foreach($kategori as $key)
     <div class="cell">
-      <div class="panel alert">
+      <div class="panel @foreach($aa as $ss) @if($ss->color_web == 'blue') navy @elseif($ss->color_web == 'red') danger @elseif($ss->color_web == 'green') success @elseif($ss->color_web == 'orange') warning @endif @endforeach">
         <div class="heading">
           <span class="title"><a href="{{ url('sertifikasi/'.$key->slug) }}" style="color:white; padding: 10px 10px 10px 10px;" onclick="document.getElementById('my_form').submit(); return false;">{{ $key->nama_sp }}</a></span>
         </div>

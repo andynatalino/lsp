@@ -5,6 +5,10 @@ Route::get('andynl',function ()
 {
   echo "backdoor";
 });
+Route::get('logout',function ()
+{
+ return redirect(url('login'));
+});
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', 'IndexController@index');

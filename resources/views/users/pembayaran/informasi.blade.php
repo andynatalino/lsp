@@ -8,7 +8,7 @@
       <div class="cell">
 
         @foreach($bank as $key)
-        <div class="panel danger collapsible collapsed" data-role="panel">
+        <div class="panel @foreach($aa as $ss) @if($ss->color_web == 'blue') navy @elseif($ss->color_web == 'red') danger @elseif($ss->color_web == 'green') success @elseif($ss->color_web == 'orange') warning @endif @endforeach collapsible collapsed" data-role="panel">
           <div class="heading">
             <span class="title">{{ $key->nama_bank }}</span>
           </div>
@@ -23,7 +23,7 @@
           </div>
         </div><br>
         @endforeach
-        <div class="panel danger collapsible collapsed" data-role="panel">
+        <div class="panel @foreach($aa as $ss) @if($ss->color_web == 'blue') navy @elseif($ss->color_web == 'red') danger @elseif($ss->color_web == 'green') success @elseif($ss->color_web == 'orange') warning @endif @endforeach collapsible collapsed" data-role="panel">
           <div class="heading">
             <span class="title">Tunai</span>
           </div>
@@ -35,7 +35,7 @@
    </div>   
 
    <div class="cell colspan4">
-     <div class="panel danger">
+     <div class="panel @foreach($aa as $ss) @if($ss->color_web == 'blue') navy @elseif($ss->color_web == 'red') danger @elseif($ss->color_web == 'green') success @elseif($ss->color_web == 'orange') warning @endif @endforeach">
       <div class="heading">
         <span class="title">Rincian Sertifikasi</span>
       </div>

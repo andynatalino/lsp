@@ -28,7 +28,6 @@
             <th>Tanggal Mulai</th>
             <th>Tanggal Selesai</th>
             <th>Waktu</th>
-            <th>Lokasi</th>
             <th>Kuota</th>
             <th>Status</th>
             <th>Action</th>
@@ -36,12 +35,11 @@
           @foreach($jadwal as $key)
           <tr>
             <td>{{ $i++ }}</td>
-            <td>{{ $key->nama_lsp }}</td>
+            <td> {{ str_limit($key->nama_lsp, 20) }}</td>           
             <td>{{ App\Kategori::where('id',$key->id_kategori)->first()['nama_sp'] }}</td>
-            <td>{{ $key->tanggal_mulai }}</td>
-            <td>{{ $key->tanggal_selesai }}</td>
+            <td>{{ date('j F Y', strtotime($key->tanggal_mulai)) }}</td>
+            <td>{{ date('j F Y', strtotime($key->tanggal_selesai)) }}</td>
             <td>{{ $key->waktu }}</td>
-            <td>{{ $key->lokasi }}</td>
             <td>{{ $key->kuota }}</td>
             <td>@if($key->status == 1)<span class="label label-success"> Open @elseif($key->status == 2) <span class="label label-danger"> Expired @endif</td>
               <td>

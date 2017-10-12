@@ -5,7 +5,7 @@
 <div class="grid">
   <div class="row cells12">
     <div class="cell colspan8">      
-      <div class="panel danger">
+      <div class="panel @foreach($aa as $ss) @if($ss->color_web == 'blue') navy @elseif($ss->color_web == 'red') danger @elseif($ss->color_web == 'green') success @elseif($ss->color_web == 'orange') warning @endif @endforeach">
         <div class="heading">
           <span class="title">Isi Data Pendaftaran</span>
         </div>
@@ -47,7 +47,7 @@
       </div>   
 
       <div class="cell colspan4">
-       <div class="panel danger">
+       <div class="panel @foreach($aa as $ss) @if($ss->color_web == 'blue') navy @elseif($ss->color_web == 'red') danger @elseif($ss->color_web == 'green') success @elseif($ss->color_web == 'orange') warning @endif @endforeach">
         <div class="heading">
           <span class="title">Rincian Pembayaran</span>
         </div>

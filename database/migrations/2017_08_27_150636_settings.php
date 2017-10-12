@@ -17,12 +17,12 @@ class Settings extends Migration
         $table->increments('id');
         $table->string('nama_web');
         $table->string('title');
-        $table->string('email');          
-        $table->string('color_web');
+        $table->string('email');       
+        $table->string('color_web')->default('blue');
         $table->string('color_admin');
         $table->string('color_operator');
-        $table->string('facebook');
-        $table->string('logo');
+        $table->string('facebook')->nullable();
+        $table->string('logo')->nullable();
         $table->timestamps();
     });
   }

@@ -7,6 +7,7 @@ use Hash;
 use Image;
 use DateTime;
 use App\User;
+use App\Setting;
 use App\Transaksi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
@@ -19,9 +20,10 @@ class ProfileController extends Controller
 			return redirect(url('login'));
 		}		
 		$id = Auth::user()->id;
+		$aa = Setting::get();
 		$user = User::find($id);
 		$transaksi = Transaksi::where(['id_user' => Auth::user()->id])->get();
-		return view('users.profil.home', ['user' => $user, 'transaksi' => $transaksi]);			
+		return view('users.profil.home', ['user' => $user, 'transaksi' => $transaksi, 'aa' => $aa]);			
 	}
 
 	public function konfirmasi(){
@@ -51,9 +53,10 @@ class ProfileController extends Controller
 		if (!Auth::check()) {
 			return redirect(url('login'));
 		}
+		$aa = Setting::get();
 		$id = Auth::user()->id;
 		$user = User::find($id);
-		return view('users.profil.change.photo', ['user' => $user]);
+		return view('users.profil.change.photo', ['user' => $user, 'aa' => $aa]);
 	}
 
 	public function change_photo_save(Request $request){
@@ -76,9 +79,10 @@ class ProfileController extends Controller
 		if (!Auth::check()) {
 			return redirect(url('login'));
 		}
+		$aa = Setting::get();
 		$id = Auth::user()->id;
 		$user = User::find($id);
-		return view('users.profil.change.email', ['user' => $user]);
+		return view('users.profil.change.email', ['user' => $user, 'aa' => $aa]);
 	}
 
 	public function change_email_save(Request $request){	
@@ -98,9 +102,10 @@ class ProfileController extends Controller
 		if (!Auth::check()) {
 			return redirect(url('login'));
 		}
+		$aa = Setting::get();
 		$id = Auth::user()->id;
 		$user = User::find($id);
-		return view('users.profil.change.password', ['user' => $user]);
+		return view('users.profil.change.password', ['user' => $user, 'aa' => $aa]);
 	}
 
 	public function change_password_save(Request $request){
@@ -118,9 +123,10 @@ class ProfileController extends Controller
 		if (!Auth::check()) {
 			return redirect(url('login'));
 		}
+		$aa = Setting::get();
 		$id = Auth::user()->id;
 		$user = User::find($id);
-		return view('users.profil.change.data', ['user' => $user]);
+		return view('users.profil.change.data', ['user' => $user, 'aa' => $aa]);
 	}
 	public function change_data_save(Request $request){
 		$id = Auth::user()->id;

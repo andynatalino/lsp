@@ -9,7 +9,7 @@ Lembaga Sertifikasi Profesi
     <?php $i=1;?>
     @foreach($berita as $key)
     <div class="cell">
-      <div class="panel alert">
+      <div class="panel @foreach($aa as $ss) @if($ss->color_web == 'blue') navy @elseif($ss->color_web == 'red') danger @elseif($ss->color_web == 'green') success @elseif($ss->color_web == 'orange') warning @endif @endforeach">
         <div class="heading">
           <span class="title"><a href="{{ url('berita/'.$key->slug) }}" style="color:white; padding: 10px 10px 10px 10px;" onclick="document.getElementById('my_form').submit(); return false;">{{ $key->judul }}</a></span>
         </div>
@@ -17,7 +17,7 @@ Lembaga Sertifikasi Profesi
           <div class="panel image-container">
             <div class="frame"><img src="{{ url('assets/kategori/'.$key->image) }}"></div>
           </div>
-          {{ $key->isi }}
+          {!! $key->isi !!}
         </div>
         <hr>
       </div>

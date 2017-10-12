@@ -37,7 +37,7 @@
           <br />
           <div class="form-actions">
             <button type="submit" class="button danger">Login</button>
-            <a href="{{ route('register') }}"><button type="button" class="button danger">Register</button></a>
+            <a href="{{ route('register') }}"><button type="button" class="button success">Register</button></a>
           </div>
         </form>
       </div>

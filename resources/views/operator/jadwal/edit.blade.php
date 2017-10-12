@@ -76,12 +76,6 @@ $(function () {
               <option value="2">Pendaftaran ditutup</option>
             </select>
           </div>
-          <div class="form-group">
-            <label>Image</label>
-              <a href="{{ url('assets/jadwal/'.$jadwal->image) }}" target="_blank"><img style="width:50px; height:50px;" src="{{ url('assets/jadwal/'.$jadwal->image) }}"></a><br><br>
-            <input name="image" type="file">
-            <p class="help-block">Usahakan Gambar berkualitas HD</p>
-          </div>
         </div>
         <div class="box-footer">
           <button type="submit" class="btn btn-primary">Edit Jadwal</button>

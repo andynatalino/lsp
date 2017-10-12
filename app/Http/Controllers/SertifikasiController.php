@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Auth;
 use App\Jadwal;
 use App\Userdata;
+use App\Setting;
 use App\Kategori;
 use App\Transaksi;
 use App\Pembayaran;
@@ -14,8 +15,9 @@ use Illuminate\Http\Request;
 class SertifikasiController extends Controller
 {
   public function kategori(){
+    $aa = Setting::get();
     $kategori = Kategori::paginate(9);
-    return view('users.sertifikasi.home', ['kategori' => $kategori]);
+    return view('users.sertifikasi.home', ['kategori' => $kategori, 'aa' => $aa]);
   }
 
   public function jadwal($slug){
@@ -27,11 +29,13 @@ class SertifikasiController extends Controller
   }
 
   public function show_jadwal($slug1, $slug2){
+    $aa = Setting::get();
     $kategori = Kategori::where('slug', $slug1)->first();
     if (!$kategori){ abort(404); }
     $jadwal = Jadwal::where('slug', $slug2)->first();
     if (!$jadwal){ abort(404); }
-    return view('users.sertifikasi.show', ['jadwal' => $jadwal,'kategori' => $kategori]);
+    // die($aa);
+    return view('users.sertifikasi.show', ['jadwal' => $jadwal,'kategori' => $kategori, 'aa' => $aa]);
   }
 
   public function submit(Request $request){
@@ -73,12 +77,13 @@ class SertifikasiController extends Controller
 
 public function pembayaran_next(Request $request){
   if (Auth::check()) {
-   $transaksi = Transaksi::where(['id' => $request->id])->firstOrFail();
-   if (!$transaksi){ abort(404); }
-   return view('users.pembayaran.checkout', ['transaksi' => $transaksi]);
- }else{
-  return redirect(url('login'));
-}
+    $aa = Setting::get();
+    $transaksi = Transaksi::where(['id' => $request->id])->firstOrFail();
+    if (!$transaksi){ abort(404); }
+    return view('users.pembayaran.checkout', ['transaksi' => $transaksi, 'aa' => $aa]);
+  }else{
+    return redirect(url('login'));
+  }
 }
 
 public function pembayaran_checkout_save(Request $request){
@@ -96,7 +101,8 @@ public function pembayaran_checkout_save(Request $request){
   $transaksi = Transaksi::find($request->id_transaksi);
    // $userdata = Userdata::where(['id_transaksi' => $transaksi->id])->firstOrFail();
   $bank = Pembayaran::all();
-  return view('users.pembayaran.informasi', ['transaksi' => $transaksi, 'bank' => $bank]);
+  $aa = Setting::get();
+  return view('users.pembayaran.informasi', ['transaksi' => $transaksi, 'bank' => $bank, 'aa' => $aa]);
 }
 
 public function pembayaran_informasi_save(Request $request){

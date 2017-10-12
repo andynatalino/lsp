@@ -18,7 +18,7 @@
       <img style="width: 100%; height: 500px;" src="{{ url('https://icdn3.digitaltrends.com/image/lenovo-yoga-720-13-inch-22-1500x1000.jpg?ver=1') }}">
       <hr class="thin">
       @foreach($berita as $key)
-      <div class="panel danger">
+      <div class="panel @foreach($aa as $ss) @if($ss->color_web == 'blue') navy @elseif($ss->color_web == 'red') danger @elseif($ss->color_web == 'green') success @elseif($ss->color_web == 'orange') warning @endif @endforeach">
         <div class="heading">
           <span class="title">{{ $key->judul }}</span>
         </div>
@@ -35,7 +35,7 @@
       @endif
     </div>
     <div class="cell colspan4">
-      <div class="panel danger">
+      <div class="panel @foreach($aa as $ss) @if($ss->color_web == 'blue') navy @elseif($ss->color_web == 'red') danger @elseif($ss->color_web == 'green') success @elseif($ss->color_web == 'orange') warning @endif @endforeach">
         <div class="heading">
           <span class="title"><span class="mif-medal"></span> LSP Paling Diminati
         </span>
@@ -58,7 +58,7 @@
 
     @if(!Auth::check())
     <br>
-    <div class="panel danger">
+    <div class="panel @foreach($aa as $ss) @if($ss->color_web == 'blue') navy @elseif($ss->color_web == 'red') danger @elseif($ss->color_web == 'green') success @elseif($ss->color_web == 'orange') warning @endif @endforeach">
       <div class="heading">
         <span class="title"><span class="mif-enter"></span> Login</span>
       </div>
@@ -71,19 +71,19 @@
     </div>
     @endif  
     <br>
-    <div class="panel danger">
+    <div class="panel @foreach($aa as $ss) @if($ss->color_web == 'blue') navy @elseif($ss->color_web == 'red') danger @elseif($ss->color_web == 'green') success @elseif($ss->color_web == 'orange') warning @endif @endforeach">
       <div class="heading">
         <span class="title"><span class="mif-facebook"></span> Facebook</span>
       </div>
       <div class="content" style="margin:0 !important;padding:0 !important;"><center>
         <div data-width="306" class="fb-like-box" 
-        data-href="https://www.facebook.com/kesegarandinihari/" data-colorscheme="light" data-show-faces="true" data-header="false" data-stream="true" data-show-border="false"></div>
+        data-href="https://www.facebook.com/indomie/" data-colorscheme="light" data-show-faces="true" data-header="false" data-stream="true" data-show-border="false"></div>
         <div id="fb-root"></div>
         <script>(function(d, s, id) {
           var js, fjs = d.getElementsByTagName(s)[0];
           if (d.getElementById(id)) return;
           js = d.createElement(s); js.id = id;
-          js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&appId=219059468269637&version=v2.0";
+          js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&appId=1523992557684300&version=v2.0";
           fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));</script>
       </center>

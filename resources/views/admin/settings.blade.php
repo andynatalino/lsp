@@ -35,8 +35,10 @@
         <div class="form-group">
           <label>Web Color</label>
           <select class="form-control" name="webcolor" style="width: 100%;">
-            <option value="red" selected="selected">Red</option>
-            <option value="blue">Blue</option>
+            <option value="red" {{ ($setting->color_web=='red')?'selected':'' }}>Red</option>
+            <option value="blue" {{ ($setting->color_web=='blue')?'selected':'' }}>Blue</option>
+            <option value="green" {{ ($setting->color_web=='green')?'selected':'' }}>Green</option>
+            <option value="orange" {{ ($setting->color_web=='orange')?'selected':'' }}>Orange</option>
           </select>
         </div>
         <div class="form-group">
