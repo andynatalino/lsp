@@ -67,8 +67,9 @@ class ProfileController extends Controller
 		$user = User::find($id);
 		$user->photo = '';		
 		if($request->hasFile('photo')){
-			$image = date('YmdHis').uniqid().".". $request->photo->getClientOriginalExtension();
-			Image::make($request->photo)->save(public_path("/assets/photo/". $image));
+			$image = date('YmdHis').uniqid().".". 
+			$request->photo->getClientOriginalExtension();
+			$request->photo->move(public_path()."/assets/photo",$image);
 			$user->photo = $image;
 		}
 		$user->save();
