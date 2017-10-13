@@ -13,9 +13,9 @@
   <meta property="og:image" content="http://sekolahkoding.com/assets/images/cover/cover17.png">
 
   <title>@yield('pageTitle') - Sakasakti</title>
-
-  <link href="/favicon.ico" rel="shortcut icon">
-  <link href="/favicon.ico" rel="favicon">
+  <?php $s = App\Setting::first(); ?>
+  <link href="{{ url('assets/logo/'.$s->favicon)}}" rel="shortcut icon">
+  <link href="{{ url('assets/logo/'.$s->favicon)}}" rel="favicon">
 
   <link href="//cdnjs.cloudflare.com/ajax/libs/metro/3.0.17/css/metro.min.css" rel="stylesheet">
   <link href="//cdnjs.cloudflare.com/ajax/libs/metro/3.0.17/css/metro-icons.min.css" rel="stylesheet">

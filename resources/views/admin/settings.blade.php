@@ -21,58 +21,63 @@
             <label>Title</label>
             <input type="text" required class="form-control" value="{{ $setting->title }}" name="title" placeholder="Title">
           </div>
-           <div class="form-group">
+          <div class="form-group">
             <label>Facebook</label> (contoh. <b>facebook.com/fanspage</b>)
             <input type="text" required class="form-control" value="{{ $setting->facebook }}" name="facebook" placeholder="Url Facebook">
           </div>
           <div class="form-group">
-            <label for="exampleInputFile">Logo</label>
-            <input name="logo" value="{{ $setting->logo }}" type="file">
-            <p class="help-block">Usahakan Gambar berkualitas HD</p>
+            <label>Logo</label>
+            <input name="logo" type="file">
+             <p class="help-block">File berformat PNG, JPG, JPEG, GIF, ICO</p>
           </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Web Color</label>
+            <select class="form-control" name="webcolor" style="width: 100%;">
+              <option value="red" {{ ($setting->color_web=='red')?'selected':'' }}>Red</option>
+              <option value="blue" {{ ($setting->color_web=='blue')?'selected':'' }}>Blue</option>
+              <option value="green" {{ ($setting->color_web=='green')?'selected':'' }}>Green</option>
+              <option value="orange" {{ ($setting->color_web=='orange')?'selected':'' }}>Orange</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Admin Web Color</label>
+            <select class="form-control" name="admincolor" style="width: 100%;">
+              <option selected="selected">Red</option>
+              <option>Alaska</option>
+              <option>California</option>
+              <option>Delaware</option>
+              <option>Tennessee</option>
+              <option>Texas</option>
+              <option>Washington</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Operator Web Color</label>
+            <select class="form-control" name="opcolor" style="width: 100%;">
+              <option selected="selected">Blue</option>
+              <option>Alaska</option>
+              <option>California</option>
+              <option>Delaware</option>
+              <option>Tennessee</option>
+              <option>Texas</option>
+              <option>Washington</option>            
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Icon</label>
+            <input name="favicon" type="file">
+            <p class="help-block">File berformat PNG, JPG, JPEG, GIF, ICO</p>
+          </div>
+        </div>
       </div>
-      <div class="col-md-6">
-        <div class="form-group">
-          <label>Web Color</label>
-          <select class="form-control" name="webcolor" style="width: 100%;">
-            <option value="red" {{ ($setting->color_web=='red')?'selected':'' }}>Red</option>
-            <option value="blue" {{ ($setting->color_web=='blue')?'selected':'' }}>Blue</option>
-            <option value="green" {{ ($setting->color_web=='green')?'selected':'' }}>Green</option>
-            <option value="orange" {{ ($setting->color_web=='orange')?'selected':'' }}>Orange</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Admin Web Color</label>
-          <select class="form-control" name="admincolor" style="width: 100%;">
-            <option selected="selected">Red</option>
-            <option>Alaska</option>
-            <option>California</option>
-            <option>Delaware</option>
-            <option>Tennessee</option>
-            <option>Texas</option>
-            <option>Washington</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Operator Web Color</label>
-          <select class="form-control" name="opcolor" style="width: 100%;">
-            <option selected="selected">Blue</option>
-            <option>Alaska</option>
-            <option>California</option>
-            <option>Delaware</option>
-            <option>Tennessee</option>
-            <option>Texas</option>
-            <option>Washington</option>            
-          </select>
-        </div>
+      <div class="box-footer">
+        {{csrf_field()}}
+        <button type="submit" class="btn btn-primary">Save Settings</button>
+        <button type="reset" class="btn btn-warning">Reset Settings</button>
       </div>
-    </div>
-    <div class="box-footer">
-      {{csrf_field()}}
-      <button type="submit" class="btn btn-primary">Save Settings</button>
-      <button type="reset" class="btn btn-warning">Reset Settings</button>
-    </div>
-  </form>
+    </form>
   </div>
 </div>
 @endsection

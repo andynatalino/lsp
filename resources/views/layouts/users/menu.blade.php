@@ -4,7 +4,7 @@
 <div class="app-bar fixed {{ $s->color_web }}" data-role="appbar">
   <div class="container">
     <a class="app-bar-element branding" href="{{ url('/') }}"> 
-      <img src="{{ url('assets/images/'.$s->logo) }}" style="height: 38px; display: inline-block; margin-right: 10px;">{{ $s->nama_web }}</a>
+      <img src="@if(!$s->logo) {{ url('assets/logo/logo.png') }} @else {{ url('assets/logo/'.$s->logo) }} @endif" style="height: 38px; display: inline-block; margin-right: 10px;">{{ $s->nama_web }}</a>
     <ul class="app-bar-menu">
       <li><a href="{{ url('sertifikasi') }}">Sertifikasi</a></li>
       <li><a href="{{ url('berita') }}">Berita</a></li>

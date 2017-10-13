@@ -23,6 +23,7 @@ class Settings extends Migration
         $table->string('color_operator');
         $table->string('facebook')->nullable();
         $table->string('logo')->nullable();
+        $table->string('favicon')->nullable();
         $table->timestamps();
     });
   }

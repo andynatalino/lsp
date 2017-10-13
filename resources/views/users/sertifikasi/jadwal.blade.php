@@ -39,8 +39,4 @@
 @if(sizeof($jadwal)==0)    
 <span class="mif-warning mif-ani-horizontal mif-ani-slow fg-red"> Data Kosong!</span>
 @endif
-<script type="text/javascript">
-  $(document).ready(function() {
-    $('#jadwal').DataTable();
-</script>
 @endsection

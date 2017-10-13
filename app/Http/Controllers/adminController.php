@@ -63,13 +63,31 @@ class adminController extends Controller
     $s->color_admin = $request->admincolor;
     $s->color_operator = $request->opcolor;
     $s->facebook = $request->facebook;
-    $s->logo = '';
-    if($request->hasFile('logo')){
-      $image = date('YmdHis').uniqid().".". $request->logo->getClientOriginalExtension();
-      Image::make($request->logo)->save(public_path("/assets/images/". $image));
-      $s->logo = $image;
-    }
-     \App\Setting::truncate();
+    if($request->file('logo') == "")
+    {
+       $setting = Setting::first();
+       $s->logo = $setting->logo;
+    }else{
+      $s->logo = '';
+      if($request->hasFile('logo')){
+        $image = date('YmdHis').uniqid().".". $request->logo->getClientOriginalExtension();
+        $request->logo->move(public_path()."/assets/logo",$image);
+        $s->logo = $image;
+      }    
+    }    
+    if($request->file('favicon') == "")
+    {
+       $setting = Setting::first();
+       $s->favicon = $setting->favicon;
+    }else{
+      $s->favicon = '';
+      if($request->hasFile('favicon')){
+        $image = date('YmdHis').uniqid().".". $request->favicon->getClientOriginalExtension();
+        $request->favicon->move(public_path()."/assets/logo",$image);
+        $s->favicon = $image;
+      }    
+    }    
+    \App\Setting::truncate();
     $s->save();
     return back()->with('sukses', 'Anda berhasil mengubah Data!');
   }
