@@ -1,7 +1,5 @@
 @extends('layouts.users.app')
-@section('title')
-Lembaga Sertifikasi Profesi
-@endsection
+@section('pageTitle', 'Sertifikasi')
 
 @section('content')
 <ul class="breadcrumbs">

@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 class IndexController extends Controller
 {
   public function index(){
+
     $aa = Setting::get();
     $slider = Slider::all();
     $berita = Berita::orderBy('id', 'desc')->paginate(5);

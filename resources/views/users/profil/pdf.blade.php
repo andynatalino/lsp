@@ -12,7 +12,7 @@
 		<thead>
 			<td>
 				<div id="header">
-					<img style="width: 50px; height: 50px;" src="{{ url('assets/logo.png')}}">Bukti Pendaftaran
+					<img style="width: 50px; height: 50px;" src="{{ url('assets/logo.png')}}">Bukti Pendaftaran dan Bukti Transaksi
 				</div>
 				<hr>
 			</td>
@@ -20,12 +20,12 @@
 		<tr>
 			<th>
 
-				{{ $transaksi->id }}<br>
-				{{ $transaksi->id_user }}<br>
-				{{ $transaksi->id_pembayaran }}<br>
-				{{ $transaksi->konfirmasi }}<br>
-				{{ $transaksi->tanggal_transaksi }}<br>
-				{{ $transaksi->status }}<br>
+				No Registrasi : {{ $transaksi->id }}<br>
+				Nama	: {{ $transaksi->user->name }}<br>
+				Tipe Pembayaran : {{ $transaksi->pembayaran->nama_bank }}<br>
+				Tanggal Konfirmasi : {{ date('j F Y', strtotime($transaksi->tanggal_konfirmasi)) }}<br>
+				Tanggal Transaksi : {{ date('j F Y', strtotime($transaksi->tanggal_transaksi)) }}<br>
+
 
 			</th>
 		</tr>	
