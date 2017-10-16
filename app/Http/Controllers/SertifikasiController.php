@@ -51,17 +51,17 @@ class SertifikasiController extends Controller
     //   die('dlso');
     //   return redirect(url('pembayaran'));
     // }else{
-    if (Transaksi::where('id_jadwal', '=', $request->id_jadwal)->exists()) {    
-      return redirect(url('pembayaran'));
-    }
-    else {      
+    // if (Transaksi::where('id_jadwal', '=', $request->id_jadwal)->exists()) {    
+    //   return redirect(url('pembayaran'));
+    // }
+    // else {      
       $t = new Transaksi;
       $t->id_user = Auth::user()->id;
       $t->id_jadwal = $request->id_jadwal;
       $t->save();
 
       return redirect(url('pembayaran'));
-    }
+    // }
 
     // }
   // }

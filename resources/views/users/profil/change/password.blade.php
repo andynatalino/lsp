@@ -97,4 +97,19 @@
 	});
 </script>
 @endif
+
+@if(count($errors) > 0 )
+
+@foreach($errors->all() as $error)
+
+<script type="text/javascript">
+	$(function(){
+		setTimeout(function(){
+			$.Notify({type: 'default', icon: "<span class='mif-notification mif-ani-shuttle mif-ani-slow'></span>", keepOpen: true, caption: 'Password minimal <br> 6 karakter!', content: "{{ $error }}"});
+		}, 0);
+	});
+</script>
+@endforeach
+
+@endif
 @endsection
