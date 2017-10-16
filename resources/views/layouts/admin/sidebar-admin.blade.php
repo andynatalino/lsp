@@ -20,7 +20,7 @@
             <li class="header">Menu</li>
             <!-- Optionally, you can add icons to the links -->
             <li class="active"><a href="{{ url('operator') }}"><i class="fa fa-circle-o"></i>Dashboard</a></li>
-            <li><a href="#"><i class="fa fa-address-book"></i>Users</a></li>
+            <li><a href="{{ url('admin/user') }}"><i class="fa fa-address-book"></i>Users</a></li>
             <li><a href="{{ url('admin/settings') }}"><i class="fa fa-newspaper-o"></i>Settings</a></li>
             <li><a href="{{ url('admin/settings') }}"><i class="fa fa-newspaper-o"></i>Galeri</a></li>
             <li><a href="{{ url('admin/settings') }}"><i class="fa fa-newspaper-o"></i>Kontak</a></li>

@@ -56,10 +56,16 @@ Route::group(['prefix' => 'berita'], function(){
 });
 
 Route::group(['prefix' => 'admin'], function(){
+  Route::group(['prefix' => 'user'], function(){
+    Route::get('/', 'adminController@user');
+    Route::get('/buat', 'adminController@buat_user');
+    Route::post('/', 'adminController@user_save');
+    Route::get('/{id}/edit', 'adminController@user_edit');
+    Route::post('/{id}', 'adminController@user_update');
+    Route::delete('/{id}', 'adminController@user_delete');
+  });
   Route::group(['middleware' => 'admin'], function(){
     Route::get('/', 'adminController@dashboard');
-    Route::get('/user', 'adminController@users_all');
-    Route::get('/user/{id}', 'adminController@show');
     Route::get('/settings', 'adminController@settings');
     Route::post('/settings', 'adminController@save_settings');
   });

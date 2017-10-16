@@ -23,7 +23,7 @@ class SertifikasiController extends Controller
   public function jadwal($slug){
     $kategori = Kategori::where('slug', $slug)->first();
     if (!$kategori){ abort(404); }
-    $jadwal = Jadwal::where('id_kategori', $kategori->id)->get();
+    $jadwal = Jadwal::where('id_kategori', $kategori->id)->paginate(10);
     if (!$jadwal){ abort(404); }
     return view('users.sertifikasi.jadwal', ['jadwal' => $jadwal, 'kategori' => $kategori]);
   }
@@ -51,13 +51,18 @@ class SertifikasiController extends Controller
     //   die('dlso');
     //   return redirect(url('pembayaran'));
     // }else{
+    if (Transaksi::where('id_jadwal', '=', $request->id_jadwal)->exists()) {    
+      return redirect(url('pembayaran'));
+    }
+    else {      
+      $t = new Transaksi;
+      $t->id_user = Auth::user()->id;
+      $t->id_jadwal = $request->id_jadwal;
+      $t->save();
 
-    $t = new Transaksi;
-    $t->id_user = Auth::user()->id;
-    $t->id_jadwal = $request->id_jadwal;
-    $t->save();
+      return redirect(url('pembayaran'));
+    }
 
-    return redirect(url('pembayaran'));
     // }
   // }
   }

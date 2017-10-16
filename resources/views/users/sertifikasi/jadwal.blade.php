@@ -2,12 +2,21 @@
 @section('pageTitle', 'Jadwal')
 
 @section('content')
+<style type="text/css">
+    .dataTables_paginate {
+        display: none;
+    }
+    .dataTables_length {
+        display: none;
+    }
+</style>
 <ul class="breadcrumbs">
     <li><a href="{{ url('/') }}"><span class="icon mif-home"></span></a></li>
     <li><a href="{{ url('/sertifikasi') }}">Sertifikasi</a></li>
     <li><a href="#">{{ $kategori->nama_sp }}</a></li>
 </ul>
-<table id="jadwal" class="table table-striped table-bordered" cellspacing="0" width="100%">
+<!-- table table-striped table-bordered -->
+<table id="jadwal" class="dataTable" data-role="datatable" data-searching="true" cellspacing="0" width="100%">
     <thead>
         <tr>
             <th>Lembaga</th>
@@ -36,6 +45,12 @@
      @endforeach
  </tbody>
 </table>
+{{ $jadwal->links() }}
+<script type="text/javascript">
+    $("table").dataTable({
+    'searching' : true
+});
+</script>
 @if(sizeof($jadwal)==0)    
 <span class="mif-warning mif-ani-horizontal mif-ani-slow fg-red"> Data Kosong!</span>
 @endif

@@ -15,9 +15,7 @@ use Illuminate\Support\Facades\Response;
 class ProfileController extends Controller
 {
 	public function index(){
-		if (!Auth::check()) {
-			return redirect(url('login'));
-		}		
+		if (!Auth::check()){ return redirect(url('login')); }		
 		$id = Auth::user()->id;
 		$aa = Setting::get();
 		$user = User::find($id);
