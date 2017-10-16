@@ -3,7 +3,17 @@
 @section('pageTitle', 'Users')
 
 @section('content')
+@if(count($errors) > 0 )
 
+@foreach($errors->all() as $error)
+<div class="alert alert-warning alert-dismissible">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <h4><i class="icon fa fa-warning"></i> Alert!</h4>
+  {{ $error }}
+</div>
+@endforeach
+
+@endif
 <div class="box box-default">
   <div class="box-body">
     <div class="row">
@@ -25,9 +35,12 @@
           <div class="form-group">
             <label>Email</label>
             <input type="email" required class="form-control" name="email" value="{{ old('email') }}" placeholder="Email">
-          </div>
+          </div>         
           <div class="form-group">
             <label>Password</label>
+            @if(session('gagal'))
+            <span class="help-block">{{ session('gagal')}} </span>
+            @endif
             <input type="password" required class="form-control" name="password" placeholder="Password">
           </div>
           <div class="form-group">
@@ -36,7 +49,7 @@
           </div>
           <div class="form-group">
             <label>Instansi</label>
-            <input type="text" required class="form-control" name="instansi" value="{{ old('instansi') }}" placeholder="Instansi">
+            <input type="text" required class="form-control" name="instansi" value="{{ old('instansi')}}" placeholder="Instansi">
           </div>
           <div class="form-group">
             <label>Jenis Kelamin</label>
@@ -89,31 +102,19 @@
           </div>
           <div class="form-group">
             <label>Photo</label>
-            <input name="logo" name="photo" type="file">
+            <input name="photo" required type="file">
             <p class="help-block">File berformat PNG, JPG, JPEG, GIF, ICO</p>
           </div>
         </div>
       </div>
       <div class="box-footer">
-        <button type="submit" class="btn btn-primary">Save Settings</button>
-        <button type="reset" class="btn btn-warning">Reset Settings</button>
+        <button type="submit" class="btn btn-primary">Buat User</button>
+        </form>
+        <a href="{{ url('admin/user')}}"><button class="btn btn-warning">Cancel</button></a>
       </div>
-    </form>
   </div>
 </div>
 
-@if(session('gagal'))
-{{ session('gagal')}}
-
-@endif
-
-@if(count($errors) > 0 )
-
-@foreach($errors->all() as $error)
-{{ $error }}
-@endforeach
-
-@endif
 
 @section('js')
 <script type="text/javascript">

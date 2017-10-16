@@ -12,7 +12,7 @@
       </div>   
       <div class="box-body table-responsive">
         <?php $i = 1; ?>
-        <table id="example1" class="table table-bordered table-striped">
+        <table id="datab" class="table table-bordered table-striped">
           <thead>
             <tr>
               <td>No</td>
@@ -55,7 +55,7 @@
 
 <script>
   $(function () {
-    $('#example1').DataTable()
+    $('#datab').DataTable()
   })
 </script>
 

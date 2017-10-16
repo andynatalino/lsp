@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Berita;
 use App\Slider;
+use App\tentang;
 use App\Setting;
 use Illuminate\Http\Request;
 
@@ -26,6 +27,11 @@ class IndexController extends Controller
   public function berita_show($slug){
     $berita = Berita::orderBy('slug', $slug)->firstOrFail();
     return view('users.berita.show', ['berita' => $berita]);
+  }
+
+  public function tentang(){
+      $tentang = tentang::first();
+      return view('users.tentang.tentang', ['tentang' => $tentang]);
   }
 
 }

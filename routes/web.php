@@ -1,16 +1,9 @@
 <?php
 Auth::routes();
-
-Route::get('andynl',function ()
-{
-  echo "backdoor";
-});
 Route::get('logout',function ()
 {
  return redirect(url('login'));
 });
-
-Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', 'IndexController@index');
 Route::post('/pelatihan', 'SertifikasiController@submit');
 Route::get('/pelatihan', 'SertifikasiController@redirect');
@@ -26,7 +19,9 @@ Route::group(['prefix' => 'pembayaran'], function(){
   Route::delete('/{id}', 'SertifikasiController@pembayaran_delete');
   Route::post('/daftar', 'SertifikasiController@daftar');
 });
-Route::get('/tentang', function(){ return view('profil'); });
+Route::get('/galeri', function(){ return view('users.galeri.galeri'); });
+Route::get('/kontak', function(){ return view('users.kontak.kontak'); });
+Route::get('/tentang', 'IndexController@tentang');
 
 Route::group(['prefix' => 'profil'], function(){
   Route::get('/', 'ProfileController@index');
@@ -56,7 +51,11 @@ Route::group(['prefix' => 'berita'], function(){
 });
 
 Route::group(['prefix' => 'admin'], function(){
-  Route::group(['prefix' => 'user'], function(){
+  Route::group(['middleware' => 'admin'], function(){
+   Route::get('/', 'adminController@dashboard');
+   Route::get('/settings', 'adminController@settings');
+   Route::post('/settings', 'adminController@save_settings');
+   Route::group(['prefix' => 'user'], function(){
     Route::get('/', 'adminController@user');
     Route::get('/buat', 'adminController@buat_user');
     Route::post('/', 'adminController@user_save');
@@ -64,11 +63,27 @@ Route::group(['prefix' => 'admin'], function(){
     Route::post('/{id}', 'adminController@user_update');
     Route::delete('/{id}', 'adminController@user_delete');
   });
-  Route::group(['middleware' => 'admin'], function(){
-    Route::get('/', 'adminController@dashboard');
-    Route::get('/settings', 'adminController@settings');
-    Route::post('/settings', 'adminController@save_settings');
+   Route::group(['prefix' => 'galeri'], function(){
+    Route::get('/', 'adminController@galeri');
+    Route::get('/buat', 'adminController@buat_galeri');
+    Route::post('/', 'adminController@galeri_save');
+    Route::get('/{id}/edit', 'adminController@galeri_edit');
+    Route::post('/{id}', 'adminController@galeri_update');
+    Route::delete('/{id}', 'adminController@galeri_delete');
   });
+   Route::group(['prefix' => 'tentang'], function(){
+    Route::get('/', 'adminController@tentang');
+    Route::post('/', 'adminController@tentang_save');
+  });
+   Route::group(['prefix' => 'kontak'], function(){
+    Route::get('/', 'adminController@tentang');
+    Route::get('/buat', 'adminController@buat_kontak');
+    Route::post('/', 'adminController@kontak_save');
+    Route::get('/{id}/edit', 'adminController@kontak_edit');
+    Route::post('/{id}', 'adminController@kontak_update');
+    Route::delete('/{id}', 'adminController@kontak_delete');
+  });
+ });
 });
 
 Route::group(['prefix' => 'operator'], function(){

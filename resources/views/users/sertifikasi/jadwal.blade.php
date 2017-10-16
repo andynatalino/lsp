@@ -16,7 +16,7 @@
     <li><a href="#">{{ $kategori->nama_sp }}</a></li>
 </ul>
 <!-- table table-striped table-bordered -->
-<table id="jadwal" class="dataTable" data-role="datatable" data-searching="true" cellspacing="0" width="100%">
+<table id="jadwal" class="table striped hovered border bordered" data-role="datatable" data-searching="true" cellspacing="0" width="100%">
     <thead>
         <tr>
             <th>Lembaga</th>
@@ -27,11 +27,6 @@
             <th>Biaya</th>
         </tr>
     </thead>
-    <tfoot>
-        <tr>
-            <th></th>                
-        </tr>
-    </tfoot>
     <tbody>
       @foreach($jadwal as $key)
       <tr>

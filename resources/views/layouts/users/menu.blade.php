@@ -8,27 +8,9 @@
     <ul class="app-bar-menu">
       <li><a href="{{ url('sertifikasi') }}">Sertifikasi</a></li>
       <li><a href="{{ url('berita') }}">Berita</a></li>
-      <li><a href="">Kontak</a></li>
-      <li><a href="">Galeri</a></li>
+      <li><a href="{{ url('kontak') }}">Kontak</a></li>
+      <li><a href="{{ url('galeri') }}">Galeri</a></li>
       <li><a href="{{ url('tentang') }}">Tentang</a></li>
-      <li>
-        <a href="" class="dropdown-toggle">More</a>
-        <ul class="d-menu" data-role="dropdown">
-          <li><a href="{{ url('login') }}">Login</a></li>
-          <li><a href="{{ url('register') }}">Register</a></li>
-          <li><a href="">Outlook</a></li>
-          <li><a href="">Office 2015</a></li>
-          <li class="divider"></li>
-          <li><a href="" class="dropdown-toggle">Other Products</a>
-            <ul class="d-menu" data-role="dropdown">
-              <li><a href="">Internet Explorer 10</a></li>
-              <li><a href="">Skype</a></li>
-              <li><a href="">Surface</a></li>
-            </ul>
-          </li>
-        </ul>
-
-      </li>
     </ul>
 
     @if(Auth::check())

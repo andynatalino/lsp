@@ -75,20 +75,19 @@
         <span class="title"><span class="mif-facebook"></span> Facebook</span>
       </div>
       <div class="content" style="margin:0 !important;padding:0 !important;"><center>
-        <div class="fb-page" data-width="306" data-href="https://www.facebook.com/WOLES-447614195299983/" data-tabs="timeline" data-small-header="false" data-adapt-container-width="false" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/WOLES-447614195299983/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/WOLES-447614195299983/">WOLES</a></blockquote></div>
-
+        <div data-width="306" class="fb-like-box" data-href="{{ $ss->facebook }}" data-colorscheme="light" data-show-faces="true" data-header="false" data-stream="true" data-show-border="false"></div>
         <div id="fb-root"></div>
         <script>(function(d, s, id) {
           var js, fjs = d.getElementsByTagName(s)[0];
           if (d.getElementById(id)) return;
           js = d.createElement(s); js.id = id;
-          js.src = "//connect.facebook.net/id_ID/sdk.js#xfbml=1&version=v2.10&appId=174602582661861";
+          js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&appId=174602582661861&version=v2.0";
           fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));</script>
-      </center>
+        </center>
+      </div>
     </div>
   </div>
-</div>
 
 
 </div>

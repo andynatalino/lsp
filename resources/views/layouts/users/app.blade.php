@@ -9,8 +9,8 @@
   <meta name="twitter:url" content="{{ Request::url() }}">
 
   <meta property="og:title" content="@yield('title')" />
-  <meta property="og:description" content="Sekolah koding adalah website untuk belajar programming, desain dan web development online" />
-  <meta property="og:image" content="http://sekolahkoding.com/assets/images/cover/cover17.png">
+  <meta property="og:description" content="SAKASAKTI bergerak dalam bidang jasa konsultan Manajemen Sertifikasi Profesi (LSP)" />
+  <meta property="og:image" content="http://sakasakti.com/gallery_gen//c3a63120701b0d7228bbd5efc560186d_509x112.jpg">
 
   <title>@yield('pageTitle') - Sakasakti</title>
   <?php $s = App\Setting::first(); ?>
