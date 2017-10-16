@@ -26,18 +26,10 @@
             <label>Email</label>
             <input type="email" required class="form-control" name="email" value="{{ old('email') }}" placeholder="Email">
           </div>
-          @if(session('gagal'))
-          <div class="form-group has-error" id="divpass">
-            <label class="control-label" for="password"><i id="iconpass" class="fa fa-times-circle-o"></i> Password</label>
-            <input type="password" onclick="passwordError();" onchange="passwordError();" required class="form-control" name="password" placeholder="Password" id="password">
-            <span id="spanpass" class="help-block">{{ session('gagal')}}</span>
-          </div>
-          @else
           <div class="form-group">
             <label>Password</label>
             <input type="password" required class="form-control" name="password" placeholder="Password">
           </div>
-          @endif
           <div class="form-group">
             <label>Ulangi Password</label>
             <input type="password" required class="form-control" name="repassword" placeholder="Password">
@@ -128,14 +120,6 @@
   $('#datepicker').datepicker({
     autoclose: true
   })
-  function passwordError() {
-    document.getElementById("divpass").classList.remove('has-error');
-    var elem = document.getElementById('iconpass');
-    elem.parentNode.removeChild(elem);
-    var elem2 = document.getElementById('spanpass');
-    elem2.parentNode.removeChild(elem2);
-    return false;    
-  }
 </script>
 @endsection
 @endsection

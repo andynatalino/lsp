@@ -54,14 +54,20 @@ class adminController extends Controller
 
   public function user_save(Request $request){
     $id = Auth::user()->id;
+    $this->validate($request, [
+      'username' => 'unique:users,username,'.$id,
+      'password' => 'required|string|min:6',
+      'repassword' => 'required|same:password'
+    ]);
     $user = new User;
     $user->number = $request->number;
     $user->username = $request->username;
     $user->name = $request->name;
     $user->email = $request->email;
-    if (!Hash::check($request->password, $request->repassword)) {      
-      return back()->with('gagal', 'Password yang anda masukan tidak sesuai!');
-    }
+    // if (!Hash::check($request->password, $request->repassword)) {      
+    //   die('gagal');
+    //   return back()->with('gagal', 'Password yang anda masukan tidak sesuai!');
+    // }
     $user->password = bcrypt($request->password);
     $user->instansi = $request->instansi;
     $user->gender = $request->gender;
@@ -72,20 +78,15 @@ class adminController extends Controller
     $user->telp = $request->telp;
     $user->address = $request->address;
     $user->role = $request->role;
-    $user->photo = '';
-    if($request->hasFile('photo')){
-      $image = date('YmdHis').uniqid().".".
-      $request->photo->getClientOriginalExtension();
-      $request->photo->move(public_path()."/assets/photo",$image);
-      $user->photo = $image;
-    }
-    $this->validate($request, [
-      'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-      'username' => 'unique:users,username,'.$id,
-      'password' => 'required|string|min:6',
-      'repassword' => 'required|same:password'
-    ]);
+    // $user->photo = '';
+    // if($request->hasFile('photo')){
+    //   $image = date('YmdHis').uniqid().".".
+    //   $request->photo->getClientOriginalExtension();
+    //   $request->photo->move(public_path()."/assets/photo",$image);
+    //   $user->photo = $image;
+    // }
     $user->save();
+     return redirect(url('admin/user'));
 
   }
 
