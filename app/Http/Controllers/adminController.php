@@ -154,6 +154,6 @@ public function user(){
       if (!Auth::check()){ return abort(404); }
       $galeri = galeri::all();
       if (!$galeri){ return abort(404); }
-      return view('admin.galeri.all', ['galeri' => $tentang]);
+      return view('admin.galeri.all', ['galeri' => $galeri]);
     }
   }

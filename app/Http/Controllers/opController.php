@@ -151,11 +151,12 @@ class opController extends Controller
     $kategori = new Kategori;
     $kategori->nama_sp = $request->nama;
     $kategori->isi = $request->isi;
-    $kategori->slug = str_slug($request->nama);
+    $kategori->slug = str_slug($request->nama);    
     $kategori->image = '';
     if($request->hasFile('image')){
-      $image = date('YmdHis').uniqid().".". $request->image->getClientOriginalExtension();
-      Image::make($request->image)->resize(600, 400)->save(public_path("/assets/kategori/". $image));
+      $image = date('YmdHis').uniqid().".".
+      $request->image->getClientOriginalExtension();
+      $request->image->move(public_path()."/assets/kategori",$image);
       $kategori->image = $image;
     }
     $kategori->save();
@@ -182,10 +183,10 @@ class opController extends Controller
     } else{
       $kategori->image = '';
       if($request->hasFile('image')){
-        $image = date('YmdHis').uniqid().".". $request->image->getClientOriginalExtension();
-        Image::make($request->image)->resize(600, 400)->save(public_path("/assets/kategori/". $image));
+        $image = date('YmdHis').uniqid().".".
+        $request->image->getClientOriginalExtension();
+        $request->image->move(public_path()."/assets/kategori",$image);
         $kategori->image = $image;
-
       }
     }
     $kategori->save();
@@ -250,12 +251,6 @@ class opController extends Controller
     $jadwal->isi = $request->isi;
     $jadwal->status = $request->status;
     $jadwal->slug = str_slug($request->nama_lsp);
-    $jadwal->image = '';
-    if($request->hasFile('image')){
-      $image = date('YmdHis').uniqid().".". $request->image->getClientOriginalExtension();
-      Image::make($request->image)->resize(600, 400)->save(public_path("/assets/jadwal/". $image));
-      $jadwal->image = $image;
-    }
     $jadwal->save();
 
     return redirect(url('operator/jadwal'));
