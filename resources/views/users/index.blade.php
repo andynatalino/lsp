@@ -2,7 +2,6 @@
 @section('pageTitle', 'Home')
 
 @section('content')
-<a href="{{ url('/sertifikasi/lsp-mouse'.-time()) }}">asdas</a>
 <div class="grid">
   <div class="row cells12">
     <div class="cell colspan8">
