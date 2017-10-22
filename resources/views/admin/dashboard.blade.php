@@ -25,7 +25,6 @@ $transaksi = App\Transaksi::whereDate('created_at', '=', Carbon::today()->toDate
           <span class="info-box-text">Users</span>
           <span class="info-box-number">{{ $usr }}</span>
         </div>
-        <!-- /.info-box-content -->
       </div>
     </div>
     <div class="col-md-3 col-sm-6 col-xs-12">
@@ -35,7 +34,6 @@ $transaksi = App\Transaksi::whereDate('created_at', '=', Carbon::today()->toDate
           <span class="info-box-text">Kategori</span>
           <span class="info-box-number">{{ $cat }}</span>
         </div>
-        <!-- /.info-box-content -->
       </div>
     </div>
     <div class="col-md-3 col-sm-6 col-xs-12">
@@ -45,7 +43,6 @@ $transaksi = App\Transaksi::whereDate('created_at', '=', Carbon::today()->toDate
           <span class="info-box-text">Jadwal</span>
           <span class="info-box-number">{{ $jad }}</span>
         </div>
-        <!-- /.info-box-content -->
       </div>
     </div>
     <div class="col-md-3 col-sm-6 col-xs-12">
@@ -55,7 +52,6 @@ $transaksi = App\Transaksi::whereDate('created_at', '=', Carbon::today()->toDate
           <span class="info-box-text">Transaksi Lunas</span>
           <span class="info-box-number">{{ $tra }}</span>
         </div>
-        <!-- /.info-box-content -->
       </div>
     </div>
     <div class="col-md-3 col-sm-6 col-xs-12">
@@ -65,7 +61,6 @@ $transaksi = App\Transaksi::whereDate('created_at', '=', Carbon::today()->toDate
           <span class="info-box-text">Konfirmasi</span>
           <span class="info-box-number">{{ $kon }}</span>
         </div>
-        <!-- /.info-box-content -->
       </div>
     </div>
     <div class="col-md-3 col-sm-6 col-xs-12">
@@ -75,7 +70,6 @@ $transaksi = App\Transaksi::whereDate('created_at', '=', Carbon::today()->toDate
           <span class="info-box-text">Galeri</span>
           <span class="info-box-number">{{ $gal }}</span>
         </div>
-        <!-- /.info-box-content -->
       </div>
     </div>
     <div class="col-md-3 col-sm-6 col-xs-12">
@@ -85,7 +79,6 @@ $transaksi = App\Transaksi::whereDate('created_at', '=', Carbon::today()->toDate
           <span class="info-box-text">Tipe Pembayaran</span>
           <span class="info-box-number">{{ $tipe }}</span>
         </div>
-        <!-- /.info-box-content -->
       </div>
     </div>
     <div class="col-md-3 col-sm-6 col-xs-12">
@@ -95,12 +88,10 @@ $transaksi = App\Transaksi::whereDate('created_at', '=', Carbon::today()->toDate
           <span class="info-box-text">Slider</span>
           <span class="info-box-number">{{ $sli }}</span>
         </div>
-        <!-- /.info-box-content -->
       </div>
     </div>
-  </div><!-- /.col -->      
-
-</div><!-- /.row -->
+  </div>  
+</div>
 <div class="row">
   <div class="col-xs-12">
     <div class="box">
@@ -108,7 +99,6 @@ $transaksi = App\Transaksi::whereDate('created_at', '=', Carbon::today()->toDate
         <h3 class="box-title">Transaksi Hari ini</h3>
         <div class="box-tools"></div>
       </div>
-      <!-- /.box-header -->
       <div class="box-body table-responsive no-padding">
         <table class="table table-hover">
           <tr>
@@ -133,14 +123,9 @@ $transaksi = App\Transaksi::whereDate('created_at', '=', Carbon::today()->toDate
           @endforeach
         </table>
       </div>
-      <!-- /.box-body -->
     </div>
-    <!-- /.box -->
   </div>
 </div>
 </section>
-<!-- /.content -->
 </div>
-
-
 @endsection
