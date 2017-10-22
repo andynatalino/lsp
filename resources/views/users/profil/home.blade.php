@@ -17,7 +17,6 @@
 						</div>
 					</div>
 				</div>
-
 			</div>
 			<hr class="thin">
 			<div class="listview set-border padding10" data-role="listview">
