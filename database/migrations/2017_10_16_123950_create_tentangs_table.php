@@ -15,6 +15,7 @@ class CreateTentangsTable extends Migration
     {
         Schema::create('tentangs', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('judul');
             $table->longtext('tentang');
             $table->timestamps();
         });

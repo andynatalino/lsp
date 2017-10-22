@@ -136,7 +136,7 @@ class ProfileController extends Controller
 			]);
 			$user = User::find($id);
 			$user->number = $request->number;
-			$user->username = str_slug($request->username);
+			$user->username = strtolower(str_slug($request->username));
 			$user->name = $request->name;
 			$user->place = $request->place;
 			$user->date = $request->date;

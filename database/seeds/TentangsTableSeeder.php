@@ -11,8 +11,9 @@ class TentangsTableSeeder extends Seeder
      */
     public function run()
     {    	
-    	DB::table('tentangs')->insert([    		
-    		'tentang' => '<p>Tentang Perusahaan</p>',
-    	]);
+    	DB::table('tentangs')->insert([    
+            'judul' => 'judul',		
+            'tentang' => '<p>Tentang Perusahaan</p>',
+        ]);
     }
 }

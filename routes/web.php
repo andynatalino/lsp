@@ -1,5 +1,24 @@
 <?php
+use Faker\Factory as Faker;
 Auth::routes();
+Route::get('insert',function ()
+{
+  $i = 1;
+  $faker = Faker::create();
+  foreach (range(1,500) as $index) {
+    DB::table('users')->insert([            
+      'number' => $i++,
+      'username' => $faker->name,
+      'name' => $faker->name,
+      'email' => $faker->email,
+      'password' => '$2y$10$CmhtuUx3WMi2xQIoRIQn9O1/mLKdLwI0/Cns0SLfUXE0I1bhmtqLO',   
+      'role' => '1',
+    ]);
+  }
+
+  die('berhasil');
+
+});
 Route::get('logout',function ()
 {
  return redirect(url('login'));
@@ -73,7 +92,11 @@ Route::group(['prefix' => 'admin'], function(){
   });
    Route::group(['prefix' => 'tentang'], function(){
     Route::get('/', 'adminController@tentang');
+    Route::get('/buat', 'adminController@buat_tentang');
     Route::post('/', 'adminController@tentang_save');
+    Route::get('/{id}/edit', 'adminController@tentang_edit');
+    Route::post('/{id}', 'adminController@tentang_update');
+    Route::delete('/{id}', 'adminController@tentang_delete');
   });
    Route::group(['prefix' => 'kontak'], function(){
     Route::get('/', 'adminController@tentang');
@@ -131,7 +154,8 @@ Route::group(['prefix' => 'operator'], function(){
       Route::delete('/{id}', 'opController@pembayaran_delete');
     });
     Route::group(['prefix' => 'konfirmasi'], function(){
-      Route::get('/', 'opController@konfirmasi_all');
+      Route::get('/', 'opController@konfirmasi_bank');
+      Route::get('/tunai', 'opController@konfirmasi_tunai');
       Route::post('/{id}', 'opController@konfirmasi_update');
       Route::delete('/{id}', 'opController@konfirmasi_delete');
     });

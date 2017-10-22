@@ -3,25 +3,17 @@
 @section('pageTitle', 'Kategori')
 
 @section('content')
-
 <div class="row">
   <div class="col-xs-12">
     <div class="box">
       <div class="box-header">
-        <a href="{{ url('operator/kategori/buat')}}"><button type="button" class="btn btn-primary btn-sm">Tambah Kategori</button></a>
-        <div class="box-tools">
-          <div class="input-group input-group-sm" style="width: 150px;">
-            <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
-            <div class="input-group-btn">
-              <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- /.box-header -->
-      <div class="box-body table-responsive no-padding">
-        <?php $i = 1; ?>
-        <table class="table table-hover">
+        Kategori All
+        <a href="{{ url('operator/kategori/buat')}}"><button type="button" class="btn btn-primary btn-sm pull-right">Tambah Kategori</button></a>
+     </div>
+     <div class="box-body table-responsive">
+      <?php $i = 1; ?>
+      <table id="datab" class="table table-bordered table-striped">
+        <thead>
           <tr>
             <th>No</th>
             <th>Kategori</th>
@@ -29,6 +21,8 @@
             <th>Image</th>
             <th>Action</th>
           </tr>
+        </thead>
+        <tbody>
           @foreach($kategori as $key)
           <tr>
             <td>{{ $i++ }}</td>
@@ -45,12 +39,16 @@
             </td>
           </tr>
           @endforeach
-        </table>
-      </div>
-      <!-- /.box-body -->
+        </tbody>
+      </table>
     </div>
-    <!-- /.box -->
   </div>
 </div>
+</div>
 
+<script>
+  $(function () {
+    $('#datab').DataTable()
+  })
+</script>
 @endsection

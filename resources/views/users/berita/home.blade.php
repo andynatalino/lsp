@@ -12,9 +12,6 @@
           <span class="title"><a href="{{ url('berita/'.$key->slug) }}" style="color:white; padding: 10px 10px 10px 10px;" onclick="document.getElementById('my_form').submit(); return false;">{{ $key->judul }}</a></span>
         </div>
         <div class="content padding10">
-          <div class="panel image-container">
-            <div class="frame"><img src="{{ url('assets/kategori/'.$key->image) }}"></div>
-          </div>
           {!! $key->isi !!}
         </div>
         <hr>

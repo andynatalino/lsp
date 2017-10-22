@@ -28,7 +28,7 @@
           <div class="form-group">
             <label>Logo</label>
             <input name="logo" type="file">
-             <p class="help-block">File berformat PNG, JPG, JPEG, GIF, ICO</p>
+            <p class="help-block">File berformat PNG, JPG, JPEG, GIF, ICO</p>
           </div>
         </div>
         <div class="col-md-6">
@@ -44,40 +44,56 @@
           <div class="form-group">
             <label>Admin Web Color</label>
             <select class="form-control" name="admincolor" style="width: 100%;">
-              <option selected="selected">Red</option>
-              <option>Alaska</option>
-              <option>California</option>
-              <option>Delaware</option>
-              <option>Tennessee</option>
-              <option>Texas</option>
-              <option>Washington</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Operator Web Color</label>
-            <select class="form-control" name="opcolor" style="width: 100%;">
-              <option selected="selected">Blue</option>
-              <option>Alaska</option>
-              <option>California</option>
-              <option>Delaware</option>
-              <option>Tennessee</option>
-              <option>Texas</option>
-              <option>Washington</option>            
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Icon</label>
-            <input name="favicon" type="file">
-            <p class="help-block">File berformat PNG, JPG, JPEG, GIF, ICO</p>
+              <option disabled selected="selected">--- Color ---</option>    
+              <option value="skin-red" {{ ($setting->color_admin=='skin-red')?'selected':'' }}>Red</option>
+              <option value="skin-blue" {{ ($setting->color_admin=='skin-blue')?'selected':'' }}>Blue</option>
+              <option value="skin-yellow" {{ ($setting->color_admin=='skin-yellow')?'selected':'' }}
+                >Yellow</option>
+                <option value="skin-green" {{ ($setting->color_admin=='skin-green')?'selected':'' }}>Green</option>
+                <option value="skin-purple" {{ ($setting->color_admin=='skin-purple')?'selected':'' }}>Purple</option>
+                <option value="skin-black" {{ ($setting->color_admin=='skin-black')?'selected':'' }}>Black</option>
+                <option disabled>--- Light ---</option>
+                <option value="skin-red-light" {{ ($setting->color_admin=='skin-red-light')?'selected':'' }}>Red Light</option>
+                <option value="skin-blue-light" {{ ($setting->color_admin=='skin-blue-light')?'selected':'' }}>Blue Light</option>             
+                <option value="skin-yellow-light" {{ ($setting->color_admin=='skin-yellow-light')?'selected':'' }}>Yellow Light</option>
+                <option value="skin-green-light" {{ ($setting->color_admin=='skin-green-light')?'selected':'' }}>Green Light</option>
+                <option value="skin-purple-light" {{ ($setting->color_admin=='skin-purple-light')?'selected':'' }}>Purple Light</option>
+                <option value="skin-black-light" {{ ($setting->color_admin=='skin-black-light')?'selected':'' }}>Black Light</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Operator Web Color</label>
+              <select class="form-control" name="opcolor" style="width: 100%;">
+               <option disabled selected="selected">--- Color ---</option>    
+               <option value="skin-red" {{ ($setting->color_operator=='skin-red')?'selected':'' }}>Red</option>
+               <option value="skin-blue" {{ ($setting->color_operator=='skin-blue')?'selected':'' }}>Blue</option>
+               <option value="skin-yellow" {{ ($setting->color_operator=='skin-yellow')?'selected':'' }}
+                >Yellow</option>
+                <option value="skin-green" {{ ($setting->color_operator=='skin-green')?'selected':'' }}>Green</option>
+                <option value="skin-purple" {{ ($setting->color_operator=='skin-purple')?'selected':'' }}>Purple</option>
+                <option value="skin-black" {{ ($setting->color_operator=='skin-black')?'selected':'' }}>Black</option>
+                <option disabled>--- Light ---</option>
+                <option value="skin-red-light" {{ ($setting->color_operator=='skin-red-light')?'selected':'' }}>Red Light</option>
+                <option value="skin-blue-light" {{ ($setting->color_operator=='skin-blue-light')?'selected':'' }}>Blue Light</option>             
+                <option value="skin-yellow-light" {{ ($setting->color_operator=='skin-yellow-light')?'selected':'' }}>Yellow Light</option>
+                <option value="skin-green-light" {{ ($setting->color_operator=='skin-green-light')?'selected':'' }}>Green Light</option>
+                <option value="skin-purple-light" {{ ($setting->color_operator=='skin-purple-light')?'selected':'' }}>Purple Light</option>
+                <option value="skin-black-light" {{ ($setting->color_operator=='skin-black-light')?'selected':'' }}>Black Light</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Icon</label>
+              <input name="favicon" type="file">
+              <p class="help-block">File berformat PNG, JPG, JPEG, GIF, ICO</p>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="box-footer">
-        {{csrf_field()}}
-        <button type="submit" class="btn btn-primary">Save Settings</button>
-        <button type="reset" class="btn btn-warning">Reset Settings</button>
-      </div>
-    </form>
+        <div class="box-footer">
+          {{csrf_field()}}
+          <button type="submit" class="btn btn-primary">Save Settings</button>
+          <button type="reset" class="btn btn-warning">Reset Settings</button>
+        </div>
+      </form>
+    </div>
   </div>
-</div>
-@endsection
+  @endsection

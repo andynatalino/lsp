@@ -23,7 +23,7 @@ class SertifikasiController extends Controller
   public function jadwal($slug){
     $kategori = Kategori::where('slug', $slug)->first();
     if (!$kategori){ abort(404); }
-    $jadwal = Jadwal::where('id_kategori', $kategori->id)->paginate(10);
+    $jadwal = Jadwal::where('id_kategori', $kategori->id)->get();
     if (!$jadwal){ abort(404); }
     return view('users.sertifikasi.jadwal', ['jadwal' => $jadwal, 'kategori' => $kategori]);
   }
@@ -116,6 +116,7 @@ public function pembayaran_informasi_save(Request $request){
   $transaksi = Transaksi::find($id);
   $transaksi->id_user = Auth::user()->id;
   $transaksi->id_pembayaran = $bank;
+  $transaksi->tipe = 1;
   $transaksi->status = 3;
   $transaksi->save();
   $bank = Pembayaran::where(['id' => $transaksi->id_pembayaran])->first();

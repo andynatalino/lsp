@@ -33,7 +33,10 @@
 <![endif]-->
 
 </head>
-<body class="skin-blue">
+<?php
+$ss = App\Setting::first();
+?>
+<body class="{{ $ss->color_admin  }}">
   <div class="wrapper">
 
     <!-- Header -->

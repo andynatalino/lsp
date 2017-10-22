@@ -61,6 +61,9 @@ class opController extends Controller
   }
 
   public function berita_save(Request $request){
+      if ($request->content == '') {
+         return back()->with('gagal', 'Anda tidak bisa mengisi berita kosong!');
+      }
     $a = new Berita;
     $a->id_user = Auth::user()->id;
     $a->judul = $request->judul;
@@ -138,7 +141,7 @@ class opController extends Controller
   }
 
   public function kategori_all(){
-    $kategori = Kategori::paginate(10);
+    $kategori = Kategori::get();
     if (!$kategori){ abort(404); }
     return view('operator.kategori.all', ['kategori' => $kategori]);
   }
@@ -300,9 +303,16 @@ class opController extends Controller
     return redirect(url('operator/pembayaran'));
   }
 
-  public function konfirmasi_all(){
-    $transaksi = Transaksi::orderBy('created_at', 'desc')->where('status', '=', 4)->get();
-    return view('operator.konfirmasi.all', ['transaksi' => $transaksi]);
+  public function konfirmasi_bank(){
+    $transaksi = Transaksi::orderBy('created_at', 'desc')
+    ->where('tipe', '=', 1)->where('status', '=', 4)->get();
+    return view('operator.konfirmasi.bank', ['transaksi' => $transaksi]);
+  }
+
+  public function konfirmasi_tunai(){
+    $transaksi = Transaksi::orderBy('created_at', 'desc')
+    ->where('tipe', '=', 2)->where('status', '=', 4)->get();
+    return view('operator.konfirmasi.tunai', ['transaksi' => $transaksi]);
   }
 
   public function konfirmasi_update($id){

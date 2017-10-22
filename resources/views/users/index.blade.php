@@ -21,7 +21,7 @@
           <span class="title">{{ $key->judul }}</span>
         </div>
         <div class="content" style="padding: 10px 10px 10px 10px;">
-          {!! str_limit($key->isi, 500) !!}
+             {!! $key->isi !!}
           <br>
           <br>
           <span class="place-right">Lanjutkan Membaca</span><br>

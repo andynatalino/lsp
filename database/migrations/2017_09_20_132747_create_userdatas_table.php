@@ -26,8 +26,8 @@ class CreateUserdatasTable extends Migration
             $table->timestamps();
 
             $table->foreign('id_transaksi')->references('id')
-            ->on('transaksis')->onDelete('cascade');
-        });
+            ->on('transaksis')->onDelete('no action');
+        });        
     }
 
     /**

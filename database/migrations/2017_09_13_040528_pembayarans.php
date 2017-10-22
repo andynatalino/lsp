@@ -18,7 +18,6 @@ class pembayarans extends Migration
           $table->string('nama_bank')->nullable();
           $table->string('no_rek')->nullable();
           $table->string('atas_nama')->nullable();
-          $table->string('lainnya')->nullable();
           $table->timestamps();
       });
     }

@@ -30,7 +30,7 @@ class IndexController extends Controller
   }
 
   public function tentang(){
-      $tentang = tentang::first();
+      $tentang = tentang::get();
       return view('users.tentang.tentang', ['tentang' => $tentang]);
   }
 

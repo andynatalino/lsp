@@ -3,119 +3,144 @@
 @section('pageTitle', 'Dashboard')
 
 @section('content')
- <div class='row'>
-        <div class='col-md-6'>
-            <!-- Box -->
-            <div class="box box-primary">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Randomly Generated Tasks</h3>
-                    <div class="box-tools pull-right">
-                        <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
-                        <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
-                    </div>
-                </div>
-                <div class="box-body">
-                    @foreach($tasks as $task)
-                        <h5>
-                            {{ $task['name'] }}
-                            <small class="label label-{{$task['color']}} pull-right">{{$task['progress']}}%</small>
-                        </h5>
-                        <div class="progress progress-xxs">
-                            <div class="progress-bar progress-bar-{{$task['color']}}" style="width: {{$task['progress']}}%"></div>
-                        </div>
-                    @endforeach
-
-                </div><!-- /.box-body -->
-                <div class="box-footer">
-                    <form action='#'>
-                        <input type='text' placeholder='New task' class='form-control input-sm' />
-                    </form>
-                </div><!-- /.box-footer-->
-            </div><!-- /.box -->
-        </div><!-- /.col -->
-        <div class='col-md-6'>
-            <!-- Box -->
-            <div class="box box-primary">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Second Box</h3>
-                    <div class="box-tools pull-right">
-                        <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
-                        <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
-                    </div>
-                </div>
-                <div class="box-body">
-                    A separate section to add any kind of widget. Feel free
-                    to explore all of AdminLTE widgets by visiting the demo page
-                    on <a href="https://almsaeedstudio.com">Almsaeed Studio</a>.
-                </div><!-- /.box-body -->
-            </div><!-- /.box -->
-        </div><!-- /.col -->
-
-    </div><!-- /.row -->
-     <div class="row">
-        <div class="col-xs-12">
-          <div class="box">
-            <div class="box-header">
-              <h3 class="box-title">Responsive Hover Table</h3>
-
-              <div class="box-tools">
-                <div class="input-group input-group-sm" style="width: 150px;">
-                  <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
-
-                  <div class="input-group-btn">
-                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body table-responsive no-padding">
-              <table class="table table-hover">
-                <tr>
-                  <th>ID</th>
-                  <th>User</th>
-                  <th>Date</th>
-                  <th>Status</th>
-                  <th>Reason</th>
-                </tr>
-                <tr>
-                  <td>183</td>
-                  <td>John Doe</td>
-                  <td>11-7-2014</td>
-                  <td><span class="label label-success">Approved</span></td>
-                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                </tr>
-                <tr>
-                  <td>219</td>
-                  <td>Alexander Pierce</td>
-                  <td>11-7-2014</td>
-                  <td><span class="label label-warning">Pending</span></td>
-                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                </tr>
-                <tr>
-                  <td>657</td>
-                  <td>Bob Doe</td>
-                  <td>11-7-2014</td>
-                  <td><span class="label label-primary">Approved</span></td>
-                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                </tr>
-                <tr>
-                  <td>175</td>
-                  <td>Mike Doe</td>
-                  <td>11-7-2014</td>
-                  <td><span class="label label-danger">Denied</span></td>
-                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                </tr>
-              </table>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
+<?php 
+use Carbon\Carbon;
+$usr = App\User::get()->count();  
+$cat = App\Kategori::get()->count();  
+$jad = App\Jadwal::get()->count();  
+$tra = App\Transaksi::where(['status' => 5])->get()->count();  
+$kon = App\Transaksi::where(['status' => 4])->get()->count();  
+$gal = App\Galeri::get()->count();  
+$tipe = App\Pembayaran::get()->count();  
+$sli = App\Slider::get()->count();  
+$date = Carbon::today();
+$transaksi = App\Transaksi::whereDate('created_at', '=', Carbon::today()->toDateString())->get();
+?>
+<div class='row'>
+  <div class='col-md-12'>
+    <div class="col-md-3 col-sm-6 col-xs-12">
+      <div class="info-box">
+        <span class="info-box-icon bg-red"><i class="fa fa-users"></i></span>
+        <div class="info-box-content">
+          <span class="info-box-text">Users</span>
+          <span class="info-box-number">{{ $usr }}</span>
         </div>
+        <!-- /.info-box-content -->
       </div>
-    </section>
-    <!-- /.content -->
+    </div>
+    <div class="col-md-3 col-sm-6 col-xs-12">
+      <div class="info-box">
+        <span class="info-box-icon bg-yellow"><i class="fa fa-bars"></i></span>
+        <div class="info-box-content">
+          <span class="info-box-text">Kategori</span>
+          <span class="info-box-number">{{ $cat }}</span>
+        </div>
+        <!-- /.info-box-content -->
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6 col-xs-12">
+      <div class="info-box">
+        <span class="info-box-icon bg-blue"><i class="fa fa-tasks"></i></span>
+        <div class="info-box-content">
+          <span class="info-box-text">Jadwal</span>
+          <span class="info-box-number">{{ $jad }}</span>
+        </div>
+        <!-- /.info-box-content -->
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6 col-xs-12">
+      <div class="info-box">
+        <span class="info-box-icon bg-green"><i class="fa fa-money"></i></span>
+        <div class="info-box-content">
+          <span class="info-box-text">Transaksi Lunas</span>
+          <span class="info-box-number">{{ $tra }}</span>
+        </div>
+        <!-- /.info-box-content -->
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6 col-xs-12">
+      <div class="info-box">
+        <span class="info-box-icon bg-aqua"><i class="fa fa-ticket"></i></span>
+        <div class="info-box-content">
+          <span class="info-box-text">Konfirmasi</span>
+          <span class="info-box-number">{{ $kon }}</span>
+        </div>
+        <!-- /.info-box-content -->
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6 col-xs-12">
+      <div class="info-box">
+        <span class="info-box-icon bg-purple"><i class="fa fa-photo"></i></span>
+        <div class="info-box-content">
+          <span class="info-box-text">Galeri</span>
+          <span class="info-box-number">{{ $gal }}</span>
+        </div>
+        <!-- /.info-box-content -->
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6 col-xs-12">
+      <div class="info-box">
+        <span class="info-box-icon bg-navy"><i class="fa fa-credit-card"></i></span>
+        <div class="info-box-content">
+          <span class="info-box-text">Tipe Pembayaran</span>
+          <span class="info-box-number">{{ $tipe }}</span>
+        </div>
+        <!-- /.info-box-content -->
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6 col-xs-12">
+      <div class="info-box">
+        <span class="info-box-icon bg-grey"><i class="fa fa-tv"></i></span>
+        <div class="info-box-content">
+          <span class="info-box-text">Slider</span>
+          <span class="info-box-number">{{ $sli }}</span>
+        </div>
+        <!-- /.info-box-content -->
+      </div>
+    </div>
+  </div><!-- /.col -->      
+
+</div><!-- /.row -->
+<div class="row">
+  <div class="col-xs-12">
+    <div class="box">
+      <div class="box-header">
+        <h3 class="box-title">Transaksi Hari ini</h3>
+        <div class="box-tools"></div>
+      </div>
+      <!-- /.box-header -->
+      <div class="box-body table-responsive no-padding">
+        <table class="table table-hover">
+          <tr>
+            <th>ID Transaksi</th>
+            <th>User</th>
+            <th>Tanggal Konfirmasi</th>
+            <th>Jadwal</th>
+            <th>Biaya</th>
+            <th>Status</th>
+          </tr>
+          @foreach($transaksi as $key)
+          <tr>
+            <td>{{ $key->id }}</td>
+            <td>{{ $key->user->name }}</td>
+            <td>{{ date('j F Y h:i:s', strtotime($key->tanggal_konfirmasi)) }}</td>
+            <td>{{ $key->jadwal->nama_lsp }}</td>
+            <td>Rp. {{ $key->jadwal->biaya }},-</td>
+            <td>              
+              @if($key->status == 4) <span class="label label-warning">Pending</span> @elseif($key->status == 5) <span class="label label-success">Lunas</span> @endif
+            </td>          
+          </tr>         
+          @endforeach
+        </table>
+      </div>
+      <!-- /.box-body -->
+    </div>
+    <!-- /.box -->
   </div>
+</div>
+</section>
+<!-- /.content -->
+</div>
 
 
-      @endsection
+@endsection

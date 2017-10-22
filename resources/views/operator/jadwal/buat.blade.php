@@ -28,9 +28,9 @@
             <input type="text" required class="form-control" name="nama_lsp" placeholder="Nama LSP">
           </div>
           <div class="form-group">
-            <label>Tanggal Mulai</label>
+            <label>Tanggal Mulai</label> <?php $date = date('Y-m-d');  ?>
             <div class="input-group date" data-provide="datepicker">
-              <input type="text" required name="tanggal_mulai" class="form-control">
+              <input type="text" required name="tanggal_mulai" value="{{ date('m/d/Y ', strtotime($date)) }}" class="form-control">
               <div class="input-group-addon">
                 <span class="glyphicon glyphicon-th"></span>
               </div>
@@ -53,8 +53,12 @@
             </div>
           </div>
           <div class="form-group">
-            <label>Lokasi</label>
-            <textarea required placeholder="Lokasi" required name="lokasi" class="form-control"></textarea>
+            <label>Alamat</label>
+            <textarea required placeholder="Alamat" required name="lokasi" class="form-control"></textarea>
+          </div>
+          <div class="form-group">
+            <label>Wilayah</label>
+            <input type="text" required class="form-control" name="nama_lsp" placeholder="Nama LSP">
           </div>
           <div class="form-group">
             <label>Kuota (contoh: 30)</label>

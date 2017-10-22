@@ -13,21 +13,23 @@ class JadwalsTableSeeder extends Seeder
   */
   public function run()
   {
+    $i = 1;
+    $k = 100;
+    $m = 10000;
     $faker = Faker::create();
-    foreach (range(1,100) as $index) {
+    foreach (range(1,1000) as $index) {
       DB::table('jadwals')->insert([
-        'id_kategori' => 1  ,
-        'nama_lsp' => $faker->name,
-        'tanggal_mulai' => $faker->name,
-        'tanggal_selesai' => $faker->name,
-        'waktu' => $faker->email,
-        'lokasi' => $faker->email,
-        'kuota' => $faker->email,
-        'biaya' => $faker->name,
-        'isi' => $faker->name,
-        'status' => $faker->name,
-        'slug' => $faker->name,
-        'image' => $faker->name,
+        'id_kategori' =>  $i++,
+        'nama_lsp' => $faker->firstNameMale ,
+        'tanggal_mulai' => $faker->date($format = 'Y-m-d', $max = 'now'),
+        'tanggal_selesai' => $faker->date($format = 'Y-m-d', $max = 'now'),
+        'waktu' => $faker->time($format = 'H:i:s', $max = 'now'),
+        'lokasi' => $faker->address,
+        'kuota' => $k++,
+        'biaya' => $m++,
+        'isi' => $faker->text($maxNbChars = 200),
+        'status' => 1,
+        'slug' => strtolower(str_slug($faker->name)),
       ]);
     }
   }

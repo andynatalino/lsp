@@ -17,28 +17,32 @@
           </div>
         </div>
       </div>
-      <div class="box-body table-responsive no-padding">
+      <div class="box-body table-responsive">
         <?php $i = 1; ?>
-        <table class="table table-hover">
-          <tr>
-            <th>No</th>
-            <th>User</th>
-            <th>Jadwal</th>
-            <th>Tipe Pembayaran</th>
-            <th>Tanggal Konfirmasi</th>
-            <th>Tanggal transaksi</th>
-          </tr>
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>User</th>
+              <th>Jadwal</th>
+              <th>Tipe Pembayaran</th>
+              <th>Tanggal Konfirmasi</th>
+              <th>Tanggal transaksi</th>
+            </tr>
+          </thead>
           <?php $no = 1;?>
-          @foreach($transaksi as $key)
-          <tr>
-            <td>{{ $i++ }}</td>
-            <td>{{ $key->user->name }}</td>
-            <td>LSP Komputer</td>
-            <td>{{ $key->pembayaran->nama_bank }}</td>
-            <td>{{ date('D, F jS Y \a\t h:i a', strtotime($key->tanggal_konfirmasi)) }}</td>
-            <td>{{ date('D, F jS Y \a\t h:i a', strtotime($key->tanggal_transaksi)) }}</td>
-          </tr>
-          @endforeach
+          <tbody>
+            @foreach($transaksi as $key)
+            <tr>
+              <td>{{ $i++ }}</td>
+              <td>{{ $key->user->name }}</td>
+              <td>LSP Komputer</td>
+              <td>{{ $key->pembayaran->nama_bank }}</td>
+              <td>{{ date('D, F jS Y \a\t h:i a', strtotime($key->tanggal_konfirmasi)) }}</td>
+              <td>{{ date('D, F jS Y \a\t h:i a', strtotime($key->tanggal_transaksi)) }}</td>
+            </tr>
+            @endforeach
+          </tbody>
         </table>
       </div>
     </div>
