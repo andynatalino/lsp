@@ -10,7 +10,7 @@ $cat = App\Kategori::get()->count();
 $jad = App\Jadwal::get()->count();  
 $tra = App\Transaksi::where(['status' => 5])->get()->count();  
 $kon = App\Transaksi::where(['status' => 4])->get()->count();  
-$gal = App\Galeri::get()->count();  
+$gal = App\galeri::get()->count();  
 $tipe = App\Pembayaran::get()->count();  
 $sli = App\Slider::get()->count();  
 $date = Carbon::today();

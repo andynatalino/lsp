@@ -119,7 +119,7 @@
       </div>     
       <div class="form-group">
         <label>Meta Description</label>
-        <textarea name="meta_description" maxlength="160" style="resize: none;" class="form-control" rows="3" placeholder="Meta Description max. 160 karakter">{{ $setting->meta_description }}</textarea>
+        <textarea name="meta_description" style="resize: none;" class="form-control" rows="3" placeholder="Meta Description max. 160 karakter">{{ $setting->meta_description }}</textarea>
       </div>
       <div class="form-group">
         <label>Meta Keywords</label> Pisahkan dengan koma (ex. Pelatihan, Lembaga Pelatihan, Sertifikasi) 

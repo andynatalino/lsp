@@ -19,8 +19,8 @@ class Settings extends Migration
         $table->string('title')->nullable();
         $table->string('email')->nullable();
         $table->string('meta_title')->nullable();
-        $table->string('meta_description')->nullable();
-        $table->string('meta_keywords')->nullable();
+        $table->text('meta_description')->nullable();
+        $table->text('meta_keywords')->nullable();
         $table->string('google_site_verification')->nullable();
         $table->string('bing')->nullable();
         $table->string('color_web')->nullable()->default('blue');
