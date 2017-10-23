@@ -7,9 +7,9 @@
 <!--smkn10jakarta.sch.id-->
 <!-- ======================= -->
 <html>
-<head>
-  <?php 
-  $meta = App\setting::first();
+<head>  
+  <?php
+  $s = App\Setting::first();  
   ?>
 <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
