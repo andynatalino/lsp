@@ -15,9 +15,17 @@ class SettingsTableSeeder extends Seeder
     		'nama_web' => 'Website',
     		'title' => 'Title',
     		'email' => 'Example@email.com',
+            'meta_title' => 'title',
+            'meta_description' => 'description',
+            'meta_keywords' => 'keywords',
+            'google_site_verification' => 'google',
+            'bing' => 'bing',
     		'color_web' => 'blue',
-    		'color_admin' => 'blue',
-    		'color_operator' => 'blue',
+    		'color_admin' => 'skin-blue',
+    		'color_operator' => 'skin-blue',
+            'facebook' => 'facebook',
+            'twitter' => 'twitter',
+            'instagram' => 'instagram',
     	]);
     }
 }

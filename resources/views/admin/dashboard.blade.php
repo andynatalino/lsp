@@ -14,7 +14,7 @@ $gal = App\Galeri::get()->count();
 $tipe = App\Pembayaran::get()->count();  
 $sli = App\Slider::get()->count();  
 $date = Carbon::today();
-$transaksi = App\Transaksi::whereDate('created_at', '=', Carbon::today()->toDateString())->get();
+$transaksi = App\Transaksi::whereDate('tanggal_konfirmasi', '=', Carbon::today()->toDateString())->get();
 ?>
 <div class='row'>
   <div class='col-md-12'>

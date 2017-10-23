@@ -13,7 +13,7 @@ class KategorisTableSeeder extends Seeder
     public function run()
     {    	
     	$faker = Faker::create();
-    	foreach (range(1,1000) as $index) {
+    	foreach (range(1,100) as $index) {
     		DB::table('kategoris')->insert([
     			'nama_sp' => $faker->name,
     			'isi' => $faker->text($maxNbChars = 200),

@@ -1,6 +1,6 @@
 @extends('layouts.users.app')
 @section('pageTitle', 'Sertifikasi')
-
+@section('description', 'Share text and photos with your friends and have fun')
 @section('content')
 <ul class="breadcrumbs">
  <li><a href="{{ url('/') }}"><span class="icon mif-home"></span></a></li>

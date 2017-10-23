@@ -1,43 +1,56 @@
 <!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}">
+<!--Hayoo mau ngapain :v-->
+<!-- ======================= -->
+<!--cybercyb.blogspot.com-->
+<!--facebook.com/andy.jkz-->
+<!--line : andynl-->
+<!--smkn10jakarta.sch.id-->
+<!-- ======================= -->
+<html>
 <head>
-  <meta charset="utf-8">
+  <?php 
+  $meta = App\setting::first();
+  ?>
+<meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="csrf-token" content="{{ csrf_token() }}">
-  <meta property="og:url" content="{{ Request::url() }}">
-  <meta name="twitter:url" content="{{ Request::url() }}">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="{{ $meta->nama_web }}">
+ @if(Request::is('/')) <meta name="description" content="{{$meta->meta_description }}"> 
+@else <meta name="description" content="@yield('description')">
+@endif
 
-  <meta property="og:title" content="@yield('title')" />
-  <meta property="og:description" content="SAKASAKTI bergerak dalam bidang jasa konsultan Manajemen Sertifikasi Profesi (LSP)" />
-  <meta property="og:image" content="http://sakasakti.com/gallery_gen//c3a63120701b0d7228bbd5efc560186d_509x112.jpg">
+  <meta property="og:url" content="{{ Request::url() }}">
+  <meta property="og:title" content="{{ $meta->meta_title }}">
+ @if(Request::is('/')) <meta property="og:description" content="{{ $meta->meta_description }}"> 
+@else <meta property="og:description" content="@yield('description')">
+@endif
+  <meta property="og:image" content="{{ url('assets/logo/'.$meta->logo) }}">
+  <meta name='google-site-verification' content="{{ $meta->google_site_verification }}">
+  <meta name='msvalidate.01' content="{{ $meta->bing }}">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="{{ $meta->twitter }}">
+  <meta name="twitter:creator" content="{{ $meta->twitter }}">
+  <meta name="twitter:title" content="{{ $meta->meta_title }}">
+  <meta name="twitter:url" content="{{ Request::url() }}">
+ @if(Request::is('/')) <meta name="twitter:description" content="{{$meta->meta_description }}"> 
+@else <meta name="twitter:description" content="@yield('description')">
+@endif
+  <meta name="twitter:image:src" content="{{ url('assets/logo/'.$meta->logo) }}">
 
   <title>@yield('pageTitle') - Sakasakti</title>
   <?php $s = App\Setting::first(); ?>
-  <link href="{{ url('assets/logo/'.$s->favicon)}}" rel="shortcut icon">
+<link href="{{ url('assets/logo/'.$s->favicon)}}" rel="shortcut icon">
   <link href="{{ url('assets/logo/'.$s->favicon)}}" rel="favicon">
 
   <link href="//cdnjs.cloudflare.com/ajax/libs/metro/3.0.17/css/metro.min.css" rel="stylesheet">
   <link href="//cdnjs.cloudflare.com/ajax/libs/metro/3.0.17/css/metro-icons.min.css" rel="stylesheet">
   <link href="//cdnjs.cloudflare.com/ajax/libs/metro/3.0.17/css/metro-responsive.min.css" rel="stylesheet">
   <link href="//cdnjs.cloudflare.com/ajax/libs/metro/3.0.17/css/metro-schemes.min.css" rel="stylesheet">
+  <link href="{{ url('css/login.css')}}" rel="stylesheet" type="text/css">
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> -->
-  <style>
-  .login-form {
-    width: 25rem;
-    height: 18.75rem;
-    position: absolute;
-    top: 50%;
-    margin-top: -9.375rem;
-    left: 50%;
-    margin-left: -12.5rem;
-    background-color: #ffffff;
-    opacity: 0;
-    -webkit-transform: scale(.8);
-    transform: scale(.8);
-  }
-</style>
+  
 </head>
 <body>
   @include('layouts.users.menu')

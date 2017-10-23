@@ -107,6 +107,13 @@ class adminController extends Controller
       $s->color_admin = $request->admincolor;
       $s->color_operator = $request->opcolor;
       $s->facebook = $request->facebook;
+      $s->twitter = $request->twitter;
+      $s->instagram = $request->instagram;
+      $s->meta_title = $request->meta_title;
+      $s->meta_description = $request->meta_description;
+      $s->meta_keywords = $request->meta_keywords;
+      $s->google_site_verification = $request->google_site_verification;
+      $s->bing = $request->bing;
       if($request->file('logo') == "")
       {
         $setting = Setting::first();
@@ -158,31 +165,31 @@ class adminController extends Controller
    }
 
    public function tentang_edit($id){
-      $tentang = tentang::find($id);
-      return view('admin.tentang.edit', ['tentang' => $tentang]);
-   }
-
-   public function tentang_update(Request $request, $id){
-      if ($request->isi == '') {
-       return back()->with('gagal', 'Anda tidak bisa mengisi data kosong!');
-     }
-     $tentang = tentang::find($id);
-     $tentang->judul = $request->judul;
-     $tentang->tentang = $request->isi;
-     $tentang->save();
-     return redirect('admin/tentang');
-   }
-
-   public function tentang_delete($id){
-     $tentang = tentang::find($id);
-     $tentang->delete();
-     return redirect('admin/tentang');
-   }
-
-   public function galeri() {
-    if (!Auth::check()){ return abort(404); }
-      $galeri = galeri::all();
-      if (!$galeri){ return abort(404); }
-      return view('admin.galeri.all', ['galeri' => $galeri]);
-    }
+    $tentang = tentang::find($id);
+    return view('admin.tentang.edit', ['tentang' => $tentang]);
   }
+
+  public function tentang_update(Request $request, $id){
+    if ($request->isi == '') {
+     return back()->with('gagal', 'Anda tidak bisa mengisi data kosong!');
+   }
+   $tentang = tentang::find($id);
+   $tentang->judul = $request->judul;
+   $tentang->tentang = $request->isi;
+   $tentang->save();
+   return redirect('admin/tentang');
+ }
+
+ public function tentang_delete($id){
+   $tentang = tentang::find($id);
+   $tentang->delete();
+   return redirect('admin/tentang');
+ }
+
+ public function galeri() {
+  if (!Auth::check()){ return abort(404); }
+    $galeri = galeri::all();
+    if (!$galeri){ return abort(404); }
+    return view('admin.galeri.all', ['galeri' => $galeri]);
+  }
+}
