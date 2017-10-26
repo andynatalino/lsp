@@ -5,7 +5,7 @@ Route::get('insert',function ()
 {
   $i = 1;
   $faker = Faker::create();
-  foreach (range(1,500) as $index) {
+  foreach (range(1,100) as $index) {
     DB::table('users')->insert([            
       'number' => $i++,
       'username' => $faker->name,
@@ -111,7 +111,7 @@ Route::group(['prefix' => 'admin'], function(){
 
 Route::group(['prefix' => 'operator'], function(){
   Route::group(['middleware' => 'op'], function(){
-    Route::get('/', 'opController@index'); // Route::get('/', 'opController@dashboard');
+    Route::get('/', 'opController@index');
     Route::group(['prefix' => 'berita'], function(){
       Route::get('/', 'opController@berita');
       Route::get('/buat', 'opController@buat_berita');

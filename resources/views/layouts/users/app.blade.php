@@ -5,6 +5,8 @@
 <!--facebook.com/andy.jkz-->
 <!--line : andynl-->
 <!--smkn10jakarta.sch.id-->
+<!--THR3E .DoT.-->
+<!--Intersoft 6th © 2017-->
 <!-- ======================= -->
 <html>
 <head>  

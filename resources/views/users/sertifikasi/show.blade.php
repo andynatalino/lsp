@@ -63,7 +63,7 @@ $kuota = $jadwal->kuota;
     <div class="content" style="padding: 10px 10px 10px 10px;">
 
       @if(Auth::check())   
-      <form action="/pelatihan" method="POST">
+      <form action="{{ url('pelatihan')}}" method="POST">
         {!! csrf_field() !!}
         <input type="hidden" name="id_jadwal" value="{{ $jadwal->id }}">
         @if($con < $kuota)

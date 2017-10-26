@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Hash;
 use Auth;
 use Image;
+use Charts;
 use App\User;
 use App\galeri;
 use App\tentang;
@@ -14,36 +15,25 @@ use Illuminate\Http\Request;
 class adminController extends Controller
 {
   public function dashboard(){
-    $data['tasks'] = [
-      [
-        'name' => 'Design New Dashboard',
-        'progress' => '100',
-        'color' => 'danger'
-      ],
-      [
-        'name' => 'Create Home Page',
-        'progress' => '76',
-        'color' => 'warning'
-      ],
-      [
-        'name' => 'Some Other Task',
-        'progress' => '32',
-        'color' => 'success'
-      ],
-      [
-        'name' => 'Start Building Website',
-        'progress' => '56',
-        'color' => 'info'
-      ],
-      [
-        'name' => 'Develop an Awesome Algorithm',
-        'progress' => '100',
-        'color' => 'success'
-      ]
-    ];
-    return view('admin.dashboard')->with($data);
-  }
+    $chart = Charts::multi('bar', 'material')
+            // Setup the chart settings
+            ->title("Statistik")
+            // A dimension of 0 means it will take 100% of the space
+            ->dimensions(0, 400) // Width x Height
+            // This defines a preset of colors already done:)
+            ->template("material")
+            // You could always set them manually
+            // ->colors(['#2196F3', '#F44336', '#FFC107'])
+            // Setup the diferent datasets (this is a multi chart)
+            ->dataset('User', [5,20,100])
+            ->dataset('User 2', [15,30,80])
+            ->dataset('User 3', [25,10,40])
+            // Setup what the values mean
+            ->labels(['One', 'Two', 'Three']);
 
+        return view('admin.dashboard', ['chart' => $chart]);    
+  }
+  
   public function user(){
     if (!Auth::check()){ return abort(404); }
       $users = User::orderBy('created_at', 'desc')->get();

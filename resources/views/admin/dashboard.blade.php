@@ -17,13 +17,31 @@ $date = Carbon::today();
 $transaksi = App\Transaksi::whereDate('tanggal_konfirmasi', '=', Carbon::today()->toDateString())->get();
 ?>
 <div class='row'>
-  <div class='col-md-12'>
+  <div class='col-md-12'>   
     <div class="col-md-3 col-sm-6 col-xs-12">
       <div class="info-box">
         <span class="info-box-icon bg-red"><i class="fa fa-users"></i></span>
         <div class="info-box-content">
           <span class="info-box-text">Users</span>
           <span class="info-box-number">{{ $usr }}</span>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6 col-xs-12">
+      <div class="info-box">
+        <span class="info-box-icon bg-grey"><i class="fa fa-users"></i></span>
+        <div class="info-box-content">
+          <span class="info-box-text">Admin</span>
+          <span class="info-box-number">{{ $sli }}</span>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6 col-xs-12">
+      <div class="info-box">
+        <span class="info-box-icon bg-grey"><i class="fa fa-users"></i></span>
+        <div class="info-box-content">
+          <span class="info-box-text">Operator</span>
+          <span class="info-box-number">{{ $sli }}</span>
         </div>
       </div>
     </div>
@@ -58,7 +76,7 @@ $transaksi = App\Transaksi::whereDate('tanggal_konfirmasi', '=', Carbon::today()
       <div class="info-box">
         <span class="info-box-icon bg-aqua"><i class="fa fa-ticket"></i></span>
         <div class="info-box-content">
-          <span class="info-box-text">Konfirmasi</span>
+          <span class="info-box-text">Konfirmasi Tunai</span>
           <span class="info-box-number">{{ $kon }}</span>
         </div>
       </div>
@@ -90,7 +108,32 @@ $transaksi = App\Transaksi::whereDate('tanggal_konfirmasi', '=', Carbon::today()
         </div>
       </div>
     </div>
+    <div class="col-md-3 col-sm-6 col-xs-12">
+      <div class="info-box">
+        <span class="info-box-icon bg-grey"><i class="fa fa-tv"></i></span>
+        <div class="info-box-content">
+          <span class="info-box-text">Konfirmasi Bank</span>
+          <span class="info-box-number">{{ $sli }}</span>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6 col-xs-12">
+      <div class="info-box">
+        <span class="info-box-icon bg-grey"><i class="fa fa-tv"></i></span>
+        <div class="info-box-content">
+          <span class="info-box-text">Berita</span>
+          <span class="info-box-number">{{ $sli }}</span>
+        </div>
+      </div>
+    </div>
   </div>  
+</div>
+<div class='col-md-12'>  
+  <div class="box">
+  <div class="box-header with-border">
+    {!! $chart->html() !!}
+  </div>    
+</div>
 </div>
 <div class="row">
   <div class="col-xs-12">
@@ -127,5 +170,13 @@ $transaksi = App\Transaksi::whereDate('tanggal_konfirmasi', '=', Carbon::today()
   </div>
 </div>
 </section>
-</div>
+
+@section('js')
+
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">google.charts.load('current', {'packages':['corechart', 'gauge', 'geochart', 'bar', 'line']})</script>
+{!! $chart->script() !!}
+
+@endsection
 @endsection

@@ -24,7 +24,6 @@ $ss = App\Setting::first();
             </div>    
         </div>
         <ul class="sidebar-menu">
-         <!--  <li class="header">Menu</li>   -->     
          <li class="active"><a href="{{ url('admin') }}"><i class="fa fa-circle-o"></i>Dashboard</a></li>
          <li><a href="{{ url('admin/user') }}"><i class="fa fa-user-circle"></i>Users</a></li>
          <li><a href="{{ url('admin/galeri') }}"><i class="fa fa-picture-o"></i>Galeri</a></li>

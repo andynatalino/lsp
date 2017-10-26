@@ -38,33 +38,13 @@ class SertifikasiController extends Controller
     return view('users.sertifikasi.show', ['jadwal' => $jadwal,'kategori' => $kategori, 'aa' => $aa]);
   }
 
-  public function submit(Request $request){
-  //   if (Auth::user()->role === 3) {
-  //    return redirect(url('operator'));
-  //  }elseif(Auth::user()->role === 2) {
-  //   return redirect(url('admin'));
-  // }elseif(Auth::user()->role === 1) {
-    // $transaksi = sizeof(Transaksi::where(['id_user' => Auth::user()->id])->first());
-    // $transaksi =  Transaksi::where('id_user', '=', 7)->first();
-    // die($transaksi);
-    // if($id_jadwal == Auth::user()->id){    
-    //   die('dlso');
-    //   return redirect(url('pembayaran'));
-    // }else{
-    // if (Transaksi::where('id_jadwal', '=', $request->id_jadwal)->exists()) {    
-    //   return redirect(url('pembayaran'));
-    // }
-    // else {      
+  public function submit(Request $request){    
       $t = new Transaksi;
       $t->id_user = Auth::user()->id;
       $t->id_jadwal = $request->id_jadwal;
       $t->save();
 
       return redirect(url('pembayaran'));
-    // }
-
-    // }
-  // }
   }
   public function redirect(){
    return redirect(url('pembayaran'));
