@@ -7,6 +7,7 @@ use Hash;
 use DateTime;
 use App\User;
 use App\Setting;
+use App\Kategori;
 use App\Transaksi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
@@ -161,12 +162,14 @@ class ProfileController extends Controller
 			if (!Auth::check()) {
 				return redirect(url('login'));
 			}	
-			$id_user = Transaksi::find($id)->id_user;
-			if($id_user == Auth::user()->id){
-				$transaksi = Transaksi::where(['id' => $id])->first();
+			$ss = Setting::first();
+			$id_user = Transaksi::find($id)->id_user;			
+			$transaksi = Transaksi::where(['id' => $id])->first();						
+			if($id_user == Auth::user()->id){					
+				$kategori = Kategori::where('id', $transaksi->jadwal->id_kategori)->first();
 		// return response()->json($transaksi,200,[],JSON_PRETTY_PRINT);
 			// die($transaksi);
-				return view('users.profil.pdf', ['transaksi' => $transaksi]);	
+				return view('users.profil.pdf', ['transaksi' => $transaksi, 'ss' => $ss, 'kategori' => $kategori]);	
 			}else{
 				return redirect(url('/'));
 			}

@@ -18,7 +18,7 @@
       @foreach($berita as $key)
       <div class="panel @foreach($aa as $ss) @if($ss->color_web == 'blue') navy @elseif($ss->color_web == 'red') danger @elseif($ss->color_web == 'green') success @elseif($ss->color_web == 'orange') warning @endif @endforeach">
         <div class="heading">
-          <span class="title">{{ $key->judul }}</span>
+          <span class="title"><a style="color: white;" href="{{ url('/berita/'.$key->slug) }}">{{ $key->judul }}</a></span>
         </div>
         <div class="content" style="padding: 10px 10px 10px 10px;">
              {!! $key->isi !!}

@@ -9,7 +9,7 @@
 			<table class="table striped hovered border bordered">
 				<tr>								
 					<td>Pembayaran via</td>	
-					<td>Lembaga</td>
+					<td>Skema</td>
 					<td>No Rekening</td>
 					<td>Atas Nama</td>
 					<td>Total Biaya</td>

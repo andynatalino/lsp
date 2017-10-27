@@ -2,6 +2,10 @@
 @section('pageTitle', 'Berita')
 
 @section('content')
+<ul class="breadcrumbs">
+  <li><a href="{{ url('/') }}"><span class="icon mif-home"></span></a></li>
+  <li><a href="{{ url('/berita') }}">Berita</a></li>
+</ul>
 <div class="grid">
   <div class="row cells3">
     <?php $i=1;?>

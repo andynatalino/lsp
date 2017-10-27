@@ -114,7 +114,7 @@
 							<td> {{ date('j F Y', strtotime($key->tanggal_konfirmasi)) }}</td>
 							<td><img style="width: 15px; height:15px;" src="{{ url('assets/images/lunas.png')}}"> Lunas</td>
 							<td>
-								<a href="{{ url('profil/'.$key->id.'/pdf')}}"><button type="submit" class="button"><span class="mif-file-pdf"></span> Cetak Bukti</button></a>
+								<a target="_blank" href="{{ url('profil/'.$key->id.'/pdf')}}"><button type="submit" class="button"><span class="mif-file-pdf"></span> Cetak Bukti</button></a>
 							</td>
 							@elseif($key->status == 4)
 

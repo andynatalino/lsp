@@ -130,7 +130,7 @@ class adminController extends Controller
       }
       \App\Setting::truncate();
       $s->save();
-      return back()->with('sukses', 'Anda berhasil mengubah Data!');
+      return back()->with('sukses', 'Data tersimpan!');
     }
     public function tentang(){
       if (!Auth::check()){ return abort(404); }

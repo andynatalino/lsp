@@ -12,7 +12,7 @@ Upload bukti transfer anda agar mempercepat proses verifikasi
 					<td>Pembayaran via</td>
 					<td>Atas Nama</td>
 					<td>No Rekening</td>
-					<td>Lembaga</td>
+					<td>Skema</td>
 
 					<td>Total Biaya</td>
 					<td>Opsi</td>

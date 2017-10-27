@@ -17,7 +17,7 @@
         </div>
         <div class="content padding10">
           <div class="panel image-container">
-            <div class="frame"><img src="{{ url('assets/kategori/'.$key->image) }}"></div>
+            <div class="frame"><a href="{{ url('sertifikasi/'.$key->slug) }}"><img src="{{ url('assets/kategori/'.$key->image) }}"></a></div>
           </div>
           {{ $key->isi }}
         </div>

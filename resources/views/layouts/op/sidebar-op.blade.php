@@ -5,17 +5,17 @@ $ss = App\Setting::first();
     <section class="sidebar">
        <div class="user-panel">
         <div class="pull-left">                                
-            @if($ss->color_admin == 'skin-red-light') 
+            @if($ss->color_operator == 'skin-red-light') 
             <h4>{{ Auth::user()->name }}</h4>
-            @elseif($ss->color_admin == 'skin-blue-light') 
+            @elseif($ss->color_operator == 'skin-blue-light') 
             <h4>{{ Auth::user()->name }}</h4>
-            @elseif($ss->color_admin == 'skin-yellow-light')
+            @elseif($ss->color_operator == 'skin-yellow-light')
             <h4>{{ Auth::user()->name }}</h4>
-            @elseif($ss->color_admin == 'skin-green-light')
+            @elseif($ss->color_operator == 'skin-green-light')
             <h4>{{ Auth::user()->name }}</h4>
-            @elseif($ss->color_admin == 'skin-purple-light')
+            @elseif($ss->color_operator == 'skin-purple-light')
             <h4>{{ Auth::user()->name }}</h4>
-            @elseif($ss->color_admin == 'skin-black-light')
+            @elseif($ss->color_operator == 'skin-black-light')
             <h4>{{ Auth::user()->name }}</h4>
             @else
             <h4 style="color: white;">{{ Auth::user()->name }}</h4>

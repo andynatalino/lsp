@@ -21,7 +21,7 @@
 <?php
 $ss = App\Setting::first();
 ?>
-<body class="{{ $ss->color_admin }}">
+<body class="{{ $ss->color_operator }}">
   <div class="wrapper">
 
     @include('layouts.op.header-op')

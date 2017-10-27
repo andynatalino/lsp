@@ -16,7 +16,7 @@
 			<tr>								
 				<td>No</td>
 				<td>Atas Nama</td>	
-				<td>Lembaga</td>
+				<td>Skema</td>
 				<td>Waktu</td>
 				<td>Opsi</td>
 			</tr>

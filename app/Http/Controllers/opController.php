@@ -61,7 +61,7 @@ class opController extends Controller
   }
 
   public function berita_save(Request $request){
-      if ($request->content == '') {
+      if ($request->isi == '') {
          return back()->with('gagal', 'Anda tidak bisa mengisi berita kosong!');
       }
     $a = new Berita;
