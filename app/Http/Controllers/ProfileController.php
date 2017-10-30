@@ -45,7 +45,7 @@ class ProfileController extends Controller
 			}
 			$transaksi->save();
 
-			return redirect(url('profil'))->with('sukses', 'Anda telah mengupload bukti transaksi! tunggu 1x24 jam untuk operator memverifikasi bukti Anda');
+			return redirect(url('profil/transaksisaya'))->with('sukses', 'Anda telah mengupload bukti transaksi! tunggu 1x24 jam untuk operator memverifikasi bukti Anda');
 		}
 		public function change_photo($slug){
 			if (!Auth::check()) {

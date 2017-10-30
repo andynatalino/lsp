@@ -39,7 +39,9 @@ Route::group(['prefix' => 'pembayaran'], function(){
   Route::post('/daftar', 'SertifikasiController@daftar');
 });
 Route::get('/galeri', function(){ return view('users.galeri.galeri'); });
-Route::get('/kontak', function(){ return view('users.kontak.kontak'); });
+Route::get('/kontak', 'IndexController@kontak');  
+Route::post('/kontak', 'IndexController@kontak_save');  
+
 Route::get('/tentang', 'IndexController@tentang');
 
 Route::group(['prefix' => 'profil'], function(){
@@ -99,11 +101,8 @@ Route::group(['prefix' => 'admin'], function(){
     Route::delete('/{id}', 'adminController@tentang_delete');
   });
    Route::group(['prefix' => 'kontak'], function(){
-    Route::get('/', 'adminController@tentang');
-    Route::get('/buat', 'adminController@buat_kontak');
-    Route::post('/', 'adminController@kontak_save');
-    Route::get('/{id}/edit', 'adminController@kontak_edit');
-    Route::post('/{id}', 'adminController@kontak_update');
+    Route::get('/', 'adminController@kontak');
+    Route::get('/{id}', 'adminController@show_kontak');    
     Route::delete('/{id}', 'adminController@kontak_delete');
   });
  });

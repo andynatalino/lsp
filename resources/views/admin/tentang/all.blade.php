@@ -26,47 +26,20 @@
               <td>{{ substr($key->judul, 0, 30) }}</td>
               <td>
                <div class="form-group">
-            <a href="{{ url('admin/tentang/'.$key->id.'/edit')}}"><button type="button" class="btn btn-info">Edit</button></a>
-                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-danger">
-                  Delete
-                </button>
-             </div>  
-           </td>
-         </tr>
-         @endforeach
-       </tbody>
-     </table>
-   </div>      
- </div>
-</div>
-</div>
-              
-<div class="modal modal-danger fade" id="modal-danger">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title">Delete User</h4>
-        </div>
-        <div class="modal-body">
-          <p>Apakah Anda yakin menghapus user?</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Tutup</button> 
-           <form action="{{ url('admin/tentang/'.$key->id)}}" method="post">
-          <button type="submit"  onclick="return confirm('Are you sure to delete?')" class="btn btn-outline">Hapus</button>
-          <input type="hidden" name="_method" value="DELETE">
-                 {{ csrf_field() }}
-               </form>
-                
-        </div>
-      </div>
-      <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
+                 <form action="{{ url('admin/tentang/'.$key->id)}}" method="post">
+                  <a href="{{ url('admin/tentang/'.$key->id.'/edit')}}" class="btn btn-info">Edit</a>
+                  <button type="submit" onclick="return confirm('Are you sure to delete?')" class="btn btn-danger">Hapus</button>
+                  <input type="hidden" name="_method" value="DELETE">
+                  {{ csrf_field() }}
+                </form>
+              </div>  
+            </td>
+          </tr>
+          @endforeach
+        </tbody>
+      </table>
+    </div>      
   </div>
-
-
-
-  @endsection
+</div>
+</div>
+@endsection

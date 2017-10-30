@@ -4,14 +4,14 @@
 
 @section('content')
   <div class="col-md-12">
-<div class="row">
-  @if(session('sukses'))
-  <div class="alert alert-success alert-dismissible">
-    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-    <h4><i class="icon fa fa-check"></i>Berhasil</h4>
-    {{ session('sukses')}}
-  </div>
-  @endif
+    <div class="row">
+      @if(session('sukses'))
+      <div class="alert alert-success alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <h4><i class="icon fa fa-check"></i>Berhasil</h4>
+        {{ session('sukses')}}
+      </div>
+      @endif
     <!-- Custom Tabs -->
     <div class="nav-tabs-custom">
       <ul class="nav nav-tabs">

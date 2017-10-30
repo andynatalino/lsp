@@ -5,9 +5,9 @@
 @section('content')
 
 @if(session('gagal'))
-<div class="alert alert-warning alert-dismissible">
-  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-  <h4><i class="icon fa fa-warning"></i>Peringatan</h4>
+<div class="alert alert-success alert-dismissible">
+  <button type="button" class="close" data-dismiss="success" aria-hidden="true">&times;</button>
+  <h4><i class="icon fa fa-check"></i>Peringatan</h4>
   {{ session('gagal')}}
 </div>
 @endif

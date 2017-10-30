@@ -9,7 +9,7 @@
       <table class="table striped hovered border bordered">
         <thead>
           <tr>                
-            <th>Lembaga</th>
+            <th>Skema</th>
             <th>Pembayaran</th> 
             <th>No Rekening</th>
             <th>Atas Nama</th>
@@ -45,5 +45,14 @@
     </div>
   </div>
 </div>
-<h5>N.b. Jika 1x24 Jam Transaksi Anda tidak di proses hubungi kontak<a href=""> disini</a></h5>
+<h5>N.b. Jika 1x24 Jam Transaksi Anda tidak di proses hubungi kontak<a href="{{ url('kontak')}}"> disini</a></h5>
+@if(session('sukses'))
+<script type="text/javascript">
+  $(function(){
+    setTimeout(function(){
+      $.Notify({type: 'success', icon: "<span class='mif-checkmark mif-ani-bounce mif-ani-slow'></span>", keepOpen: true, caption: 'Berhasil', content: "{{ session('sukses')}}"});
+    }, 0);
+  });
+</script>
+@endif
 @endsection

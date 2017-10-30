@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Berita;
+use App\kontak;
 use App\Slider;
 use App\tentang;
 use App\Setting;
@@ -30,8 +31,24 @@ class IndexController extends Controller
   }
 
   public function tentang(){
-      $tentang = tentang::get();
-      return view('users.tentang.tentang', ['tentang' => $tentang]);
+    $tentang = tentang::get();
+    return view('users.tentang.tentang', ['tentang' => $tentang]);
   }
+
+  public function kontak(){
+   $aa = Setting::get();
+   return view('users.kontak.kontak', ['aa' => $aa]);
+ }
+
+ public function kontak_save(Request $request){
+  $kontak = new kontak;
+  $kontak->nama = $request->nama;
+  $kontak->email = $request->email;
+  $kontak->telp = $request->telp;
+  $kontak->isi = $request->isi;
+  $kontak->save();
+
+  return back()->with('sukses', 'Terima Kasih telah menghubungi layanan kami. Kami akan segera membalas pesan Anda.'); 
+ }
 
 }

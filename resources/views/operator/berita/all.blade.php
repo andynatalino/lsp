@@ -35,7 +35,7 @@
               <td>{{ date('j F Y h:i:s', strtotime($key->created_at)) }}</td>
               <td>{{ date('j F Y h:i:s', strtotime($key->updated_at)) }}</td>
               <td>
-                <form action="{{ url('operator/berita/')}}" method="post">
+                <form action="{{ url('operator/berita/'.$key->id)}}" method="post">
                  <a href="{{ url('operator/berita/'.$key->id.'/edit')}}" class="btn btn-primary"><i class="fa fa-th-list"></i> Edit</a>
                  <button id="btn-delete" class="btn btn-danger"><i class="fa fa-trash"></i></button>
                  <input type="hidden" name="_method" value="DELETE">

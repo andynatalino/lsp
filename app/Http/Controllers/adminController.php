@@ -7,6 +7,7 @@ use Auth;
 use Image;
 use Charts;
 use App\User;
+use App\kontak;
 use App\galeri;
 use App\tentang;
 use App\Setting;
@@ -174,6 +175,23 @@ class adminController extends Controller
    $tentang = tentang::find($id);
    $tentang->delete();
    return redirect('admin/tentang');
+ }
+
+ public function kontak(){
+   $kontak = kontak::paginate(10);
+   return view('admin.kontak.all', ['kontak' => $kontak]);
+ }
+
+ public function show_kontak($id){
+    $kontak = kontak::find($id);
+   return view('admin.kontak.show', ['kontak' => $kontak]);
+ }
+
+ public function kontak_delete($id){
+   $kontak = kontak::find($id);
+   $kontak->delete();
+
+    return redirect('admin/kontak')->with('sukses', 'Anda berhasil menghapus pesan!');
  }
 
  public function galeri() {

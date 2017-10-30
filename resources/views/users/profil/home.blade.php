@@ -135,14 +135,4 @@
 		</div>
 	</div>
 </div>
-
-@if(session('sukses'))
-<script type="text/javascript">
-	$(function(){
-		setTimeout(function(){
-			$.Notify({type: 'success', icon: "<span class='mif-checkmark mif-ani-bounce mif-ani-slow'></span>", keepOpen: true, caption: 'Berhasil', content: "{{ session('sukses')}}"});
-		}, 0);
-	});
-</script>
-@endif
 @endsection
