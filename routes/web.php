@@ -157,14 +157,15 @@ Route::group(['prefix' => 'operator'], function(){
       Route::delete('/{id}', 'opController@pembayaran_delete');
     });
     Route::group(['prefix' => 'konfirmasi'], function(){
-      Route::get('/', 'opController@konfirmasi_bank');
-      Route::get('/search', 'opController@search_bank');
+      Route::get('/', 'opController@konfirmasi');
+      Route::get('/search', 'opController@konfirmasi_search');     
       Route::get('/tunai', 'opController@konfirmasi_tunai');
       Route::post('/{id}', 'opController@konfirmasi_update');
       Route::delete('/{id}', 'opController@konfirmasi_delete');
     });
     Route::group(['prefix' => 'transaksi'], function(){
       Route::get('/', 'opController@transaksi_all');
+      Route::get('/search', 'opController@transaksi_search');  
       Route::get('/buat', 'opController@transaksi_buat');
       Route::post('/', 'opController@transaksi_save');
       Route::get('/{id}/edit', 'opController@transaksi_edit');

@@ -200,4 +200,31 @@ class adminController extends Controller
     if (!$galeri){ return abort(404); }
     return view('admin.galeri.all', ['galeri' => $galeri]);
   }
+
+  public function buat_galeri()
+  {
+    return view('admin.galeri.buat');
+  }
+
+  public function galeri_save(Request $r)
+  {
+    if($r->input('sampul'));
+    { 
+      $files = $r->sampul;
+
+      foreach($files as $sampul) {
+        $sampul_cek = date("YmdHis").uniqid()."."
+        .$sampul->getClientOriginalExtension();
+        $sampul->move(public_path('assets/galeri'),$sampul_cek);
+
+        \App\galeri::create([
+          'photo' => $sampul_cek,
+          'judul' => $r->judul
+        ]);
+
+      }
+      return redirect(url('admin/galeri'));
+    }
+  }
+
 }

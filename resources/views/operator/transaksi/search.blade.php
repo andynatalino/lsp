@@ -20,25 +20,7 @@
         </div>
       </div>
       <div class="box-body table-responsive">
-        <?php $i = 1; 
-
- $pem = App\Pembayaran::get();  
-
-        ?>
-        @if(sizeof($pem)==0)
-        <table class="table table-bordered table-striped">
-          <thead>
-            <tr>
-              <th>No. Pembayaran</th>
-              <th>User</th>
-              <th>Jadwal</th>
-              <th>Tipe Pembayaran</th>
-              <th>Tanggal Konfirmasi</th>
-              <th>Tanggal transaksi</th>
-            </tr>
-          </thead>          
-        </table>
-        @else
+        <?php $i = 1; ?>
         <table class="table table-bordered table-striped">
           <thead>
             <tr>
@@ -64,7 +46,6 @@
             @endforeach
           </tbody>
         </table>
-@endif
       </div>
     </div>
   </div>

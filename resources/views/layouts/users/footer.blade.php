@@ -1,4 +1,4 @@
-<div style="padding-bottom: 40px;">
+<div style="padding-bottom: 50px;">
 	<footer class="fixed-bottom" style="background-color: #EFEAE3;">
 		<div class="container">       
 			<div class="align-center padding20 text-small">

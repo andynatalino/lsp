@@ -346,23 +346,22 @@ public function pembayaran_delete($id){
   return redirect(url('operator/pembayaran'));
 }
 
-public function konfirmasi_bank(){
-  $transaksi = Transaksi::orderBy('created_at', 'desc')
-  ->where('tipe', '=', 1)->where('status', '=', 4)->paginate(10);
-  return view('operator.konfirmasi.bank', ['transaksi' => $transaksi]);
+public function konfirmasi(){
+  $transaksi = Transaksi::orderBy('created_at', 'desc')->where('status', '=', 4)->paginate(10);
+  return view('operator.konfirmasi.konfirmasi', ['transaksi' => $transaksi]);
 }
 
-public function search_bank(Request $request){
+public function konfirmasi_search(Request $request){
   $query = $request->q;
   $transaksi = Transaksi::where('id','like','%'.$query.'%')->where('status', '=', 4)->orderBy('id','asc')->paginate(10);
-  return view('operator.konfirmasi.search_bank', ['transaksi' => $transaksi, 'query' => $query]); 
+  return view('operator.konfirmasi.search', ['transaksi' => $transaksi, 'query' => $query]); 
 }
 
-public function konfirmasi_tunai(){
-  $transaksi = Transaksi::orderBy('created_at', 'desc')
-  ->where('tipe', '=', 2)->where('status', '=', 4)->get();
-  return view('operator.konfirmasi.tunai', ['transaksi' => $transaksi]);
-}
+// public function konfirmasi_tunai(){
+//   $transaksi = Transaksi::orderBy('created_at', 'desc')
+//   ->where('tipe', '=', 2)->where('status', '=', 4)->get();
+//   return view('operator.konfirmasi.tunai', ['transaksi' => $transaksi]);
+// }
 
 public function konfirmasi_update($id){
   $now = new DateTime();
@@ -383,4 +382,11 @@ public function transaksi_all(){
   $transaksi = Transaksi::orderBy('created_at', 'desc')->where('status', '=', 5)->get();
   return view('operator.transaksi.all', ['transaksi' => $transaksi]);
 }
+
+public function transaksi_search(Request $request){
+ $query = $request->q;
+ $transaksi = Transaksi::where('id','like','%'.$query.'%')->where('status', '=', 5)->orderBy('id','asc')->paginate(10);
+ return view('operator.transaksi.search', ['transaksi' => $transaksi, 'query' => $query]); 
+}
+
 }

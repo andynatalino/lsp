@@ -1,6 +1,6 @@
 @extends('layouts.op.app-operator')
 
-@section('pageTitle', 'Konfirmasi Bank')
+@section('pageTitle', 'Konfirmasi')
 
 @section('content')
 <style type="text/css">
@@ -16,7 +16,7 @@
         <div class="box-tools">
           <form method="get" action="{{ url('operator/konfirmasi/search') }}">                     
             <div class="input-group input-group-xs" style="width: 400px;">
-              <input type="text" name="q" class="form-control pull-right" placeholder="No. Pembayaran">
+              <input type="text" name="q" class="form-control pull-right" placeholder="No. Pembayaran / Biaya Kode Transfer">
               <div class="input-group-btn">
                 <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
               </div>
@@ -36,6 +36,7 @@
               <th>Tipe Pembayaran</th>
               <th>Tanggal Konfirmasi</th>
               <th>Photo Bukti</th>
+              <th>Kode Transfer</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -48,8 +49,8 @@
               <td>LSP Komputer</td>
               <td>{{ $key->pembayaran->nama_bank }}</td>
               <td>{{ date('D, F jS Y \a\t h:i a', strtotime($key->tanggal_konfirmasi)) }}</td>
-              <td> 
-                <img src="{{ url('assets/bukti/'.$key->photo_bukti) }}" style="width: 50px; height: 50px;"></td>
+              <td><img src="{{ url('assets/bukti/'.$key->photo_bukti) }}" style="width: 50px; height: 50px;"></td>
+                <td>Rp. 0 ,-</td>
                 <td>
                  <!-- Button trigger modal -->
                  <form action="{{ url('operator/konfirmasi/'.$key->id) }}" method="post">
