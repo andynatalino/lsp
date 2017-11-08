@@ -45,14 +45,22 @@
   <?php $s = App\Setting::first(); ?>
 <link href="{{ url('assets/logo/'.$s->favicon)}}" rel="shortcut icon">
   <link href="{{ url('assets/logo/'.$s->favicon)}}" rel="favicon">
-
   <link href="//cdnjs.cloudflare.com/ajax/libs/metro/3.0.17/css/metro.min.css" rel="stylesheet">
   <link href="//cdnjs.cloudflare.com/ajax/libs/metro/3.0.17/css/metro-icons.min.css" rel="stylesheet">
   <link href="//cdnjs.cloudflare.com/ajax/libs/metro/3.0.17/css/metro-responsive.min.css" rel="stylesheet">
   <link href="//cdnjs.cloudflare.com/ajax/libs/metro/3.0.17/css/metro-schemes.min.css" rel="stylesheet">
   <link href="{{ url('css/login.css')}}" rel="stylesheet" type="text/css">
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  
+  <style type="text/css">
+.heading{
+ border-top-left-radius:4px;
+ border-top-right-radius:4px;
+}
+.content{ 
+ border-bottom-left-radius:4px;
+ border-bottom-right-radius:4px;
+}
+</style>
 </head>
 <body>
   @include('layouts.users.menu')
@@ -62,6 +70,7 @@
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/datatables/1.10.15/js/jquery.dataTables.min.js"></script>
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/metro/3.0.17/js/metro.min.js"></script>
   <script type="text/javascript"src='//google.com/recaptcha/api.js'></script>
+  <script id="dsq-count-scr" src="//sakasakti.disqus.com/count.js" async></script>
   <!-- <script type="text/javascript" src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
   <script type="text/javascript">
     $(function(){
@@ -78,6 +87,7 @@
         "transition": ".5s"
       });
     });
-  </script>
+  </script>  
+  @include('layouts.users.footer')
 </body>
 </html>

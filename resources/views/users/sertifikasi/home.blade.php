@@ -2,6 +2,19 @@
 @section('pageTitle', 'Sertifikasi')
 @section('description', 'Share text and photos with your friends and have fun')
 @section('content')
+<style type="text/css">
+.heading{
+ border-top-left-radius:4px;
+ border-top-right-radius:4px;
+}
+.content{ 
+ border-bottom-left-radius:4px;
+ border-bottom-right-radius:4px;
+}
+.frame{
+  border-radius: 4px;
+}
+</style>
 <ul class="breadcrumbs">
  <li><a href="{{ url('/') }}"><span class="icon mif-home"></span></a></li>
  <li><a href="#">Sertifikasi</a></li>       

@@ -2,6 +2,11 @@
 @section('pageTitle', 'Profil')
 
 @section('content')
+<style type="text/css">
+.pagination{
+	float: right;
+}
+</style>
 <div class="grid">
 	<div class="row cells12">		
 		<div class="cell colspan4">
@@ -11,9 +16,9 @@
 				</div>
 				<div class="content">
 					<div class="image-container bordered image-format-hd">
-						<div class="frame">							
-							<img src="{{ url('assets/photo/'.$user->photo)}}"
-							onerror="this.src='{{ url('assets/images/default-user.png')}}';">
+						<div class="frame">													
+							@if(Auth::user()->photo=="")<img src="{{ url('assets/images/default-user.png')}}">@else<img src="{{ url('assets/photo/'.$user->photo)}}" onerror="this.src='{{ url('assets/images/default-user.png')}}';">@endif
+
 						</div>
 					</div>
 				</div>
@@ -101,7 +106,7 @@
 						<?php $i = 1; ?>
 						<tr>								
 							<td>No</td>
-							<td>Lembaga</td>
+							<td>Skema</td>
 							<td>Tanggal Konfirmasi</td>
 							<td>Status</td>
 							<td>Opsi</td>
@@ -109,7 +114,7 @@
 						@foreach($transaksi as $key)				
 						<tr>			
 							@if($key->status == 5)	
-							<td>{{ $i++ }}</td>
+							<td>{{ $key->id }}</td>
 							<td>{{ $key->jadwal->nama_lsp}}</td>
 							<td> {{ date('j F Y', strtotime($key->tanggal_konfirmasi)) }}</td>
 							<td><img style="width: 15px; height:15px;" src="{{ url('assets/images/lunas.png')}}"> Lunas</td>
@@ -131,6 +136,8 @@
 						@endforeach						
 					</table>
 				</div>
+
+				{{$transaksi->links() }}
 			</div>
 		</div>
 	</div>

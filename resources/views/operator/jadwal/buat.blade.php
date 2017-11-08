@@ -48,7 +48,7 @@
           <div class="form-group">
             <label>Waktu</label>
             <div class="input-group bootstrap-timepicker timepicker">
-              <input id="timepicker1" required name="waktu" type="text" class="form-control input-small">
+              <input id="timepicker1" required name="waktu" type="text" class="form-control timepicker input-small">
               <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
             </div>
           </div>
@@ -175,6 +175,10 @@ return false;
 }
 
 }
+
+   $('.timepicker').timepicker({
+      showInputs: false
+    })
 
 </script>
 @endsection

@@ -21,12 +21,12 @@ class IndexController extends Controller
 
   public function berita_all(){
     $aa = Setting::get();
-    $berita = Berita::paginate(10);
+    $berita = Berita::orderBy('id', 'desc')->paginate(5);
     return view('users.berita.home', ['berita' => $berita, 'aa' => $aa]);
   }
 
   public function berita_show($slug){
-    $berita = Berita::orderBy('slug', $slug)->firstOrFail();
+    $berita = Berita::orderBy('slug', $slug)->first();
     return view('users.berita.show', ['berita' => $berita]);
   }
 

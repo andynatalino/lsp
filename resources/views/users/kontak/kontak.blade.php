@@ -3,7 +3,7 @@
 
 @section('content')
 <div class="grid">
-	<center><h1>Kontak Kami</h1><p>Jika Anda memiliki pertanyaan, komentar, pendapat, atau kritik, tuliskan pada formulir kontak dibawah ini dan kirimkan kepada kami. Kami akan memberikan jawaban atas semua pertanyaan Anda secepat mungkin.</p></center>
+	<center><p>Jika Anda memiliki pertanyaan, komentar, pendapat, atau kritik, tuliskan pada formulir kontak dibawah ini dan kirimkan kepada kami. Kami akan memberikan jawaban atas semua pertanyaan Anda secepat mungkin.</p></center>
 	<div class="row cells12">
 		<div class="cell colspan8">      
 			<div class="cell">
@@ -45,7 +45,7 @@
 					<span class="title">Kontak</span>
 				</div>
 				<div class="content" style="padding: 10px 10px 10px 10px;">
-					<center><h2>Sakasakti</h2><br></center>
+					<center><h2>Sakasakti</h2></center>
 					<h5>Alamat :</h5>jln sensus IIb<br>
 					<h5>Email :</h5>sakasakti@gmail.com<br>
 					<h5>Telp :</h5>08782173712<br>

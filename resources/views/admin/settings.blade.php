@@ -3,22 +3,23 @@
 @section('pageTitle', 'Settings')
 
 @section('content')
-  <div class="col-md-12">
-    <div class="row">
-      @if(session('sukses'))
-      <div class="alert alert-success alert-dismissible">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <h4><i class="icon fa fa-check"></i>Berhasil</h4>
-        {{ session('sukses')}}
-      </div>
-      @endif
+<div class="col-md-12">
+  <div class="row">
+    @if(session('sukses'))
+    <div class="alert alert-success alert-dismissible">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <h4><i class="icon fa fa-check"></i>Berhasil</h4>
+      {{ session('sukses')}}
+    </div>
+    @endif
     <!-- Custom Tabs -->
     <div class="nav-tabs-custom">
       <ul class="nav nav-tabs">
         <li class="active"><a href="#tab_1" data-toggle="tab">Settings</a></li>
         <li><a href="#tab_2" data-toggle="tab">Web Color</a></li>
         <li><a href="#tab_3" data-toggle="tab">Social Media</a></li>   
-        <li><a href="#tab_4" data-toggle="tab">Meta Tag</a></li>  
+        <li><a href="#tab_4" data-toggle="tab">Kontak</a></li>  
+        <li><a href="#tab_5" data-toggle="tab">Meta Tag</a></li>  
       </ul>
       <div class="tab-content">
         <div class="tab-pane active" id="tab_1">
@@ -28,10 +29,6 @@
           <div class="form-group">
             <label>Nama Website</label>
             <input type="text" required class="form-control" value="{{ $setting->nama_web }}" name="nama" placeholder="Nama Website">
-          </div>
-          <div class="form-group">
-            <label>Kontak Email</label>
-            <input type="email" required class="form-control" value="{{ $setting->email }}" name="email" placeholder="Kontak Email">
           </div>
           <div class="form-group">
             <label>Title</label>
@@ -118,38 +115,56 @@
             </div>
           </div>
           <div class="tab-pane" id="tab_4">
-           <form method="POST" action="{{ url('admin/settings') }}" enctype="multipart/form-data" role="form">
-            {{ csrf_field() }}
             <div class="form-group">
-              <label>Meta Title</label>
-              <input type="text" required class="form-control" value="{{ $setting->meta_title }}" name="meta_title" placeholder="Meta Title">
-            </div>     
-            <div class="form-group">
-              <label>Meta Description</label>
-              <textarea name="meta_description" style="resize: none;" class="form-control" rows="3" placeholder="Meta Description max. 160 karakter">{{ $setting->meta_description }}</textarea>
+              <label>Nama Perusahaan</label>
+              <input type="text" required class="form-control" value="{{ $setting->nama_web }}" name="nama" placeholder="Nama Website">
             </div>
             <div class="form-group">
-              <label>Meta Keywords</label> Pisahkan dengan koma (ex. Pelatihan, Lembaga Pelatihan, Sertifikasi) 
-              <input type="text" required class="form-control" value="{{ $setting->meta_keywords }}" name="meta_keywords" placeholder="Meta Keywords">
+              <label>Kontak Email</label>
+              <input type="email" required class="form-control" value="{{ $setting->email }}" name="email" placeholder="Kontak Email">
             </div>
             <div class="form-group">
-              <label>Google Site Verification</label>
-              <input type="text" required class="form-control" value="{{ $setting->google_site_verification }}" name="google_site_verification" placeholder="Google Site Verification">
+              <label>Telp</label>
+              <input type="text" required class="form-control" value="{{ $setting->title }}" name="title" placeholder="Title">
             </div>
             <div class="form-group">
-              <label>Bing Authentication Code</label>
-              <input type="text" required class="form-control" value="{{ $setting->bing }}" name="bing" placeholder="Bing Authentication Code">
+              <label>Alamat</label>
+              <textarea name="meta_description" style="resize: none;" class="form-control" rows="3"></textarea>
             </div>
+          </div>
+          <div class="tab-pane" id="tab_5">
+            <form method="POST" action="{{ url('admin/settings') }}" enctype="multipart/form-data" role="form">
+              {{ csrf_field() }}
+              <div class="form-group">
+                <label>Meta Title</label>
+                <input type="text" required class="form-control" value="{{ $setting->meta_title }}" name="meta_title" placeholder="Meta Title">
+              </div>     
+              <div class="form-group">
+                <label>Meta Description</label>
+                <textarea name="meta_description" style="resize: none;" class="form-control" rows="3" placeholder="Meta Description max. 160 karakter">{{ $setting->meta_description }}</textarea>
+              </div>
+              <div class="form-group">
+                <label>Meta Keywords</label> Pisahkan dengan koma (ex. Pelatihan, Lembaga Pelatihan, Sertifikasi) 
+                <input type="text" required class="form-control" value="{{ $setting->meta_keywords }}" name="meta_keywords" placeholder="Meta Keywords">
+              </div>
+              <div class="form-group">
+                <label>Google Site Verification</label>
+                <input type="text" required class="form-control" value="{{ $setting->google_site_verification }}" name="google_site_verification" placeholder="Google Site Verification">
+              </div>
+              <div class="form-group">
+                <label>Bing Authentication Code</label>
+                <input type="text" required class="form-control" value="{{ $setting->bing }}" name="bing" placeholder="Bing Authentication Code">
+              </div>
 
-            <div class="box-footer">
-              {{csrf_field()}}
-              <button type="submit" class="btn btn-primary">Save Settings</button>
-              &nbsp;<a href="https://idcloudhost.com/mengetahui-fungsi-dari-tag-meta-tag-dan-meta-tag-description/" target="_blank">Apa itu Meta Tag?</a>
-            </div>  
-          </form>
+              <div class="box-footer">
+                {{csrf_field()}}
+                <button type="submit" class="btn btn-primary">Save Settings</button>
+                &nbsp;<a href="https://idcloudhost.com/mengetahui-fungsi-dari-tag-meta-tag-dan-meta-tag-description/" target="_blank">Apa itu Meta Tag?</a>
+              </div>  
+            </form>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-@endsection
+  @endsection

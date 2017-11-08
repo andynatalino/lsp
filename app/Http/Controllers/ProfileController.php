@@ -20,7 +20,7 @@ class ProfileController extends Controller
 			$id = Auth::user()->id;
 			$aa = Setting::get();
 			$user = User::find($id);
-			$transaksi = Transaksi::where(['id_user' => Auth::user()->id])->get();
+			$transaksi = Transaksi::where(['id_user' => Auth::user()->id])->orderBy('id','asc')->paginate(1);  
 			return view('users.profil.home', ['user' => $user, 'transaksi' => $transaksi, 'aa' => $aa]);			
 		}
 
@@ -155,7 +155,7 @@ class ProfileController extends Controller
 			if (!Auth::check()) {
 				return redirect(url('login'));
 			}		
-			$transaksi = Transaksi::where(['id_user' => Auth::user()->id])->get();
+			$transaksi = Transaksi::where(['id_user' => Auth::user()->id])->orderBy('id','desc')->paginate(10);      
 			return view('users.profil.transaksisaya', ['transaksi' => $transaksi]);	
 		}
 		public function pdf($id){		

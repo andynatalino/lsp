@@ -113,6 +113,8 @@ Route::group(['prefix' => 'operator'], function(){
     Route::get('/', 'opController@index');
     Route::group(['prefix' => 'berita'], function(){
       Route::get('/', 'opController@berita');
+      Route::get('/search', 'opController@berita_search');
+      Route::post('/gambar', 'opController@berita_gambar');
       Route::get('/buat', 'opController@buat_berita');
       Route::post('/', 'opController@berita_save');
       Route::get('/{id}/edit', 'opController@berita_edit');
@@ -129,6 +131,7 @@ Route::group(['prefix' => 'operator'], function(){
     });
     Route::group(['prefix' => 'kategori'], function(){
       Route::get('/', 'opController@kategori_all');
+      Route::get('/search', 'opController@kategori_search');
       Route::get('/buat', 'opController@kategori_buat');
       Route::post('/', 'opController@kategori_save');
       Route::get('/{id}', 'opController@kategori_show');
@@ -138,6 +141,7 @@ Route::group(['prefix' => 'operator'], function(){
     });
     Route::group(['prefix' => 'jadwal'], function(){
       Route::get('/', 'opController@jadwal_all');
+      Route::get('/search', 'opController@jadwal_search');
       Route::get('/buat', 'opController@jadwal_buat');
       Route::post('/', 'opController@jadwal_save');
       Route::get('/{id}/edit', 'opController@jadwal_edit');
@@ -154,6 +158,7 @@ Route::group(['prefix' => 'operator'], function(){
     });
     Route::group(['prefix' => 'konfirmasi'], function(){
       Route::get('/', 'opController@konfirmasi_bank');
+      Route::get('/search', 'opController@search_bank');
       Route::get('/tunai', 'opController@konfirmasi_tunai');
       Route::post('/{id}', 'opController@konfirmasi_update');
       Route::delete('/{id}', 'opController@konfirmasi_delete');

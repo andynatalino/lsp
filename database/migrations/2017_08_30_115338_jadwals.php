@@ -29,7 +29,7 @@ class jadwals extends Migration
         $table->timestamps();
 
         $table->foreign('id_kategori')->references('id')
-        ->on('kategoris')->onDelete('no action');
+        ->on('kategoris')->onDelete('cascade');
       });
     }
 

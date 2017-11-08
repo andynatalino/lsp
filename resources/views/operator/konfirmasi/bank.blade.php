@@ -3,18 +3,25 @@
 @section('pageTitle', 'Konfirmasi Bank')
 
 @section('content')
+<style type="text/css">
+.pagination{
+  float: right;
+}
+</style>
 <div class="row">
   <div class="col-xs-12">
     <div class="box">
       <div class="box-header">
         <br>        
         <div class="box-tools">
-          <div class="input-group input-group-sm" style="width: 150px;">
-            <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
-            <div class="input-group-btn">
-              <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+          <form method="get" action="{{ url('operator/konfirmasi/search') }}">                     
+            <div class="input-group input-group-xs" style="width: 400px;">
+              <input type="text" name="q" class="form-control pull-right" placeholder="No. Pembayaran">
+              <div class="input-group-btn">
+                <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+              </div>
             </div>
-          </div>
+          </form>
         </div>
       </div>
       <!-- /.box-header -->
@@ -23,7 +30,7 @@
         <table class="table table-bordered table-striped">
           <thead>
             <tr>
-              <th>No</th>
+              <th>No. Pembayaran</th>
               <th>User</th>
               <th>Jadwal</th>
               <th>Tipe Pembayaran</th>
@@ -36,7 +43,7 @@
           <tbody>
             @foreach($transaksi as $key)
             <tr>
-              <td>{{ $i++ }}</td>
+              <td>{{ $key->id }}</td>
               <td>{{ $key->user->name }}</td>
               <td>LSP Komputer</td>
               <td>{{ $key->pembayaran->nama_bank }}</td>
@@ -57,7 +64,7 @@
                    data-title="{{ $key->pembayaran->nama_bank }}"
                    data-target="#favoritesModal_{{$no}}"><i class="fa fa-check-square-o"></i> Cek
                  </button>                         
-                 <button id="btn-delete" type="submit"class="btn btn-danger btn-sm"><i class="fa fa-window-close"></i></button>
+                 <button onclick="return confirm('Are you sure to delete?')" type="submit" class="btn btn-danger btn-sm"><i class="fa fa-window-close"></i></button>
                </form>
 
                <div class="modal fade" id="favoritesModal_{{$no}}" 
@@ -84,7 +91,7 @@
                   <span class="pull-right">
                    <form action="{{ url('operator/konfirmasi/'.$key->id) }}" method="post">
                     {{ csrf_field() }}
-                    <button id="btn-submit" type="submit" class="btn btn-primary">
+                    <button onclick="return confirm('Apa data sudah benar?')" type="submit" class="btn btn-primary">
                       Konfirmasi
                     </button>
                   </form>
@@ -101,6 +108,7 @@
 </table>
 </div>
 </div>
+{{$transaksi->links()}}
 </div>
 </div>
 
@@ -111,50 +119,6 @@
    $("#favoritesModalLabel").html($(e.relatedTarget).data('title'));
    $("#fav-title").html($(e.relatedTarget).data('title'));
  });
-});
-
- $('#btn-submit').on('click',function(e){
-  e.preventDefault();
-  var form = $(this).parents('form');
-  swal({
-    title: "Apa anda yakin?",
-    text: "Data sudah benar?",
-    type: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#DD6B55",
-    confirmButtonText: "Ya, benar!",
-    closeOnConfirm: false
-  }, function(isConfirm){
-    if (isConfirm) {
-      form.submit();
-      swal("Berhasil!", "Berhasil dikonfirmasi!", "success");
-      setTimeout(function () {
-       window.location.href = "{{ url('operator/konfirmasi')}}";
-     }, 1500);
-    }
-  });
-});
-
- $('#btn-delete').on('click',function(e){
-  e.preventDefault();
-  var form = $(this).parents('form');
-  swal({
-    title: "Apa anda yakin?",
-    text: "Anda akan menghapus data?",
-    type: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#DD6B55",
-    confirmButtonText: "Ya, Hapus!",
-    closeOnConfirm: false
-  }, function(isConfirm){
-    if (isConfirm) {
-      form.submit();
-      swal("Berhasil!", "Berhasil dihapus!", "success");
-      setTimeout(function () {
-       window.location.href = "{{ url('operator/konfirmasi')}}";
-     }, 1500);
-    }
-  });
 });
 </script>
 @endsection

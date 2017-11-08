@@ -3,18 +3,25 @@
 @section('pageTitle', 'Jadwal')
 
 @section('content')
+<style type="text/css">
+.pagination{
+  float: right;
+}
+</style>
 <div class="row">
   <div class="col-xs-12">
     <div class="box">
       <div class="box-header">
         <a href="{{ url('operator/jadwal/buat')}}"><button type="button" class="btn btn-primary btn-sm pull-left">Tambah Jadwal</button></a>
         <div class="box-tools">
-          <div class="input-group input-group-xs" style="width: 200px;">
-            <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
-            <div class="input-group-btn">
-              <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+          <form method="get" action="{{ url('operator/jadwal/search') }}">                     
+            <div class="input-group input-group-xs" style="width: 200px;">
+              <input type="text" name="q" class="form-control pull-right" placeholder="Cari Skema">
+              <div class="input-group-btn">
+                <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+              </div>
             </div>
-          </div>
+          </form>
         </div>
       </div>
       <div class="box-body table-responsive">
@@ -23,7 +30,7 @@
           <thead>
             <tr>
               <th>No</th>
-              <th>Nama LSP</th>
+              <th>Skema</th>
               <th>Kategori</th>
               <th>Tanggal Mulai</th>
               <th>Tanggal Selesai</th>
@@ -36,7 +43,7 @@
           <tbody>
             @foreach($jadwal as $key)
             <tr>
-              <td>{{ $i++ }}</td>
+              <td>{{ $key->id }}</td>
               <td> {{ str_limit($key->nama_lsp, 20) }}</td>           
               <td>{{ App\Kategori::where('id',$key->id_kategori)->first()['nama_sp'] }}</td>
               <td>{{ date('j F Y', strtotime($key->tanggal_mulai)) }}</td>
@@ -47,7 +54,7 @@
               <td>
                 <form action="{{ url('operator/jadwal/'.$key->id)}}" method="post">
                   <a href="{{ url('operator/jadwal/'.$key->id.'/edit')}}" class="btn btn-primary"><i class="fa fa-th-list"></i> Edit</a>
-                  <button type="submit" id="btn-delete" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                  <button type="submit" onclick="return confirm('Are you sure to delete?')" class="btn btn-danger"><i class="fa fa-trash"></i></button>
                   <input type="hidden" name="_method" value="DELETE">
                   {{ csrf_field() }}
                 </form>
@@ -58,33 +65,7 @@
         </table>
       </div>
     </div>
+    {{ $jadwal->links() }}
   </div>
 </div>
-
-@section('js')
-<script type="text/javascript">
- $('#btn-delete').on('click',function(e){
-  e.preventDefault();
-  var form = $(this).parents('form');
-  swal({
-    title: "Apa anda yakin?",
-    text: "Anda akan menghapus data?",
-    type: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#DD6B55",
-    confirmButtonText: "Ya, Hapus!",
-    closeOnConfirm: false
-  }, function(isConfirm){
-    if (isConfirm) {
-      form.submit();
-      swal("Berhasil!", "Berhasil dihapus!", "success");
-      setTimeout(function () {
-       window.location.href = "{{ url('operator/konfirmasi')}}";
-     }, 1500);
-    }
-  });
-});
-</script>
-@endsection
-
 @endsection
