@@ -27,12 +27,12 @@
           <span class="title"><a href="{{ url('berita/'.$key->slug) }}" style="color:white; padding: 10px 10px 10px 10px;" onclick="document.getElementById('my_form').submit(); return false;">{{ $key->judul }}</a></span>
         </div>
         <div class="content padding10">
-
           <div class="frame">          
-            {!! $key->isi !!}
+            {!! \Illuminate\Support\Str::words($key->isi, 100,'....')  !!}
+            <br>
+            <br>
+            <span class="place-right"><a href="{{ url('/berita/'.$key->slug) }}">Lanjutkan Membaca</a></span><br>
           </div>
-
-
           <hr>
         </div>
       </div>

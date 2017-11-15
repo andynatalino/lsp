@@ -20,7 +20,7 @@
             <th>Atas Nama</th>
             <th>Total Biaya</th>
             <th>Tanggal Konfirmasi</th>
-            <th>Opsi</th>
+            <th>Opsi</th>            
           </tr>     
         </thead>
         @foreach($transaksi as $key)
@@ -32,24 +32,30 @@
           <td>{{ $key->pembayaran->atas_nama }}</td>
           <td>Rp. {{ $key->jadwal->biaya }},-</td>
           <td>{{ date('j F Y', strtotime($key->tanggal_konfirmasi)) }}</td>
-          <td>
-           <a target="_blank" href="{{ url('profil/'.$key->id.'/pdf')}}"><button type="submit" class="button"><span class="mif-file-pdf"></span> Cetak Bukti</button></a>
-         </td>
-         @elseif($key->status == 4)
-         <td>{{ $key->jadwal->nama_lsp }}</td>
-         <td>{{ $key->pembayaran->nama_bank }}</td>  
-         <td>{{ $key->pembayaran->no_rek }}</td>
-         <td>{{ $key->pembayaran->atas_nama }}</td>
-         <td>Rp. {{ $key->jadwal->biaya }},-</td>
-         <td>{{ date('j F Y', strtotime($key->tanggal_konfirmasi)) }}</td>
-         <td>Menunggu Verifikasi</td>
-         @endif
-       </tr>
-       @endforeach   
-     </table>
-   </div>
-   {{$transaksi->links()}}
- </div>
+          <td>             
+           <div class="dropdown-button">
+            <button class="button dropdown-toggle">Donwload Bukti</button>
+            <ul class="split-content d-menu" data-role="dropdown">
+              <li><a target="_blank" href="{{ url('profil/'.$key->id.'/pdf')}}"><span class="mif-file-pdf"></span> Cetak Bukti</a></li>
+              <li><a href="#">Download Skema</a></li>              
+            </ul>
+          </div>    
+        </td>       
+        @elseif($key->status == 4)
+        <td>{{ $key->jadwal->nama_lsp }}</td>
+        <td>{{ $key->pembayaran->nama_bank }}</td>  
+        <td>{{ $key->pembayaran->no_rek }}</td>
+        <td>{{ $key->pembayaran->atas_nama }}</td>
+        <td>Rp. {{ $key->kodepembayaran }},-</td>
+        <td>{{ date('j F Y', strtotime($key->tanggal_konfirmasi)) }}</td>
+        <td>Menunggu Verifikasi</td>
+        @endif
+      </tr>
+      @endforeach   
+    </table>
+  </div>
+  {{$transaksi->links()}}
+</div>
 </div>
 <h5>N.b. Jika 1x24 Jam Transaksi Anda tidak di proses hubungi kontak<a href="{{ url('kontak')}}"> disini</a></h5>
 @if(session('sukses'))

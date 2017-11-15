@@ -38,7 +38,7 @@ Route::group(['prefix' => 'pembayaran'], function(){
   Route::delete('/{id}', 'SertifikasiController@pembayaran_delete');
   Route::post('/daftar', 'SertifikasiController@daftar');
 });
-Route::get('/galeri', function(){ return view('users.galeri.galeri'); });
+Route::get('/galeri', 'IndexController@galeri');
 Route::get('/kontak', 'IndexController@kontak');  
 Route::post('/kontak', 'IndexController@kontak_save');  
 

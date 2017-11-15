@@ -6,7 +6,6 @@
     <li><a href="{{ url('/') }}"><span class="icon mif-home"></span></a></li>
     <li><a href="{{ url('/sertifikasi') }}">Sertifikasi</a></li>
     <li><a href="#">{{ $kategori->nama_sp }}</a></li>
-    <a class="place-right" href=""><span class="mif-file-pdf"></span> Download PDF Skema</a>
 </ul>
 
 <table id="jadwal" class="table striped hovered border bordered" data-role="datatable" data-searching="true" cellspacing="0" width="100%">
@@ -43,4 +42,5 @@
 <span class="mif-warning mif-ani-horizontal mif-ani-slow fg-red"> Data Kosong!</span>
 
 @endif
+<br><br><br>
 @endsection

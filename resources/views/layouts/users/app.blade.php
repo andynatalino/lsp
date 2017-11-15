@@ -43,14 +43,25 @@
 
   <title>@yield('pageTitle') - Sakasakti</title>
   <?php $s = App\Setting::first(); ?>
-<link href="{{ url('assets/logo/'.$s->favicon)}}" rel="shortcut icon">
+<!-- <link href="{{ url('assets/logo/'.$s->favicon)}}" rel="shortcut icon">
   <link href="{{ url('assets/logo/'.$s->favicon)}}" rel="favicon">
   <link href="//cdnjs.cloudflare.com/ajax/libs/metro/3.0.17/css/metro.min.css" rel="stylesheet">
   <link href="//cdnjs.cloudflare.com/ajax/libs/metro/3.0.17/css/metro-icons.min.css" rel="stylesheet">
   <link href="//cdnjs.cloudflare.com/ajax/libs/metro/3.0.17/css/metro-responsive.min.css" rel="stylesheet">
   <link href="//cdnjs.cloudflare.com/ajax/libs/metro/3.0.17/css/metro-schemes.min.css" rel="stylesheet">
   <link href="{{ url('css/login.css')}}" rel="stylesheet" type="text/css">
-  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+
+
+<link href="{{ url('assets/logo/'.$s->favicon)}}" rel="shortcut icon">
+  <link href="{{ url('assets/logo/'.$s->favicon)}}" rel="favicon">
+  <link href="{{ url('css/metro.min.css')}}" rel="stylesheet">  
+  <link href="{{ url('css/metro-icons.min.css')}}" rel="stylesheet">
+  <link href="{{ url('css/metro-responsive.min.css')}}" rel="stylesheet">
+  <link href="{{ url('css/metro-schemes.min.css')}}" rel="stylesheet">  
+  <link href="{{ url('css/login.css')}}" rel="stylesheet" type="text/css">
+  <script type="text/javascript" src="{{ url('js/jquery-2.1.3.min.js')}}"></script>
+
   <style type="text/css">
 .heading{
  border-top-left-radius:4px;

@@ -353,7 +353,11 @@ public function konfirmasi(){
 
 public function konfirmasi_search(Request $request){
   $query = $request->q;
-  $transaksi = Transaksi::where('id','like','%'.$query.'%')->where('status', '=', 4)->orderBy('id','asc')->paginate(10);
+  $transaksi = Transaksi::where('id','like','%'.$query.'%')
+  ->orWhere('kodepembayaran','like','%'.$query.'%')
+  ->where('status', '=', 4)
+  ->orderBy('id','asc')
+  ->paginate(10);
   return view('operator.konfirmasi.search', ['transaksi' => $transaksi, 'query' => $query]); 
 }
 

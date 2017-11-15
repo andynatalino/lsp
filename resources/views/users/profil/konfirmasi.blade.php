@@ -24,7 +24,7 @@ Upload bukti transfer anda agar mempercepat proses verifikasi
 					<td>{{ $key->pembayaran->no_rek }}</td>
 					<td>{{ $key->jadwal->nama_lsp }}</td>  
 					
-					<td>Rp. {{ $key->jadwal->biaya }},-</td>
+					<td>Rp. {{ $key->kodepembayaran }},-</td>
 					<td>
 						<form method="post" action="{{url('profil/konfirmasi')}}" enctype="multipart/form-data">
 							<div class="input-control file full-size" data-role="input">

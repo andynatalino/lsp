@@ -29,8 +29,8 @@ class Transaksis extends Migration
         ->on('users')->onDelete('no action');
         $table->foreign('id_jadwal')->references('id')
         ->on('jadwals')->onDelete('no action');
-        $table->foreign('id_pembayaran')->references('id')
-        ->on('pembayarans')->onDelete('no action');
+       /** $table->foreign('id_pembayaran')->references('id')
+        ->on('pembayarans')->onDelete('no action'); */
     });
       DB::update("ALTER TABLE transaksis AUTO_INCREMENT = 1000;");
   }

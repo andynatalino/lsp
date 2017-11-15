@@ -54,14 +54,14 @@
 div.panell { display:none; }
 div.panell.active { display:block; }
 </style>
-
+<?php $aa = App\Setting::get(); ?>
 <div class="grid">
 	<div class="row cells12">
 		<div class="cell colspan8 offset2">      
 			<div class="cell">
 				@foreach($tentang as $key)				
 				<a href='#' class='link'>
-					<div class="panel collapsed" data-role="panel">
+					<div class="panel @foreach($aa as $ss) @if($ss->color_web == 'blue') navy @elseif($ss->color_web == 'red') danger @elseif($ss->color_web == 'green') success @elseif($ss->color_web == 'orange') warning @endif @endforeach collapsed" data-role="panel">
 						<div class="heading" style="border-top-left-radius: 0%;border-top-right-radius: 0%;">
 							<center><span class="title">{{ $key->judul }}</span></center>
 						</div>

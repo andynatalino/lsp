@@ -26,11 +26,11 @@
         <div class="heading">
           <span class="title"><a style="color: white;" href="{{ url('/berita/'.$key->slug) }}">{{ $key->judul }}</a></span>
         </div>
-        <div class="content" style="padding: 10px 10px 10px 10px;">           
-         {!! substr($key->isi, 0, 30) !!}
+        <div class="content" style="padding: 10px 10px 10px 10px;">          
+         {!! \Illuminate\Support\Str::words($key->isi, 100,'....')  !!}
          <br>
          <br>
-         <span class="place-right">Lanjutkan Membaca</span><br>
+         <span class="place-right"><a href="{{ url('/berita/'.$key->slug) }}">Lanjutkan Membaca</a></span><br>
        </div>
      </div><br>
      @endforeach

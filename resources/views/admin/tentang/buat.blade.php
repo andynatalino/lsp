@@ -24,8 +24,8 @@
             <input type="text" class="form-control" name="judul" placeholder="Judul" required>
           </div>
           <div class="form-group">
-            <label>Isi</label>
-            <textarea id="content" name="isi" class="form-control"></textarea>
+            <label>Isi</label> *
+            <textarea required placeholder="Isi" id="content" name="isi" class="form-control"></textarea>
           </div>
         </div>
         <div class="box-footer">
@@ -36,11 +36,14 @@
     </div>
   </div>
 </div>
-@section('js')
-<script src="{{ url('js/ckeditor/ckeditor.js') }}"></script>
 <script type="text/javascript">
-  CKEDITOR_BASEPATH = "{{ url('/js/ckeditor/') }}";
-  CKEDITOR.replace('content', {toolbar : 'standard',width : '99%',height : '300px'});
+  $(document).ready(function(){    
+  setTimeout(function(){
+    CKEDITOR.replace('content', {
+    width : '99%',height : '300px',    
+    filebrowserUploadUrl: '{{ url('operator/berita/gambar') }}',
+    });
+  },1000);
+  });
 </script>
-@endsection
 @endsection

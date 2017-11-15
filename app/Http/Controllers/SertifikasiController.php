@@ -39,12 +39,12 @@ class SertifikasiController extends Controller
   }
 
   public function submit(Request $request){    
-      $t = new Transaksi;
-      $t->id_user = Auth::user()->id;
-      $t->id_jadwal = $request->id_jadwal;
-      $t->save();
+    $t = new Transaksi;
+    $t->id_user = Auth::user()->id;
+    $t->id_jadwal = $request->id_jadwal;
+    $t->save();
 
-      return redirect(url('pembayaran'));
+    return redirect(url('pembayaran'));
   }
   public function redirect(){
    return redirect(url('pembayaran'));
@@ -94,8 +94,10 @@ public function pembayaran_informasi_save(Request $request){
   $bank = $request->bank;
   $id = $request->id;
   $transaksi = Transaksi::find($id);
+  $jadwal = Jadwal::find($transaksi->id_jadwal);
   $transaksi->id_user = Auth::user()->id;
   $transaksi->id_pembayaran = $bank;
+  $transaksi->kodepembayaran = $jadwal->biaya + rand(100, 999);
   $transaksi->tipe = 1;
   $transaksi->status = 3;
   $transaksi->save();

@@ -31,7 +31,7 @@ $kuota = $jadwal->kuota;
           <td>: {{ $con }} / {{ $jadwal->kuota }} Orang</td>
         </tr>
         <tr>
-          <td><h5>Sertifikasi</h5></td>
+          <td><h5>Skema</h5></td>
           <td>: {{ $jadwal->nama_lsp }}</td>
         </tr>
         <tr>

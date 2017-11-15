@@ -50,7 +50,7 @@
               <td>{{ $key->pembayaran->nama_bank }}</td>
               <td>{{ date('D, F jS Y \a\t h:i a', strtotime($key->tanggal_konfirmasi)) }}</td>
               <td><img src="{{ url('assets/bukti/'.$key->photo_bukti) }}" style="width: 50px; height: 50px;"></td>
-                <td>Rp. 0 ,-</td>
+                <td>Rp. {{ $key->kodepembayaran }},-</td>
                 <td>
                  <!-- Button trigger modal -->
                  <form action="{{ url('operator/konfirmasi/'.$key->id) }}" method="post">

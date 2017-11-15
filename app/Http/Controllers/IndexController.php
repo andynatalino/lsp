@@ -7,6 +7,7 @@ use App\kontak;
 use App\Slider;
 use App\tentang;
 use App\Setting;
+use App\galeri;
 use Illuminate\Http\Request;
 
 class IndexController extends Controller
@@ -49,6 +50,12 @@ class IndexController extends Controller
   $kontak->save();
 
   return back()->with('sukses', 'Terima Kasih telah menghubungi layanan kami. Kami akan segera membalas pesan Anda.'); 
- }
+}
+
+public function galeri(){
+  $aa = Setting::get();
+  $galeri = galeri::paginate(9);  
+  return view('users.galeri.galeri', ['galeri' => $galeri, 'aa' => $aa]);
+}
 
 }
