@@ -1,5 +1,5 @@
 <?php $s = App\Setting::first(); ?>
-<footer class="fixed" style="background-color: #EFEAE3">		
+<footer class="fixed" style="background-color: #EFEAE3; bottom: 0;">		
 		<div class="container">
 			<div class="padding20">
 				<div class="grid">

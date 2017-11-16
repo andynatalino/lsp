@@ -1,5 +1,6 @@
 <?php
-$s = App\Setting::first();  
+$s = App\Setting::first(); 
+$tentang = App\tentang::all(); 
 ?>
 <div class="app-bar fixed {{ $s->color_web }}" data-role="appbar">
   <div class="container">
@@ -13,10 +14,10 @@ $s = App\Setting::first();
       </ul>
       <div class="app-bar-element">
         <a class="dropdown-toggle fg-white">Tentang</a>
-        <ul class="d-menu" data-role="dropdown">
-          <li><a href="{{ url('#')}}">Profil</a></li>             
-          <li><a href="{{ url('#')}}">Visi Misi</a></li>
-          <li><a href="{{ url('#')}}">Legalitas Perusahaan</a></li>        
+        <ul class="d-menu" data-role="dropdown">         
+          @foreach($tentang as $key) 
+          <li><a href="{{ url('/tentang/'.$key->slug)}}">{{ $key->judul }}</a></li>      
+          @endforeach
         </div>
         @if(Auth::check())
         <div class="app-bar-element place-right">

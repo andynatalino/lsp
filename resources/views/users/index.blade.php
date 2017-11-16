@@ -24,7 +24,7 @@
       @foreach($berita as $key)
       <div class="panel @foreach($aa as $ss) @if($ss->color_web == 'blue') navy @elseif($ss->color_web == 'red') danger @elseif($ss->color_web == 'green') success @elseif($ss->color_web == 'orange') warning @endif @endforeach">
         <div class="heading">
-          <span class="title"><a style="color: white;" href="{{ url('/berita/'.$key->slug) }}">{{ $key->judul }}</a></span>
+          <span class="title" style="font-size: 80%;"><a style="color: white;" href="{{ url('/berita/'.$key->slug) }}">{{ $key->judul }}</a></span>
         </div>
         <div class="content" style="padding: 10px 10px 10px 10px;">          
          {!! \Illuminate\Support\Str::words($key->isi, 100,'....')  !!}
@@ -41,21 +41,21 @@
    <div class="cell colspan4">
     <div class="panel @foreach($aa as $ss) @if($ss->color_web == 'blue') navy @elseif($ss->color_web == 'red') danger @elseif($ss->color_web == 'green') success @elseif($ss->color_web == 'orange') warning @endif @endforeach">
       <div class="heading">
-        <span class="title"><span class="mif-medal"></span> LSP Paling Diminati
+        <span class="title" style="font-size: 80%;"><span class="mif-medal"></span> Profesi Paling Diminati
       </span>
     </div>
     <div class="listview set-border padding10" data-role="listview">
       <div class="list">
         <!-- <img src="{{ url('assets/images/2017092714005059cbaf12b54b3.png')}}" class="list-icon"> -->
-        <span class="list-title">1. LSP Komputer</span>
+        <span class="list-title">1. Skema Komputer</span>
       </div>
       <div class="list">
         <!-- <img src="{{ url('assets/images/2017092714005059cbaf12b54b4.png')}}" class="list-icon"> -->
-        <span class="list-title">2. LSP Laptop</span>
+        <span class="list-title">2. Skema Laptop</span>
       </div>
       <div class="list">
         <!-- <img src="{{ url('assets/images/2017092714005059cbaf12b54b5.png')}}" class="list-icon"> -->
-        <span class="list-title">3. LSP Mouse</span>
+        <span class="list-title">3. Skema Mouse</span>
       </div>
     </div>
   </div>
@@ -64,7 +64,7 @@
   <br>
   <div class="panel @foreach($aa as $ss) @if($ss->color_web == 'blue') navy @elseif($ss->color_web == 'red') danger @elseif($ss->color_web == 'green') success @elseif($ss->color_web == 'orange') warning @endif @endforeach">
     <div class="heading">
-      <span class="title"><span class="mif-enter"></span> Login</span>
+      <span class="title" style="font-size: 80%;"><span class="mif-enter"></span> Login</span>
     </div>
     <div class="content" style="padding: 10px 10px 10px 10px;">
       Login atau Register
@@ -77,7 +77,7 @@
   <br>
   <div class="panel @foreach($aa as $ss) @if($ss->color_web == 'blue') navy @elseif($ss->color_web == 'red') danger @elseif($ss->color_web == 'green') success @elseif($ss->color_web == 'orange') warning @endif @endforeach">
     <div class="heading">
-      <span class="title"><span class="mif-facebook"></span> Facebook</span>
+      <span class="title" style="font-size: 80%;"><span class="mif-facebook"></span> Facebook</span>
     </div>
     <div class="content" style="margin:0 !important;padding:0 !important;"><center>
       <div data-width="306" class="fb-like-box" data-href="{{ $ss->facebook }}" data-colorscheme="light" data-show-faces="true" data-header="false" data-stream="true" data-show-border="false"></div>

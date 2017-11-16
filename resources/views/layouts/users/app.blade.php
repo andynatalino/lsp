@@ -99,6 +99,6 @@
       });
     });
   </script>  
-  @include('layouts.users.footer')
 </body>
+  @include('layouts.users.footer')
 </html>

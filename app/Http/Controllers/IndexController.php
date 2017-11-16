@@ -27,12 +27,13 @@ class IndexController extends Controller
   }
 
   public function berita_show($slug){
-    $berita = Berita::orderBy('slug', $slug)->first();
+    // $berita = Berita::orderBy('slug', $slug)->first();
+    $berita = Berita::whereSlug($slug)->first();
     return view('users.berita.show', ['berita' => $berita]);
   }
 
-  public function tentang(){
-    $tentang = tentang::get();
+  public function tentang_show($slug){
+    $tentang = tentang::whereSlug($slug)->first();
     return view('users.tentang.tentang', ['tentang' => $tentang]);
   }
 

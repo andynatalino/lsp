@@ -17,6 +17,7 @@ class CreateTentangsTable extends Migration
             $table->increments('id');
             $table->string('judul');
             $table->longtext('tentang');
+            $table->string('slug');
             $table->timestamps();
         });
     }

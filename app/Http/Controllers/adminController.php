@@ -151,6 +151,7 @@ class adminController extends Controller
      $tentang = new tentang;
      $tentang->judul = $request->judul;
      $tentang->tentang = $request->isi;
+     $tentang->slug = str_slug($request->judul);    
      $tentang->save();
      return redirect('admin/tentang');
    }
@@ -167,6 +168,7 @@ class adminController extends Controller
    $tentang = tentang::find($id);
    $tentang->judul = $request->judul;
    $tentang->tentang = $request->isi;
+   $tentang->slug = str_slug($request->judul); 
    $tentang->save();
    return redirect('admin/tentang');
  }

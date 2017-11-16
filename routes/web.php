@@ -42,7 +42,13 @@ Route::get('/galeri', 'IndexController@galeri');
 Route::get('/kontak', 'IndexController@kontak');  
 Route::post('/kontak', 'IndexController@kontak_save');  
 
-Route::get('/tentang', 'IndexController@tentang');
+Route::group(['prefix' => 'tentang'], function(){
+  Route::get('/',function ()
+{
+ return redirect(url('/'));
+});
+  Route::get('/{slug}', 'IndexController@tentang_show');
+});
 
 Route::group(['prefix' => 'profil'], function(){
   Route::get('/', 'ProfileController@index');
