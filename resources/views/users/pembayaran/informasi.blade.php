@@ -16,7 +16,7 @@
             {{ csrf_field() }}
             <input type="hidden" name="bank" value="#">
             <input type="hidden" name="id" value="#">
-            <button class="button">Konfirmasi via Tunai</button>
+            <button class="button" type="submit">Konfirmasi via Tunai</button>
           </form>
         </div>
       </div><br>

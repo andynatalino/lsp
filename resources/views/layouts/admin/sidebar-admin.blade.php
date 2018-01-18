@@ -29,6 +29,7 @@ $ss = App\Setting::first();
          <li><a href="{{ url('admin/galeri') }}"><i class="fa fa-picture-o"></i>Galeri</a></li>
          <li><a href="{{ url('admin/kontak') }}"><i class="fa fa-address-book"></i>Kontak</a></li>
          <li><a href="{{ url('admin/tentang') }}"><i class="fa fa-newspaper-o"></i>Tentang</a></li>
+         <li><a href="{{ url('admin/tentang') }}"><i class="fa fa-newspaper-o"></i>Footer</a></li>
          <li><a href="#"><i class="fa fa-file-pdf-o"></i>Laporan</a></li>
          <li><a href="{{ url('admin/settings') }}"><i class="fa fa-cog"></i>Settings</a></li>
          <li class="treeview">

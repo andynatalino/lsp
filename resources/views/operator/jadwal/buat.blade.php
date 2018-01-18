@@ -58,7 +58,7 @@
           </div>
           <div class="form-group">
             <label>Wilayah</label>
-            <input type="text" required class="form-control" name="nama_lsp" placeholder="Nama LSP">
+            <input type="text" required class="form-control" name="nama_lsp" placeholder="Wilayah">
           </div>
           <div class="form-group">
             <label>Kuota (contoh: 30)</label>
@@ -72,6 +72,14 @@
           <div class="form-group">
             <label>Deskripsi</label>
             <textarea required placeholder="Isi Deskripsi" required name="isi" class="form-control"></textarea>
+          </div>
+          <div class="form-group">
+            <label>Info</label>
+            <textarea required placeholder="Isi Berita" id="content1" name="info" class="form-control"></textarea>
+          </div>
+          <div class="form-group">
+            <label>Skema</label>
+            <textarea required placeholder="Skema" id="content2" required name="skema" class="form-control"></textarea>
           </div>
           <div class="form-group">
             <label>Status</label><br>
@@ -176,10 +184,26 @@ return false;
 
 }
 
-   $('.timepicker').timepicker({
-      showInputs: false
-    })
+$('.timepicker').timepicker({
+  showInputs: false
+})
 
+  $(document).ready(function(){    
+  setTimeout(function(){
+    CKEDITOR.replace('content1', {
+    width : '99%',height : '300px',    
+    filebrowserUploadUrl: '{{ url('operator/berita/gambar') }}',
+    });
+  },1000);
+  });
+    $(document).ready(function(){    
+  setTimeout(function(){
+    CKEDITOR.replace('content2', {
+    width : '99%',height : '300px',    
+    filebrowserUploadUrl: '{{ url('operator/berita/gambar') }}',
+    });
+  },1000);
+  });
 </script>
 @endsection
 @endsection

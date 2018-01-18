@@ -268,6 +268,8 @@ public function jadwal_save(Request $request){
   $jadwal->isi = $request->isi;
   $jadwal->status = $request->status;
   $jadwal->slug = str_slug($request->nama_lsp);
+  $jadwal->info = $request->info;
+  $jadwal->skema = $request->skema;
   // $jadwal->image = '';
   // if($request->hasFile('image')){
   //   $image = date('YmdHis').uniqid().".". $request->image->getClientOriginalExtension();

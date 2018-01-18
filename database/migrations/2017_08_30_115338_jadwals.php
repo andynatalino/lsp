@@ -26,12 +26,14 @@ class jadwals extends Migration
         $table->longtext('isi');
         $table->string('status');
         $table->string('slug');
+        $table->longtext('info');
+        $table->longtext('skema');
         $table->timestamps();
 
         $table->foreign('id_kategori')->references('id')
         ->on('kategoris')->onDelete('cascade');
-      });
-    }
+    });
+  }
 
     /**
      * Reverse the migrations.
@@ -41,5 +43,5 @@ class jadwals extends Migration
     public function down()
     {
       Schema::dropIfExists('jadwals');
-    }
   }
+}

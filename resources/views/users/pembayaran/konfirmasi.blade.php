@@ -1,4 +1,4 @@
-@extends('layouts.users.app')
+	@extends('layouts.users.app')
 @section('pageTitle', 'Checkout - Konfirmasi')
 
 @section('content')

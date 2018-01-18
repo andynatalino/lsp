@@ -134,7 +134,7 @@ Route::group(['prefix' => 'operator'], function(){
       Route::get('/{id}/edit', 'opController@slider_edit');
       Route::post('/{id}', 'opController@slider_update');
       Route::delete('/{id}', 'opController@slider_delete');
-    });
+    });    
     Route::group(['prefix' => 'kategori'], function(){
       Route::get('/', 'opController@kategori_all');
       Route::get('/search', 'opController@kategori_search');
