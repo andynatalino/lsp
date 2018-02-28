@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\galeri;
 use App\Berita;
 use App\kontak;
 use App\Slider;
 use App\tentang;
 use App\Setting;
-use App\galeri;
 use Illuminate\Http\Request;
 
 class IndexController extends Controller

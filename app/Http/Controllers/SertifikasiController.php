@@ -11,7 +11,6 @@ use App\Transaksi;
 use App\Pembayaran;
 use Illuminate\Http\Request;
 
-
 class SertifikasiController extends Controller
 {
   public function kategori(){
@@ -84,7 +83,10 @@ public function pembayaran_checkout_save(Request $request){
   $ud->save();
 
   $transaksi = Transaksi::find($request->id_transaksi);
+  $jadwal = Jadwal::find($transaksi->id_jadwal);
    // $userdata = Userdata::where(['id_transaksi' => $transaksi->id])->firstOrFail();
+  $transaksi->kodepembayaran = $jadwal->biaya + 134;
+  $transaksi->save();
   $bank = Pembayaran::all();
   $aa = Setting::get();
   return view('users.pembayaran.informasi', ['transaksi' => $transaksi, 'bank' => $bank, 'aa' => $aa]);
@@ -97,7 +99,7 @@ public function pembayaran_informasi_save(Request $request){
   $jadwal = Jadwal::find($transaksi->id_jadwal);
   $transaksi->id_user = Auth::user()->id;
   $transaksi->id_pembayaran = $bank;
-  $transaksi->kodepembayaran = $jadwal->biaya + rand(100, 999);
+  // $transaksi->kodepembayaran = $jadwal->biaya + rand(100, 999);
   $transaksi->tipe = 1;
   $transaksi->status = 3;
   $transaksi->save();

@@ -31,6 +31,7 @@ class JadwalsTableSeeder extends Seeder
         'status' => 1,
         'slug' => strtolower(str_slug($faker->name)),
         'info' => $faker->text($maxNbChars = 200),
+        'skema' => $faker->text($maxNbChars = 200),
       ]);
     }
   }
